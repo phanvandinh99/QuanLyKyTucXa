@@ -281,30 +281,27 @@
                                         <div class="form-group">
                                             <div class="at-select">
                                                 <select>
-                                                    <option value="" hidden="">Where You Want To Stay</option>
-                                                    <option value="twitter">China</option>
-                                                    <option value="linkedin">France</option>
-                                                    <option value="rss">Germany</option>
-                                                    <option value="vimeo">Italy</option>
-                                                    <option value="tumblr">Japan</option>
+                                                    <option value="" hidden="">Loại Phòng</option>
+                                                    <option value="twitter">Nam</option>
+                                                    <option value="twitter">Nữ</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="at-selectdate-holder">
                                                 <div class="at-select">
-                                                    <label>Check-In:</label>
+                                                    <label>Ngày Thuê:</label>
                                                     <input type="text" id="at-startdate" class="form-control" placeholder="date">
                                                 </div>
                                                 <div class="at-select">
-                                                    <label>Check Out:</label>
+                                                    <label>Ngày Kết Thúc:</label>
                                                     <input type="text" id="at-enddate" class="form-control" placeholder="date">
                                                 </div>
                                                 <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
                                             </div>
                                         </div>
                                     </fieldset>
-                                    <fieldset class="at-guestsform">
+                                    <fieldset class="at-guestsform" style="display:none">
                                         <legend class="at-formtitle">Guests</legend>
                                         <div class="form-group">
                                             <ul class="at-guestsinfo">
@@ -420,41 +417,41 @@
                                         </div>
                                     </fieldset>
                                     <fieldset class="at-roomform">
-                                        <legend class="at-formtitle">Room Type</legend>
+                                        <legend class="at-formtitle">Loại hòng</legend>
                                         <div class="form-group">
                                             <div class="at-room-radioholder">
                                                 <span class="at-radio">
                                                     <input id="at-private" type="radio" name="privateb" checked="">
                                                     <label for="at-private">
                                                         <img src="~/Assets/Student/images/radio-imgs/img-01.jpg" alt="img">
-                                                        <span><em>Private Room</em> (58,1250)</span>
+                                                        <span><em>Đầy đủ nội thất</em> (2,000,000) vnđ/Kỳ</span>
                                                     </label>
                                                 </span>
                                                 <span class="at-radio">
                                                     <input id="at-shared" type="radio" name="privateb">
                                                     <label for="at-shared">
                                                         <img src="~/Assets/Student/images/radio-imgs/img-02.jpg" alt="img">
-                                                        <span><em>Shared Room</em> (31,5245)</span>
+                                                        <span><em>Phòng 4 Sinh Viên</em></span>
+                                                    </label>
+                                                </span>
+                                                <span class="at-radio">
+                                                    <input id="at-shared" type="radio" name="privateb">
+                                                    <label for="at-shared">
+                                                        <img src="~/Assets/Student/images/radio-imgs/img-02.jpg" alt="img">
+                                                        <span><em>Phòng 6 Sinh Viên</em></span>
                                                     </label>
                                                 </span>
                                                 <span class="at-radio">
                                                     <input id="at-entire" type="radio" name="privateb">
                                                     <label for="at-entire">
                                                         <img src="~/Assets/Student/images/radio-imgs/img-03.jpg" alt="img">
-                                                        <span><em>Entire Place</em> (22,4523)</span>
-                                                    </label>
-                                                </span>
-                                                <span class="at-radio">
-                                                    <input id="at-entire" type="radio" name="privateb">
-                                                    <label for="at-entire">
-                                                        <img src="~/Assets/Student/images/radio-imgs/img-03.jpg" alt="img">
-                                                        <span><em>Entire Place</em> (22,4523)</span>
+                                                        <span><em>Điều Hòa</em> (+ 200,000)</span>
                                                     </label>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="form-group at-btnarea">
-                                            <a href="javascript:void(0);" class="at-btn">Search Now</a>
+                                            <a href="javascript:void(0);" class="at-btn">Tìm Kiếm</a>
                                         </div>
                                     </fieldset>
                                 </form>
