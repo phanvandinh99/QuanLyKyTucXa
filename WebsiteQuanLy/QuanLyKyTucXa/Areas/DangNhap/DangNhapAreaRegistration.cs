@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace QuanLyKyTucXa.Areas.Admin
+namespace QuanLyKyTucXa.Areas.DangNhap
 {
-    public class AdminAreaRegistration : AreaRegistration
+    public class DangNhapAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Admin";
+                return "DangNhap";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "DangNhap_default",
+                "DangNhap/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

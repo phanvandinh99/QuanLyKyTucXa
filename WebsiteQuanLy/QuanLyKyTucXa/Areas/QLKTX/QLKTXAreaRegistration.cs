@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace QuanLyKyTucXa.Areas.Admin
+namespace QuanLyKyTucXa.Areas.QLKTX
 {
-    public class AdminAreaRegistration : AreaRegistration
+    public class QLKTXAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Admin";
+                return "QLKTX";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "QLKTX_default",
+                "QLKTX/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

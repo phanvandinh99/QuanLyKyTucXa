@@ -43,7 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +71,15 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.4.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -93,16 +113,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
+    <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
+    <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DienChinhSach.cs" />
+    <Compile Include="Models\DonGia.cs" />
+    <Compile Include="Models\Duong.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\HopDong.cs" />
+    <Compile Include="Models\Khu.cs" />
+    <Compile Include="Models\LoaiHoaDon.cs" />
+    <Compile Include="Models\LoaiKhu.cs" />
+    <Compile Include="Models\LoaiPhong.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\Phong.cs" />
+    <Compile Include="Models\QLKyTucXa.cs" />
+    <Compile Include="Models\Quyen.cs" />
+    <Compile Include="Models\SinhVien.cs" />
+    <Compile Include="Models\SinhVienChinhSach.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="Models\Tang.cs" />
+    <Compile Include="Models\ThoiHan.cs" />
+    <Compile Include="Models\TrangThai.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\SinhVien\Views\web.config" />
+    <Content Include="Areas\QLKTX\Views\web.config" />
+    <Content Include="Areas\DangNhap\Views\web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -115,12 +160,17 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\DangNhap\Data\" />
+    <Folder Include="Areas\DangNhap\Views\DangNhap\" />
+    <Folder Include="Areas\DangNhap\Views\Shared\" />
+    <Folder Include="Areas\QLKTX\Controllers\" />
+    <Folder Include="Areas\QLKTX\Data\" />
+    <Folder Include="Areas\QLKTX\Views\Shared\" />
     <Folder Include="Areas\SinhVien\Controllers\" />
     <Folder Include="Areas\SinhVien\Data\" />
     <Folder Include="Areas\SinhVien\Views\Shared\" />
     <Folder Include="Assets\" />
     <Folder Include="Common\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,17 +2,17 @@
 
 namespace QuanLyKyTucXa.Areas.SinhVien
 {
-    public class SinhVienAreaRegistration : AreaRegistration 
+    public class SinhVienAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "SinhVien";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "SinhVien_default",
