@@ -18,7 +18,7 @@ namespace QuanLyKyTucXa
             routes.MapRoute(
             name: "Default",
             url: "{controller}/{action}/{id}",
-            defaults: new { Controller = "DangNhap", action = "DangNhap", id = UrlParameter.Optional },
+            defaults: new { Controller = "DangNhap", action = "Login", id = UrlParameter.Optional },
             namespaces: new string[] { "QuanLyKyTucXa.Areas.DangNhap.Controllers" }
         ).DataTokens.Add("area", "DangNhap");
         }

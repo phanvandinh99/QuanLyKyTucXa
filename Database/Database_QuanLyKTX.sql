@@ -50,6 +50,9 @@ create table LoaiKhu
 	TenLoaiKhu nvarchar(100) not null,
 )
 go
+insert into LoaiKhu (TenLoaiKhu) values (N'Nam');
+insert into LoaiKhu (TenLoaiKhu) values (N'Nữ');
+go
 create table Khu
 (
 	MaKhu int identity(1,1) primary key,
@@ -58,6 +61,11 @@ create table Khu
 
 	Constraint fk_Khu_LoaiKhu Foreign Key (MaLoaiKhu) references LoaiKhu(MaLoaiKhu),
 )
+go
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 1);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 2);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 1);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 2);
 go
 create table Tang
 (
@@ -68,25 +76,61 @@ create table Tang
 	Constraint fk_Tang_Khu Foreign Key (MaKhu) references Khu(MaKhu),
 )
 go
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 1);
+
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 2);
+
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 3);
+
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 4);
+go
 create table TrangThai
 (
 	MaTrangThai int identity(1,1) primary key,
 	TenTrangThai nvarchar(100) not null,
 )
 go
+insert into TrangThai (TenTrangThai) values (N'Đang hoạy động');
+insert into TrangThai (TenTrangThai) values (N'Đang sửa chữa');
+insert into TrangThai (TenTrangThai) values (N'Đang xây');
+go
 create table LoaiPhong
 (
 	MaLoaiPhong int identity(1,1) primary key,
 	TenLoaiPhong nvarchar(100) not null,
-	DonGia float not null,
 )
+go
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 2 sinh viên');
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 4 sinh viên');
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 6 sinh viên');
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 8 sinh viên');
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 10 sinh viên');
+insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 12 sinh viên');
 go
 create table Phong
 (
 	MaPhong int identity(1,1) primary key,
 	TenPhong nvarchar(100) not null,
 	DaO int default(0),
-	TrangThai bit,
+	ConTrong int default(0),
+	DonGia float not null,
+	TrangThai bit default(0),
 	MaTang int,
 	MaLoaiPhong int,
 	MaTrangThai int,
@@ -96,16 +140,51 @@ create table Phong
 	Constraint fk_Phong_TrangThai Foreign Key (MaTrangThai) references TrangThai(MaTrangThai),
 )
 go
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A101', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A102', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A103', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A104', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A105', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A106', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A107', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A108', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A109', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A11-', 1, 7, 1000000, default, 1, 1, 1);
+go
 create table Duong
 (
 	MaDuong int identity(1,1) primary key,
 	TenDuong nvarchar(100) not null,
-	TrangThai Char(1), -- A: Đã Đăng Ký, B: Đang Đăng Ký, C: Đang Trống
+	TrangThai Char(1) default('C'), -- A: Đang Trống , B: Đang Đăng Ký, C: Đã Đăng Ký
 	MaPhong int,
 
 	Constraint fk_Duong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 )
 go
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 1', 'C', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 2', 'B', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 3', 'A', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 4', 'A', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 5', 'A', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 6', 'A', 1);
+insert into Duong (TenDuong, TrangThai, MaPhong) 
+values (N'Dường 7', 'A', 1);
 go
 create table ThoiHan
 (
@@ -151,6 +230,7 @@ create table NhanVien
 	NgaySinh DateTime not null,
 	Email nvarchar(100) not null,
 	SDT nvarchar(12) not null,
+	DoiMatKhau bit,
 	MaQuyen int,
 
 	Constraint fk_NhanVien_Quyen Foreign Key (MaQuyen) references Quyen(MaQuyen),

@@ -47,6 +47,8 @@ namespace QuanLyKyTucXa.Models
         [StringLength(12)]
         public string SDT { get; set; }
 
+        public bool DoiMatKhau { get; set; }
+
         public int? MaQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

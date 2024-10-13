@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Unity;
+using Unity.Mvc5;
 
 namespace QuanLyKyTucXa
 {
@@ -11,6 +12,10 @@ namespace QuanLyKyTucXa
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Cấu hình Unity
+            var container = BuildUnityContainer();
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
 
         private IUnityContainer BuildUnityContainer()
