@@ -20,8 +20,6 @@ namespace QuanLyKyTucXa.Models
         [StringLength(100)]
         public string TenLoaiPhong { get; set; }
 
-        public double DonGia { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Phong> Phong { get; set; }
     }

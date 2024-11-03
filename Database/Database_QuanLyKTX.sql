@@ -63,8 +63,9 @@ create table Khu
 )
 go
 insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 1);
-insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 2);
-insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 1);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 1);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu C', 1);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 2);
 insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 2);
 go
 create table Tang
@@ -87,6 +88,12 @@ insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 2);
 insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 2);
 insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 2);
 insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 2);
+
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 3);
 
 insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 3);
 insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 3);
