@@ -121,14 +121,15 @@ create table LoaiPhong
 (
 	MaLoaiPhong int identity(1,1) primary key,
 	TenLoaiPhong nvarchar(100) not null,
+	DonGia float not null,
 )
 go
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 2 sinh viên');
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 4 sinh viên');
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 6 sinh viên');
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 8 sinh viên');
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 10 sinh viên');
-insert into LoaiPhong (TenLoaiPhong) values (N'Phòng 12 sinh viên');
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 2 sinh viên', 1000000);
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 4 sinh viên', 1100000);
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 6 sinh viên', 1200000);
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 8 sinh viên', 1300000);
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 10 sinh viên', 1400000);
+insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 12 sinh viên', 1500000);
 go
 create table Phong
 (
@@ -168,30 +169,57 @@ values (N'Phòng A109', 1, 7, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
 values (N'Phòng A11-', 1, 7, 1000000, default, 1, 1, 1);
 go
-create table Duong
+create table Giuong
 (
-	MaDuong int identity(1,1) primary key,
-	TenDuong nvarchar(100) not null,
+	MaGiuong int identity(1,1) primary key,
+	TenGiuong nvarchar(100) not null,
 	TrangThai Char(1) default('C'), -- A: Đang Trống , B: Đang Đăng Ký, C: Đã Đăng Ký
 	MaPhong int,
 
 	Constraint fk_Duong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 )
 go
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 1', 'C', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 2', 'B', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Duong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 3', 'A', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 4', 'A', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 5', 'A', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 6', 'A', 1);
-insert into Duong (TenDuong, TrangThai, MaPhong) 
+insert into Duong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 7', 'A', 1);
+go
+create table DichVu
+(
+	MaDichVu int identity(1,1) primary key,
+	TenDichVu nvarchar(100) not null,
+	DonGia float,
+)
+go
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh riêng', 0);
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh trong', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Máy nóng lạnh', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Máy điều hòa', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Lọc nước', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Tủ lạnh', 10000);
+go
+create table DichVuPhong
+(
+	MaDichVuPhong int identity(1,1) primary key,
+	Xoa bit not null,
+	NgayThem Datetime not null,
+	NgayXoa Datetime not null,
+	MaPhong int,
+	MaDichVu int,
+
+	Constraint fk_DichVuPhong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
+	Constraint fk_DichVuPhong_DichVu Foreign Key (MaDichVu) references DichVu(MaDichVu),
+)
 go
 create table ThoiHan
 (

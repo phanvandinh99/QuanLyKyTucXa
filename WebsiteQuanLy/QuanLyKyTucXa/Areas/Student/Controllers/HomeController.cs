@@ -59,7 +59,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
            int? MaKhu,       // Table Khu
            int? MaTang,      // Table Tang
            int? MaLoaiPhong  // Table LoaiPhong
-       )
+        )
         {
             // Tìm kiếm phòng với điều kiện tham số có giá trị
             var phong = await _db.Phong
@@ -71,5 +71,6 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
             return View(phong);
         }
+
     }
 }
