@@ -915,6 +915,8 @@
     <Content Include="Assets\Student\images\loader.png" />
     <Content Include="Assets\Student\images\logo.png" />
     <Content Include="Assets\Student\images\logo2.png" />
+    <Content Include="Assets\Student\images\logo_black.png" />
+    <Content Include="Assets\Student\images\logo_red.png" />
     <Content Include="Assets\Student\images\ourcreators\img-01.jpg" />
     <Content Include="Assets\Student\images\ourcreators\img-02.jpg" />
     <Content Include="Assets\Student\images\ourcreators\img-03.jpg" />
