@@ -50,8 +50,8 @@ create table LoaiKhu
 	TenLoaiKhu nvarchar(100) not null,
 )
 go
-insert into LoaiKhu (TenLoaiKhu) values (N'Nam');
-insert into LoaiKhu (TenLoaiKhu) values (N'Nữ');
+insert into LoaiKhu (TenLoaiKhu) values (N'Dành cho Nam');
+insert into LoaiKhu (TenLoaiKhu) values (N'Dành cho Nữ');
 go
 create table Khu
 (
@@ -121,6 +121,7 @@ create table LoaiPhong
 (
 	MaLoaiPhong int identity(1,1) primary key,
 	TenLoaiPhong nvarchar(100) not null,
+	HinhAnh nvarchar(100) null,
 	DonGia float not null,
 )
 go
@@ -137,7 +138,8 @@ create table Phong
 	TenPhong nvarchar(100) not null,
 	DaO int default(0),
 	ConTrong int default(0),
-	DonGia float not null,
+	GiaDichVu float default(0),
+	GiaThue float not null,
 	TrangThai bit default(0),
 	MaTang int,
 	MaLoaiPhong int,
@@ -148,26 +150,26 @@ create table Phong
 	Constraint fk_Phong_TrangThai Foreign Key (MaTrangThai) references TrangThai(MaTrangThai),
 )
 go
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A101', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A102', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A103', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A104', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A105', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A106', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A107', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A108', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A109', 1, 7, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, DonGia, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A11-', 1, 7, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A101', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A102', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A103', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A104', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A105', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A106', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A107', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A108', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A109', 1, 7, default, 1000000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A110-', 1, 7, default, 1000000, default, 1, 1, 1);
 go
 create table Giuong
 (
@@ -183,7 +185,7 @@ insert into Giuong (TenGiuong, TrangThai, MaPhong)
 values (N'Dường 1', 'C', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 2', 'B', 1);
-insert into Duong (TenGiuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 3', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 4', 'A', 1);
@@ -191,7 +193,7 @@ insert into Giuong (TenGiuong, TrangThai, MaPhong)
 values (N'Dường 5', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 6', 'A', 1);
-insert into Duong (TenGiuong, TrangThai, MaPhong) 
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Dường 7', 'A', 1);
 go
 create table DichVu
