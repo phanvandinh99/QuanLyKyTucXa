@@ -1,8 +1,10 @@
 namespace QuanLyKyTucXa.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("HopDong")]
     public partial class HopDong
@@ -16,7 +18,7 @@ namespace QuanLyKyTucXa.Models
 
         public DateTime NgayBatDau { get; set; }
 
-        public DateTime NgayKetThuc { get; set; }
+        //public DateTime NgayKetThuc { get; set; }
 
         public DateTime NgayDuyet { get; set; }
 

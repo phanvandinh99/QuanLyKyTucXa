@@ -1,7 +1,7 @@
 ﻿@using QuanLyKyTucXa.Models
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang Chủ";
     Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
 }
 
@@ -48,14 +48,17 @@
                         <div class="at-title">
                             <h2><span>Tra cứu</span>Phòng kí túc xá</h2>
                         </div>
-                        <form class="at-formtheme at-formbanner">
+
+                        <!-- #region Tìm kiếm cơ bản -->
+                        @using (Html.BeginForm("TraCuuPhong", "Phong", FormMethod.Post, new { @class = "at-formtheme at-formbanner" }))
+                        {
                             <fieldset class="at-datetime">
                                 @if (listLoaiKhu != null && listLoaiKhu.Any())
                                 {
                                     <div class="form-group">
                                         <label for="loaiKhu">KTX dành cho Nam/Nữ</label>
                                         <div class="at-select">
-                                            <select id="loaiKhu" class="form-control">
+                                            <select id="loaiKhu" name="MaLoaiKhu" class="form-control">
                                                 <option value="">-- Chọn Loại Khu --</option>
                                                 @foreach (var loaikhu in ViewBag.listLoaiKhu)
                                                 {
@@ -70,7 +73,7 @@
                                     <div class="form-group">
                                         <label for="khu">Tên Khu</label>
                                         <div class="at-select">
-                                            <select id="khu" class="form-control">
+                                            <select id="khu" name="MaKhu" class="form-control">
                                                 <option value="">-- Chọn Khu --</option>
                                                 <!-- Options will be dynamically populated by JavaScript -->
                                             </select>
@@ -82,7 +85,7 @@
                                     <div class="form-group">
                                         <label for="tang">Tầng</label>
                                         <div class="at-select">
-                                            <select id="tang" class="form-control">
+                                            <select id="tang" name="MaTang" class="form-control">
                                                 <option value="">-- Chọn Tầng --</option>
                                                 <!-- Options will be dynamically populated by JavaScript -->
                                             </select>
@@ -100,7 +103,7 @@
                                             <span class="at-radio">
                                                 @foreach (var loaiPhong in listLoaiPhong)
                                                 {
-                                                    <input id="at-private-@loaiPhong.MaLoaiPhong" type="radio" name="privateb" value="@loaiPhong.MaLoaiPhong"
+                                                    <input id="at-private-@loaiPhong.MaLoaiPhong" type="radio" name="MaLoaiPhong" value="@loaiPhong.MaLoaiPhong"
                                                            @(loaiPhong == listLoaiPhong.First() ? "checked" : "")>
                                                     <label for="at-private-@loaiPhong.MaLoaiPhong">
                                                         <img src="~/Assets/Student/images/radio-imgs/img-02.jpg" alt="img">
@@ -112,11 +115,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group at-btnarea">
-                                    <a href="javascript:void(0);" class="at-btn">Tìm Kiếm</a>
+                                    <button type="submit" class="at-btn">Tìm Kiếm</button>
                                 </div>
                             </fieldset>
+                        }
+                        <!-- #endregion Tìm kiếm cơ bản -->
 
-                        </form>
                     </div>
                 </div>
             </div>

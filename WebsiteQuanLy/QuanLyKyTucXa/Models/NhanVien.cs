@@ -4,6 +4,7 @@ namespace QuanLyKyTucXa.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("NhanVien")]
     public partial class NhanVien
@@ -47,7 +48,7 @@ namespace QuanLyKyTucXa.Models
         [StringLength(12)]
         public string SDT { get; set; }
 
-        public bool DoiMatKhau { get; set; }
+        public bool? DoiMatKhau { get; set; }
 
         public int? MaQuyen { get; set; }
 

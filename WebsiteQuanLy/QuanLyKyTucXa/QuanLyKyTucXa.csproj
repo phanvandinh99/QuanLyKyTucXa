@@ -875,6 +875,11 @@
     <Content Include="Assets\Student\images\featured-img\icons\img-02.jpg" />
     <Content Include="Assets\Student\images\featured-img\icons\img-03.jpg" />
     <Content Include="Assets\Student\images\featured-img\icons\img-04.jpg" />
+    <Content Include="Assets\Student\images\featured-img\icons\img-DichVu.jpg" />
+    <Content Include="Assets\Student\images\featured-img\icons\img-giuong.jpg" />
+    <Content Include="Assets\Student\images\featured-img\icons\img-giuong.png" />
+    <Content Include="Assets\Student\images\featured-img\icons\img-khu.png" />
+    <Content Include="Assets\Student\images\featured-img\icons\img-tang.png" />
     <Content Include="Assets\Student\images\featured-img\img-01.jpg" />
     <Content Include="Assets\Student\images\featured-img\img-02.jpg" />
     <Content Include="Assets\Student\images\featured-img\img-03.jpg" />
@@ -893,6 +898,8 @@
     <Content Include="Assets\Student\images\featured-img\listing\img-10.jpg" />
     <Content Include="Assets\Student\images\featured-img\listing\img-11.jpg" />
     <Content Include="Assets\Student\images\featured-img\listing\img-12.jpg" />
+    <Content Include="Assets\Student\images\featured-img\listing\img-2SV.jpg" />
+    <Content Include="Assets\Student\images\featured-img\listing\img-4SV.jpg" />
     <Content Include="Assets\Student\images\featured-img\user-img\img-02.jpg" />
     <Content Include="Assets\Student\images\featured-img\user-img\img-03.jpg" />
     <Content Include="Assets\Student\images\featured-img\user-img\img-04.jpg" />
@@ -915,6 +922,7 @@
     <Content Include="Assets\Student\images\loader.png" />
     <Content Include="Assets\Student\images\logo.png" />
     <Content Include="Assets\Student\images\logo2.png" />
+    <Content Include="Assets\Student\images\logo3.png" />
     <Content Include="Assets\Student\images\logo_black.png" />
     <Content Include="Assets\Student\images\logo_red.png" />
     <Content Include="Assets\Student\images\ourcreators\img-01.jpg" />
@@ -993,7 +1001,6 @@
     <Content Include="Assets\Student\images\trip-imgs\img-06.jpg" />
     <Content Include="Assets\Student\images\trip-imgs\img-07.jpg" />
     <Content Include="Assets\Student\images\user-img.png" />
-    <Content Include="Assets\Student\images\video.mp4" />
     <Content Include="Assets\Student\images\work\img-01.jpg" />
     <Content Include="Assets\Student\images\work\img-02.jpg" />
     <Content Include="Assets\Student\images\work\img-03.jpg" />
@@ -1025,14 +1032,17 @@
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Student\Controllers\PhongController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Common\Const\Constant.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DichVu.cs" />
+    <Compile Include="Models\DichVuPhong.cs" />
     <Compile Include="Models\DienChinhSach.cs" />
     <Compile Include="Models\DonGia.cs" />
-    <Compile Include="Models\Duong.cs" />
+    <Compile Include="Models\Giuong.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\HopDong.cs" />
     <Compile Include="Models\Khu.cs" />
@@ -1045,7 +1055,6 @@
     <Compile Include="Models\Quyen.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\SinhVienChinhSach.cs" />
-    <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\Tang.cs" />
     <Compile Include="Models\ThoiHan.cs" />
     <Compile Include="Models\TrangThai.cs" />
@@ -1087,6 +1096,7 @@
     <Content Include="Areas\Student\Views\Shared\_LayoutStudent.cshtml" />
     <Content Include="Areas\Student\Views\Home\Index.cshtml" />
     <Content Include="Areas\Student\Views\Home\TraCuuPhong.cshtml" />
+    <Content Include="Areas\Student\Views\Phong\TraCuuPhong.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

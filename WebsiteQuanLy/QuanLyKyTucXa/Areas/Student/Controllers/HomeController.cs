@@ -38,7 +38,6 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                                    .ToListAsync();
             return Json(listKhu, JsonRequestBehavior.AllowGet);
         }
-
         public async Task<JsonResult> GetTangByKhu(int maKhu)
         {
             var listTang = await _db.Tang
@@ -51,26 +50,5 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                                     .ToListAsync();
             return Json(listTang, JsonRequestBehavior.AllowGet);
         }
-
-
-        // Tra Cứu Phòng
-        public async Task<ActionResult> TraCuuPhong(
-           int? MaLoaiKhu,   // Table LoaiKhu
-           int? MaKhu,       // Table Khu
-           int? MaTang,      // Table Tang
-           int? MaLoaiPhong  // Table LoaiPhong
-        )
-        {
-            // Tìm kiếm phòng với điều kiện tham số có giá trị
-            var phong = await _db.Phong
-                .Where(n => (!MaLoaiKhu.HasValue || n.Tang.Khu.LoaiKhu.MaLoaiKhu == MaLoaiKhu) &&
-                            (!MaKhu.HasValue || n.Tang.Khu.MaKhu == MaKhu) &&
-                            (!MaTang.HasValue || n.Tang.MaTang == MaTang) &&
-                            (!MaLoaiPhong.HasValue || n.LoaiPhong.MaLoaiPhong == MaLoaiPhong))
-                .ToListAsync();
-
-            return View(phong);
-        }
-
     }
 }

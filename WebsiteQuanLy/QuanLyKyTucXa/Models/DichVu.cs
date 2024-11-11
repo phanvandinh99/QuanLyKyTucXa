@@ -6,28 +6,25 @@ namespace QuanLyKyTucXa.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("LoaiPhong")]
-    public partial class LoaiPhong
+    [Table("DichVu")]
+    public partial class DichVu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiPhong()
+        public DichVu()
         {
-            Phong = new HashSet<Phong>();
+            DichVuPhong = new HashSet<DichVuPhong>();
         }
 
         [Key]
-        public int MaLoaiPhong { get; set; }
+        public int MaDichVu { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string TenLoaiPhong { get; set; }
+        public string TenDichVu { get; set; }
 
-        [StringLength(100)]
-        public string HinhAnh { get; set; }
-
-        public double DonGia { get; set; }
+        public double? DonGia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Phong> Phong { get; set; }
+        public virtual ICollection<DichVuPhong> DichVuPhong { get; set; }
     }
 }

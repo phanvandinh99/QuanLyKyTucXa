@@ -1,4 +1,7 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Linq;
 
 namespace QuanLyKyTucXa.Models
 {
@@ -9,9 +12,11 @@ namespace QuanLyKyTucXa.Models
         {
         }
 
+        public virtual DbSet<DichVu> DichVu { get; set; }
+        public virtual DbSet<DichVuPhong> DichVuPhong { get; set; }
         public virtual DbSet<DienChinhSach> DienChinhSach { get; set; }
         public virtual DbSet<DonGia> DonGia { get; set; }
-        public virtual DbSet<Duong> Duong { get; set; }
+        public virtual DbSet<Giuong> Giuong { get; set; }
         public virtual DbSet<HoaDon> HoaDon { get; set; }
         public virtual DbSet<HopDong> HopDong { get; set; }
         public virtual DbSet<Khu> Khu { get; set; }
@@ -20,24 +25,23 @@ namespace QuanLyKyTucXa.Models
         public virtual DbSet<LoaiPhong> LoaiPhong { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
         public virtual DbSet<Phong> Phong { get; set; }
-        public virtual DbSet<Quyen> Quyen { get; set; }
-        public virtual DbSet<SinhVien> SinhVien { get; set; }
+        //public virtual DbSet<Quyen> Quyen { get; set; }
+        //public virtual DbSet<SinhVien> SinhVien { get; set; }
         public virtual DbSet<SinhVienChinhSach> SinhVienChinhSach { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tang> Tang { get; set; }
         public virtual DbSet<ThoiHan> ThoiHan { get; set; }
         public virtual DbSet<TrangThai> TrangThai { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Duong>()
+            modelBuilder.Entity<Giuong>()
                 .Property(e => e.TrangThai)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HoaDon>()
-                .Property(e => e.TaiKhoanNV)
-                .IsUnicode(false);
+            //modelBuilder.Entity<HoaDon>()
+            //    .Property(e => e.TaiKhoanNV)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<HopDong>()
                 .Property(e => e.MaSinhVien)
@@ -47,9 +51,9 @@ namespace QuanLyKyTucXa.Models
                 .Property(e => e.TaiKhoanNV)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NhanVien>()
-                .Property(e => e.TaiKhoanNV)
-                .IsUnicode(false);
+            //modelBuilder.Entity<NhanVien>()
+            //    .Property(e => e.TaiKhoanNV)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.MatKhau)

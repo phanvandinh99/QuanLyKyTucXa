@@ -125,12 +125,12 @@ create table LoaiPhong
 	DonGia float not null,
 )
 go
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 2 sinh viên', 1000000);
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 4 sinh viên', 1100000);
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 6 sinh viên', 1200000);
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 8 sinh viên', 1300000);
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 10 sinh viên', 1400000);
-insert into LoaiPhong (TenLoaiPhong, DonGia) values (N'Phòng 12 sinh viên', 1500000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 2 sinh viên', N'img-2SV.jpg', 1000000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 4 sinh viên', N'img-4SV_1.jpg', 1100000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 6 sinh viên', N'img-6SV.jpg', 1200000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 8 sinh viên', N'img-8SV.jpeg', 1300000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 10 sinh viên', N'img-10SV.jpg', 1400000);
+insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 12 sinh viên', N'img-12SV.jpg', 1500000);
 go
 create table Phong
 (
@@ -213,15 +213,28 @@ go
 create table DichVuPhong
 (
 	MaDichVuPhong int identity(1,1) primary key,
-	Xoa bit not null,
-	NgayThem Datetime not null,
-	NgayXoa Datetime not null,
+	Xoa bit default(0),
+	NgayThem Datetime default(getdate()),
+	NgayXoa Datetime null,
 	MaPhong int,
 	MaDichVu int,
 
 	Constraint fk_DichVuPhong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 	Constraint fk_DichVuPhong_DichVu Foreign Key (MaDichVu) references DichVu(MaDichVu),
 )
+go
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 1, 1);
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 2, 1);
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 3, 1);
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 4, 1);
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 5, 1);
+insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
+values (default , default, 1, 2);
 go
 create table ThoiHan
 (

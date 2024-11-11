@@ -256,62 +256,49 @@
                                     <div class="at-featured-holder">
                                         <div class="at-featuredslider owl-carousel">
                                             <figure class="item">
-                                                <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/listing/img-01.jpg" alt="img description"></a>
-                                                <figcaption>
-                                                    <div class="at-slider-details">
-                                                        <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                        <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                            <figure class="item">
                                                 <a href="javascript:void(0);">
-                                                    <img src="~/Assets/Student/images/featured-img/listing/img-02.jpg" alt="img description">
+                                                    <img src="~/Assets/Student/images/featured-img/listing/@item.LoaiPhong.HinhAnh" alt="Hình ảnh phòng">
                                                 </a>
-                                                <figcaption>
-                                                    <div class="at-slider-details">
-                                                        <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                        <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                                    </div>
-                                                </figcaption>
                                             </figure>
                                         </div>
                                         <div class="at-featured-content">
                                             <div class="at-featured-head">
-                                                <div class="at-featured-tags"><a href="javascript:void(0);">Apartment</a> </div>
+                                                <div class="at-featured-tags"><a href="javascript:void(0);">@item.Tang.Khu.LoaiKhu.TenLoaiKhu</a> </div>
                                                 <div class="at-featured-title">
                                                     <h3>
                                                         @item.TenPhong
-                                                        @*<span>@string.Format("{0:0,0}", item.Don) vnđ</span>*@
+                                                        <span>@string.Format("{0:0,0}", item.GiaThue) vnđ</span>
                                                     </h3>
                                                 </div>
-                                                <div class="at-featurerating">
-                                                    <span class="at-stars"><span></span></span><em>14236 review</em>
-                                                </div>
                                                 <ul class="at-room-featured">
-                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> @item.LoaiPhong.TenLoaiPhong</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 2 Giường trống</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-tang.png" alt="img description"></i> @item.Tang.TenTang</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-khu.png" alt="img description"></i> @item.Tang.Khu.TenKhu</span></li>
                                                 </ul>
                                             </div>
                                             <div class="at-featured-footer">
-                                                <address>46 Morningside Road, London, UK</address>
+                                                @if (item.DichVuPhong.Count > 0)
+                                                {
+                                                    <address>
+                                                        Dịch vụ:
+                                                        @foreach (var dichvu in item.DichVuPhong)
+                                                        {
+                                                            <span>@dichvu.DichVu.TenDichVu,</span>
+                                                        }
+                                                    </address>
+                                                }
                                                 <div class="at-share-holder">
                                                     <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
                                                     <div class="at-share-option">
-                                                        <span>Share:</span>
+                                                        <span>Chia sẽ:</span>
                                                         <ul class="at-socialicons">
                                                             <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
                                                             <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
                                                             <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
                                                             <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
                                                         </ul>
-                                                        <a href="javascript:void(0);">Report</a>
+                                                        <a href="javascript:void(0);">Đăng ký</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -342,3 +329,4 @@
     </main>
     <!-- Main End -->
 </div>
+
