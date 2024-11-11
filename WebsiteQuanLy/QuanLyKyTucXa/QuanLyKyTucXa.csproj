@@ -1095,7 +1095,6 @@
     <Content Include="Areas\Student\Views\web.config" />
     <Content Include="Areas\Student\Views\Shared\_LayoutStudent.cshtml" />
     <Content Include="Areas\Student\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Student\Views\Home\TraCuuPhong.cshtml" />
     <Content Include="Areas\Student\Views\Phong\TraCuuPhong.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

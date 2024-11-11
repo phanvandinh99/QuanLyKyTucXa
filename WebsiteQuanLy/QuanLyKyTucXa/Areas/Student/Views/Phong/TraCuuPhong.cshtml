@@ -6,6 +6,15 @@
     Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
 }
 
+@{
+    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.listLoaiKhu as IEnumerable<LoaiKhu>;
+    IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
+    IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
+    IEnumerable<LoaiPhong> listLoaiPhong = ViewBag.listLoaiPhong as IEnumerable<LoaiPhong>;
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+
 <div>
     <!-- Inner Banner Start -->
     <div class="at-haslayout at-innerbannerholder">
@@ -30,31 +39,52 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="at-innerbanner-search">
-                        <form class="at-formtheme at-form-advancedsearch">
+                        @using (Html.BeginForm("TraCuuPhong", "Phong", FormMethod.Post, new { @class = "at-formtheme at-form-advancedsearch" }))
+                        {
                             <fieldset>
-                                <div class="form-group">
-                                    <div class="at-select">
-                                        <select>
-                                            <option value="" hidden="">Where You Want To Stay</option>
-                                            <option value="twitter">China</option>
-                                            <option value="linkedin">France</option>
-                                            <option value="rss">Germany</option>
-                                            <option value="vimeo">Italy</option>
-                                            <option value="tumblr">Japan</option>
-                                        </select>
+                                @if (listLoaiKhu != null && listLoaiKhu.Any())
+                                {
+                                    <div class="form-group">
+                                        <div class="at-select">
+                                            <select id="loaiKhu" name="MaLoaiKhu" class="form-control">
+                                                <option value="">-- Chọn Loại Khu --</option>
+                                                @foreach (var loaikhu in ViewBag.listLoaiKhu)
+                                                {
+                                                    <option value="@loaikhu.MaLoaiKhu">@loaikhu.TenLoaiKhu</option>
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group at-checkin-holder at-datecheck">
-                                    <input type="text" id="at-startdate" class="form-control" placeholder="in">
-                                </div>
-                                <div class="form-group at-checkout-holder at-datecheck">
-                                    <input type="text" id="at-enddate" class="form-control" placeholder="out">
-                                </div>
+                                }
+                                @if (listKhu != null && listKhu.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="khu" name="MaKhu" class="form-control">
+                                                <option value="">-- Chọn Khu --</option>
+                                                <!-- Options will be dynamically populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (listTang != null && listTang.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="tang" name="MaTang" class="form-control">
+                                                <option value="">-- Chọn Tầng --</option>
+                                                <!-- Options will be dynamically populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
                                 <div class="at-btnarea">
-                                    <a href="javascript:void(0);" class="at-btn at-btnactive">Search Now</a>
+                                    <button type="submit" class="at-btn">Tìm Kiếm</button>
                                 </div>
                             </fieldset>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -230,9 +260,16 @@
                             <div class="at-showresult-holder">
                                 <div class="at-resulttitle">
                                     <span>
-                                        Kết quả tìm kiếm phòng:
-                                        <strong>“House” In “Manchester”</strong>
+                                        Loại: <strong> @ViewBag.TenLoaiKhu</strong>
+                                        Khu: <strong> @ViewBag.TenKhu</strong>
+                                        Tầng: <strong> @ViewBag.TenTang</strong>
+                                        Phòng: <strong> @ViewBag.TenLoaiPhong</strong>
                                     </span>
+                                </div>
+                                <div class="at-resulttitle">
+                                    <div>
+                                        <strong style="color: #f7395a">&nbsp; => Tìm thấy: @ViewBag.KetQua phòng</strong>
+                                    </div>
                                 </div>
                                 <div class="at-rightarea">
                                     <div class="at-select">
@@ -241,12 +278,6 @@
                                             <option value="Sort By:">Sort By Date</option>
                                             <option value="Sort By:">Sort By Featured</option>
                                         </select>
-                                    </div>
-                                    <div class="at-gridlist-option">
-                                        <a href="javascript:void(0);"><i class="ti-layout-grid2"></i></a>
-                                        <a href="javascript:void(0);" class="at-linkactive"><i class="ti-view-list"></i></a>
-                                        <a href="javascript:void(0);"><i class="ti-location-pin"></i></a>
-                                        <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -330,3 +361,77 @@
     <!-- Main End -->
 </div>
 
+<script>
+    $(document).ready(function() {
+        // When the MaLoaiKhu dropdown changes, update the Khu dropdown
+        $('#loaiKhu').change(function() {
+            var maLoaiKhu = $(this).val();
+            if (maLoaiKhu) {
+                $.ajax({
+                    url: '@Url.Action("GetKhuByLoaiKhu")',
+                    type: 'GET',
+                    data: { maLoaiKhu: maLoaiKhu },
+                    success: function(data) {
+                        $('#khu').empty().append('<option value="">-- Chọn Khu --</option>');
+                        $.each(data, function(index, khu) {
+                            $('#khu').append('<option value="' + khu.MaKhu + '">' + khu.TenKhu + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#khu').empty().append('<option value="">-- Chọn Khu --</option>');
+                $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
+            }
+        });
+
+        // When the MaKhu dropdown changes, update the Tang dropdown
+        $('#khu').change(function() {
+            var maKhu = $(this).val();
+            if (maKhu) {
+                $.ajax({
+                    url: '@Url.Action("GetTangByKhu")',
+                    type: 'GET',
+                    data: { maKhu: maKhu },
+                    success: function(data) {
+                        $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
+                        $.each(data, function(index, tang) {
+                            $('#tang').append('<option value="' + tang.MaTang + '">' + tang.TenTang + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
+            }
+        });
+    });
+</script>
+
+<script>
+    var propertyList;
+
+    window.onload = function () {
+        // Initialize List.js after the page has loaded
+        var options = {
+            valueNames: ['tenPhong', 'giaThue', 'tenTang', 'tenKhu'],
+            page: 2,
+            pagination: true
+        };
+        propertyList = new List('phongList', options);
+    };
+
+    function sortPhongList() {
+        if (!propertyList) {
+            console.error("List is not initialized");
+            return;  // Ensure the list is initialized before attempting to sort
+        }
+
+        var sortOrder = document.getElementById('sortOrder').value;
+        var sortOptions = sortOrder.split('-');
+        var sortBy = sortOptions[0];
+        var sortDirection = sortOptions[1];
+
+        // Ensure that the sortBy value corresponds to one of the 'valueNames' in List.js
+        propertyList.sort(sortBy, { order: sortDirection === 'asc' ? 'asc' : 'desc' });
+    }
+
+</script>

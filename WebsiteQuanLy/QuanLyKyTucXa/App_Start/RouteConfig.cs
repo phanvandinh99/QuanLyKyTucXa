@@ -16,12 +16,19 @@ namespace QuanLyKyTucXa
             //    namespaces: new string[] { "QuanLyKyTucXa.Areas.DangNhap.Controllers" }
             //).DataTokens.Add("area", "DangNhap");
 
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
+            //    namespaces: new string[] { "QuanLyKyTucXa.Areas.Admin.Controllers" }
+            //).DataTokens.Add("area", "Admin");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "QuanLyKyTucXa.Areas.Admin.Controllers" }
-            ).DataTokens.Add("area", "Admin");
+                namespaces: new string[] { "QuanLyKyTucXa.Areas.Student.Controllers" }
+            ).DataTokens.Add("area", "Student");
         }
     }
 }
