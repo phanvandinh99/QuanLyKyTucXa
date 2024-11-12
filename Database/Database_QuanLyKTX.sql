@@ -175,7 +175,7 @@ create table Giuong
 (
 	MaGiuong int identity(1,1) primary key,
 	TenGiuong nvarchar(100) not null,
-	TrangThai Char(1) default('C'), -- A: Đang Trống , B: Đang Đăng Ký, C: Đã Đăng Ký
+	TrangThai Char(1) default('C'), -- A: Đang Trống , B: Chờ Xác Nhận, C: Đã Đăng Ký
 	MaPhong int,
 
 	Constraint fk_Duong_Phong Foreign Key (MaPhong) references Phong(MaPhong),

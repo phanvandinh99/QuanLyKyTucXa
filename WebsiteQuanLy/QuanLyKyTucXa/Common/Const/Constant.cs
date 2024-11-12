@@ -9,5 +9,10 @@ namespace QuanLyKyTucXa.Common.Const
     {
         public const bool DoiMatKhau = true;
         public const bool KhongDoiMatKhau = false;
+
+        public const string GiuongTrong = "A";
+        public const string ChoXacNhan = "B";
+        public const string DaDangKy = "C";
+
     }
 }

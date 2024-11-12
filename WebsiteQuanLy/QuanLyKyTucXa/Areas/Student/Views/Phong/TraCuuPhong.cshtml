@@ -275,8 +275,10 @@
                                     <div class="at-select">
                                         <select>
                                             <option value="Sort By:" hidden="">Sắp xếp theo:</option>
-                                            <option value="Sort By:">Sort By Date</option>
-                                            <option value="Sort By:">Sort By Featured</option>
+                                            <option value="Sort By:">Giá phòng tăng dần</option>
+                                            <option value="Sort By:">Giá phòng giảm dần</option>
+                                            <option value="Sort By:">Giá phòng giảm dần</option>
+                                            <option value="Sort By:">Giá phòng giảm dần</option>
                                         </select>
                                     </div>
                                 </div>
@@ -287,7 +289,7 @@
                                     <div class="at-featured-holder">
                                         <div class="at-featuredslider owl-carousel">
                                             <figure class="item">
-                                                <a href="javascript:void(0);">
+                                                <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">
                                                     <img src="~/Assets/Student/images/featured-img/listing/@item.LoaiPhong.HinhAnh" alt="Hình ảnh phòng">
                                                 </a>
                                             </figure>
@@ -297,13 +299,13 @@
                                                 <div class="at-featured-tags"><a href="javascript:void(0);">@item.Tang.Khu.LoaiKhu.TenLoaiKhu</a> </div>
                                                 <div class="at-featured-title">
                                                     <h3>
-                                                        @item.TenPhong
+                                                        <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">@item.TenPhong</a>
                                                         <span>@string.Format("{0:0,0}", item.GiaThue) vnđ</span>
                                                     </h3>
                                                 </div>
                                                 <ul class="at-room-featured">
                                                     <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> @item.LoaiPhong.TenLoaiPhong</span></li>
-                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 2 Giường trống</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> @item.ConTrong Giường trống</span></li>
                                                     <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-tang.png" alt="img description"></i> @item.Tang.TenTang</span></li>
                                                     <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-khu.png" alt="img description"></i> @item.Tang.Khu.TenKhu</span></li>
                                                 </ul>
@@ -315,7 +317,8 @@
                                                         Dịch vụ:
                                                         @foreach (var dichvu in item.DichVuPhong)
                                                         {
-                                                            <span>@dichvu.DichVu.TenDichVu,</span>
+                                                            var isLast = dichvu == item.DichVuPhong.Last();
+                                                            <span>@dichvu.DichVu.TenDichVu@(isLast ? "" : ", ")</span>
                                                         }
                                                     </address>
                                                 }
