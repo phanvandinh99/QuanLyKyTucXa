@@ -10,6 +10,7 @@
     IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
     IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
     IEnumerable<LoaiPhong> listLoaiPhong = ViewBag.listLoaiPhong as IEnumerable<LoaiPhong>;
+    IEnumerable<Phong> listPhong = ViewBag.listPhong as IEnumerable<Phong>;
 }
 
 <!-- Home Slider Start -->
@@ -23,20 +24,20 @@
         </div>
         <div id="at-homeslider-thumbnail" class="at-homeslider-thumbnail owl-carousel">
             <div class="item at-thumbnail-content">
-                <h3><em>01.</em><span>Start Your Day in</span>Birmingham</h3>
-                <a href="javascript:void(0);" class="at-btn at-btnactive">Start Exploring</a>
+                <h3><em>01.</em><span>Đăng Ký Theo Ngày</span>Ngày</h3>
+                <a href="javascript:void(0);" class="at-btn at-btnactive">Đăng Ký Ngay</a>
             </div>
             <div class="item at-thumbnail-content">
-                <h3><em>02.</em><span>Luxury House in</span>Beautiful Forest</h3>
-                <a href="javascript:void(0);" class="at-btn at-btnactive">Start Exploring</a>
+                <h3><em>02.</em><span>Đăng Ký Theo Tháng</span>Tháng</h3>
+                <a href="javascript:void(0);" class="at-btn at-btnactive">Đăng Ký Ngay</a>
             </div>
             <div class="item at-thumbnail-content">
-                <h3><em>03.</em><span>Enjoy Your Holiday in</span>United Emirates</h3>
-                <a href="javascript:void(0);" class="at-btn at-btnactive">Start Exploring</a>
+                <h3><em>03.</em><span>Đăng Ký Theo Kỳ</span>Học Kỳ</h3>
+                <a href="javascript:void(0);" class="at-btn at-btnactive">Đăng Ký Ngay</a>
             </div>
             <div class="item at-thumbnail-content">
-                <h3><em>04.</em><span>Start Your Day in</span>Birmingham</h3>
-                <a href="javascript:void(0);" class="at-btn at-btnactive">Start Exploring</a>
+                <h3><em>04.</em><span>Đăng Ký Theo Năm</span>Năm</h3>
+                <a href="javascript:void(0);" class="at-btn at-btnactive">Đăng Ký Ngay</a>
             </div>
         </div>
     </div>
@@ -330,418 +331,79 @@
                 <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
                     <div class="at-sectionhead">
                         <div class="at-sectiontitle">
-                            <h2>Featured Properties</h2>
-                            <span>Treat Yourself Like a King</span>
+                            <h2>Phòng Ở Ký Túc Xá</h2>
+                            <span>Danh sách phòng trống</span>
                         </div>
                         <div class="at-description">
-                            <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisiut aliquip</p>
+                            <p>
+
+                            </p>
                         </div>
                     </div>
                 </div>
+
+                <!-- #region Danh sách phòng trống -->
                 <div class="col-12">
                     <div id="at-featured-sliders" class="at-featured-sliders owl-carousel">
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-01.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);">
-                                            <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        </a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Apartment</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Mountain Retreat Room <span>$240 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-04.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
+                        @if (listLoaiKhu != null && listLoaiKhu.Any())
+                        {
+                            foreach (var item in listPhong)
+                            {
+                                <div class="item">
+                                    <div class="at-featured-holder">
+                                        <div class="at-featuredslider owl-carousel">
+                                            <figure class="item">
+                                                <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">
+                                                    <img src="~/Assets/Student/images/featured-img/listing/@item.LoaiPhong.HinhAnh" alt="Hình ảnh phòng">
+                                                </a>
+                                            </figure>
                                         </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>46 Morningside Road, London, UK</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
+
+
+                                        <div class="at-featured-content">
+                                            <div class="at-featured-head">
+                                                <div class="at-featured-tags"><a href="">@item.Tang.Khu.LoaiKhu.TenLoaiKhu</a> </div>
+                                                <div class="at-featured-title">
+                                                    <h3>
+                                                        <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">@item.TenPhong</a>
+                                                        <span>@string.Format("{0:0,0}", item.GiaThue) vnđ</span>
+                                                    </h3>
+                                                </div>
+                                                <div class="at-featurerating">
+                                                    <span class="at-stars"><span></span></span><em>14236 review</em>
+                                                </div>
+                                                <ul class="at-room-featured">
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> @item.LoaiPhong.TenLoaiPhong</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> @item.ConTrong Giường trống</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-tang.png" alt="img description"></i> @item.Tang.TenTang</span></li>
+                                                    <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-khu.png" alt="img description"></i> @item.Tang.Khu.TenKhu</span></li>
                                                 </ul>
-                                                <a href="javascript:void(0);">Report</a>
+                                            </div>
+                                            <div class="at-featured-footer">
+                                                <address>46 Morningside Road, London, UK</address>
+                                                <div class="at-share-holder">
+                                                    <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
+                                                    <div class="at-share-option">
+                                                        <span>Share:</span>
+                                                        <ul class="at-socialicons">
+                                                            <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
+                                                            <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
+                                                            <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
+                                                            <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
+                                                        </ul>
+                                                        <a href="javascript:void(0);">Report</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        <a data-rel="prettyPhoto[video]" href="https://youtu.be/XxxIEGzhIG8" class="at-video-icon"><i class="fab fa-youtube"></i></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-01.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Bed &amp; Breakfast</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Balsam Fir Bungalow Suite <span>$120 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-05.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
-                                        </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>14 Tottenham Court Road, New York</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                                <a href="javascript:void(0);">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-03.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <img src="~/Assets/Student/images/featured-img/icons/360.png" alt="img description" class="at-360-img">
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);">
-                                            <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        </a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Condo</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Portland-Plush KING Room <span>$80 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-06.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
-                                        </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>3 Edgar Buildings, Austrailia</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                                <a href="javascript:void(0);">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-01.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);">
-                                            <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        </a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Apartment</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Mountain Retreat Room <span>$240 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-04.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
-                                        </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>46 Morningside Road, London, UK</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                                <a href="javascript:void(0);">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        <a data-rel="prettyPhoto[video]" href="https://youtu.be/XxxIEGzhIG8" class="at-video-icon"><i class="fab fa-youtube"></i></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-01.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Bed &amp; Breakfast</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Balsam Fir Bungalow Suite <span>$120 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-05.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
-                                        </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>14 Tottenham Court Road, New York</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                                <a href="javascript:void(0);">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="at-featured-holder">
-                                <div class="at-featuredslider owl-carousel">
-                                    <figure class="item">
-                                        <a href="javascript:void(0);"><img src="~/Assets/Student/images/featured-img/img-03.jpg" alt="img description" class="item"></a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <img src="~/Assets/Student/images/featured-img/icons/360.png" alt="img description" class="at-360-img">
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                    <figure class="item">
-                                        <a href="javascript:void(0);">
-                                            <img src="~/Assets/Student/images/featured-img/img-02.jpg" alt="img description" class="item">
-                                        </a>
-                                        <figcaption>
-                                            <div class="at-slider-details">
-                                                <a href="javascript:void(0);" class="at-tag">Featured</a>
-                                                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                                                <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
-                                                <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="at-featured-content">
-                                    <div class="at-featured-head">
-                                        <div class="at-featured-tags"><a href="javascript:void(0);">Condo</a> </div>
-                                        <div class="at-featured-title">
-                                            <h3>Portland-Plush KING Room <span>$80 <em>/ night</em></span></h3>
-                                            <div class="at-userimg at-verifieduser">
-                                                <img src="~/Assets/Student/images/featured-img/img-06.jpg" alt="img description">
-                                                <i class="fa fa-shield-alt"></i>
-                                            </div>
-                                        </div>
-                                        <div class="at-featurerating">
-                                            <span class="at-stars"><span></span></span><em>14236 review</em>
-                                        </div>
-                                        <ul class="at-room-featured">
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-01.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-02.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-03.jpg" alt="img description"></i> 04 Guests</span></li>
-                                            <li><span><i><img src="~/Assets/Student/images/featured-img/icons/img-04.jpg" alt="img description"></i> 02 Bedrooms</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="at-featured-footer">
-                                        <address>3 Edgar Buildings, Austrailia</address>
-                                        <div class="at-share-holder">
-                                            <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-                                            <div class="at-share-option">
-                                                <span>Share:</span>
-                                                <ul class="at-socialicons">
-                                                    <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                                                    <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                                <a href="javascript:void(0);">Report</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                 </div>
+                <!-- #endregion -->
+
             </div>
         </div>
     </section>
@@ -929,5 +591,3 @@
     <!-- Articles End -->
 </main>
 <!-- Main End -->
-
-
