@@ -68,6 +68,7 @@
                                         </div>
                                     </div>
                                 }
+
                                 @if (listKhu != null && listKhu.Any())
                                 {
                                     <div class="form-group">
@@ -80,6 +81,7 @@
                                         </div>
                                     </div>
                                 }
+
                                 @if (listTang != null && listTang.Any())
                                 {
                                     <div class="form-group">
@@ -928,48 +930,4 @@
 </main>
 <!-- Main End -->
 
-<script>
-    $(document).ready(function() {
-        // When the MaLoaiKhu dropdown changes, update the Khu dropdown
-        $('#loaiKhu').change(function() {
-            var maLoaiKhu = $(this).val();
-            if (maLoaiKhu) {
-                $.ajax({
-                    url: '@Url.Action("GetKhuByLoaiKhu")',
-                    type: 'GET',
-                    data: { maLoaiKhu: maLoaiKhu },
-                    success: function(data) {
-                        $('#khu').empty().append('<option value="">-- Chọn Khu --</option>');
-                        $.each(data, function(index, khu) {
-                            $('#khu').append('<option value="' + khu.MaKhu + '">' + khu.TenKhu + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#khu').empty().append('<option value="">-- Chọn Khu --</option>');
-                $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
-            }
-        });
-
-        // When the MaKhu dropdown changes, update the Tang dropdown
-        $('#khu').change(function() {
-            var maKhu = $(this).val();
-            if (maKhu) {
-                $.ajax({
-                    url: '@Url.Action("GetTangByKhu")',
-                    type: 'GET',
-                    data: { maKhu: maKhu },
-                    success: function(data) {
-                        $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
-                        $.each(data, function(index, tang) {
-                            $('#tang').append('<option value="' + tang.MaTang + '">' + tang.TenTang + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#tang').empty().append('<option value="">-- Chọn Tầng --</option>');
-            }
-        });
-    });
-</script>
 

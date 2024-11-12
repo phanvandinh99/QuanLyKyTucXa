@@ -1097,6 +1097,8 @@
     <Content Include="Areas\Student\Views\Home\Index.cshtml" />
     <Content Include="Areas\Student\Views\Phong\TraCuuPhong.cshtml" />
     <Content Include="Areas\Student\Views\Phong\ChiTietPhong.cshtml" />
+    <Content Include="Areas\Student\Views\Phong\_TraCuuPhongPartial.cshtml" />
+    <Content Include="Areas\Student\Views\Phong\TraCuuPhongNamgCao.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

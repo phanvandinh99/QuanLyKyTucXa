@@ -1,0 +1,136 @@
+﻿@using QuanLyKyTucXa.Models
+
+@{
+    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.listLoaiKhu as IEnumerable<LoaiKhu>;
+    IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
+    IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
+    IEnumerable<LoaiPhong> listLoaiPhong = ViewBag.listLoaiPhong as IEnumerable<LoaiPhong>;
+    IEnumerable<DichVu> listDichVu = ViewBag.listDichVu as IEnumerable<DichVu>;
+}
+
+<!-- #region tìm kiếm phòng nâng cao -->
+<div class="modal fade at-findpropertypopup" tabindex="-1" role="dialog" id="findproperty" data-backdrop="static">
+    @using (Html.BeginForm("TraCuuPhongNamgCao", "Phong", FormMethod.Get, new { @class = "at-findpropertypopup", role = "dialog", id = "findproperty" }))
+    {
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="at-modalcontent modal-content">
+                <div class="at-slider-content">
+                    <div class="at-title">
+                        <h4>Tìm Kiếm Phòng Nâng Cao</h4>
+                        <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
+                    </div>
+                    <div class="at-findpropertypopup-content at-haslayout">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-4 float-left">
+                                <div class="at-formtheme at-formbanner">
+                                    <fieldset class="at-datetime">
+                                        @if (listLoaiKhu != null && listLoaiKhu.Any())
+                                        {
+                                            <div class="form-group">
+                                                <label class="at-formtitle" for="loaiKhuss">KTX dành cho Nam/Nữ</label>
+                                                <div class="at-select">
+                                                    <select id="loaiKhus" name="MaLoaiKhu" class="form-control">
+                                                        <option value="">-- Chọn Loại Khu --</option>
+                                                        @foreach (var loaikhu in ViewBag.listLoaiKhu)
+                                                        {
+                                                            <option value="@loaikhu.MaLoaiKhu">@loaikhu.TenLoaiKhu</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (listKhu != null && listKhu.Any())
+                                        {
+                                            <div class="form-group">
+                                                <label class="at-formtitle" for="khus">Tên Khu</label>
+                                                <div class="at-select">
+                                                    <select id="khus" name="MaKhu" class="form-control">
+                                                        <option value="">-- Chọn Khu --</option>
+                                                        <!-- Options will be dynamically populated by JavaScript -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (listTang != null && listTang.Any())
+                                        {
+                                            <div class="form-group">
+                                                <label class="at-formtitle" for="tangs">Tầng</label>
+                                                <div class="at-select">
+                                                    <select id="tangs" name="MaTang" class="form-control">
+                                                        <option value="">-- Chọn Tầng --</option>
+                                                        <!-- Options will be dynamically populated by JavaScript -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (listLoaiPhong != null && listLoaiPhong.Any())
+                                        {
+                                            <div class="form-group">
+                                                <label class="at-formtitle">Loại Phòng</label>
+                                                <div class="at-room-radioholder">
+                                                    @foreach (var loaiPhong in listLoaiPhong)
+                                                    {
+                                                        <span class="at-checkbox">
+                                                            <!-- Thêm tiền tố 'popup-' vào id và name -->
+                                                            <input id="popup-at-private-@loaiPhong.MaLoaiPhong"
+                                                                   type="checkbox"
+                                                                   name="MaLoaiPhong"
+                                                                   value="@loaiPhong.MaLoaiPhong">
+                                                            <label for="popup-at-private-@loaiPhong.MaLoaiPhong">
+                                                                <img src="~/Assets/Student/images/radio-imgs/img-02.jpg" alt="img">
+                                                                <span><em>@loaiPhong.TenLoaiPhong</em></span>
+                                                            </label>
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-8 float-left">
+                                <div class="at-formtheme at-formbanner">
+                                    <fieldset class="at-roomform">
+                                        <legend class="at-formtitle">Dịch vụ</legend>
+                                        <div class="form-group">
+                                            <div class="at-room-radioholder at-room-radiovtwo">
+
+                                                @if (listDichVu != null && listDichVu.Any())
+                                                {
+                                                    foreach (var dichVu in listDichVu)
+                                                    {
+                                                        <span class="at-checkbox">
+                                                            <!-- Thêm tiền tố 'popup-' vào id và name -->
+                                                            <input id="popupdv-at-private-@dichVu.MaDichVu"
+                                                                   type="checkbox"
+                                                                   name="MaDichVu"
+                                                                   value="@dichVu.MaDichVu">
+                                                            <label for="popupdv-at-private-@dichVu.MaDichVu">
+                                                                <img src="~/Assets/Student/images/radio-imgs/img-04.jpg" alt="img">
+                                                                <span><em>@dichVu.TenDichVu</em></span>
+                                                            </label>
+                                                        </span>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group at-btnarea">
+                                            <button type="submit" class="at-btn">Tìm Kiếm</button>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- #endregion End tìm kiếm phòng nâng cao -->
