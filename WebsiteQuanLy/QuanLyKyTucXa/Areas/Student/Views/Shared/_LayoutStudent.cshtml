@@ -393,8 +393,7 @@
                         <div class="col-12 col-md-12">
                             <div class="at-copyrights-holder">
                                 <div class="at-flogoarea">
-                                    <strong class="at-flogo"><a href="index.html.htm"><img src="~/Assets/Student/images/flogo.png" alt="footer logo"></a></strong>
-                                    <p class="at-copyrights">Copyrights © 2024 - HE THONG QUAN LY KI TUC XA.</p>
+                                    <p>Copyrights © 2024 - HE THONG QUAN LY KI TUC XA.</p>
                                 </div>
                                 <div class="at-rightarea">
                                     <figure class="at-payment-icons">
@@ -524,6 +523,22 @@
     <script src="~/Assets/Student/js/lightpick.js"></script>
     <script src="~/Assets/Student/js/main-min.js"></script>
 
+    @*Get partialview*@
+    <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("LeftMenuOfDetailed", "Partial")',
+            type: 'GET',
+            success: function (data) {
+                $('#left-menu-container').html(data);
+            },
+            error: function () {
+                console.log("Không thể tải menu")
+            }
+        });
+    });
+    </script>
+
     @*Tìm kiếm cơ bản*@
     <script>
     $(document).ready(function() {
@@ -648,5 +663,7 @@
         }
     });
     </script>
+
+
 </body>
 </html>

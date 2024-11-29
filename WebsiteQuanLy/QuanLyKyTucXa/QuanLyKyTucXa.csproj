@@ -819,6 +819,7 @@
     <Content Include="Assets\Student\images\about\img-04.jpg" />
     <Content Include="Assets\Student\images\about\img-05.jpg" />
     <Content Include="Assets\Student\images\ad-img.jpg" />
+    <Content Include="Assets\Student\images\articles\clb_ktx.jpg" />
     <Content Include="Assets\Student\images\articles\grid\img-01.jpg" />
     <Content Include="Assets\Student\images\articles\grid\img-02.jpg" />
     <Content Include="Assets\Student\images\articles\grid\img-03.jpg" />
@@ -827,6 +828,7 @@
     <Content Include="Assets\Student\images\articles\img-01.jpg" />
     <Content Include="Assets\Student\images\articles\img-02.jpg" />
     <Content Include="Assets\Student\images\articles\img-03.jpg" />
+    <Content Include="Assets\Student\images\articles\ktxsv.jpg" />
     <Content Include="Assets\Student\images\articles\list\img-01.jpg" />
     <Content Include="Assets\Student\images\articles\list\img-02.jpg" />
     <Content Include="Assets\Student\images\articles\list\img-03.jpg" />
@@ -1032,6 +1034,7 @@
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Student\Controllers\PartialController.cs" />
     <Compile Include="Areas\Student\Controllers\PhongController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Common\Const\Constant.cs" />
@@ -1099,6 +1102,7 @@
     <Content Include="Areas\Student\Views\Phong\ChiTietPhong.cshtml" />
     <Content Include="Areas\Student\Views\Phong\_TraCuuPhongPartial.cshtml" />
     <Content Include="Areas\Student\Views\Phong\TraCuuPhongNamgCao.cshtml" />
+    <Content Include="Areas\Student\Views\Partial\LeftMenuOfDetailed.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

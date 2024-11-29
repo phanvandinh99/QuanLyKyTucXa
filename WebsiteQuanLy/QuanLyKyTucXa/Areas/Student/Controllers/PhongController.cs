@@ -86,7 +86,6 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
         {
             try
             {
-                // Sử dụng ToList thay vì ToListAsync để tránh dùng async/await
                 ViewBag.listLoaiKhu = _db.LoaiKhu.ToList();
                 ViewBag.listKhu = _db.Khu.ToList();
                 ViewBag.listTang = _db.Tang.ToList();

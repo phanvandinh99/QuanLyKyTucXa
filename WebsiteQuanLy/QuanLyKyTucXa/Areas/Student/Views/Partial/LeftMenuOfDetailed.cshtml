@@ -1,0 +1,49 @@
+﻿@using QuanLyKyTucXa.Models
+
+@{
+    IEnumerable<Phong> listPhong = ViewBag.listPhong as IEnumerable<Phong>;
+}
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-4 float-right">
+    <aside id="at-sidebar" class="at-sidebar float-left mt-md-0">
+        <div class="at-sideholder">
+            <a href="#" id="at-closesidebar" class="at-closesidebar"><i class="ti-close"></i></a>
+            <div class="at-sidescrollbar">
+                <div class="at-widgets-holder">
+                    <div class="at-widgets-title">
+                        <h2>Phòng Còn Trống</h2>
+                    </div>
+                    <div class="at-widgets-content">
+                        <ul class="list-group">
+                            @foreach (var item in listPhong)
+                            {
+                                <li class="list-group-item list-group-item-action">
+                                    <div class="at-topratedlisting">
+                                        <div>
+                                            <span>@item.Tang.Khu.LoaiKhu.TenLoaiKhu</span>
+                                        </div>
+                                        <div class="at-topratedtitle">
+                                            <h3>
+                                                <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">@item.TenPhong</a>
+                                                <span>
+                                                    @string.Format("{0:0,0}", item.GiaThue) vnđ
+                                                    <em>/ tháng</em>
+                                                </span>
+                                            </h3>
+                                        </div>
+                                        <span>Còn trống: @item.ConTrong giường</span>
+                                        <div class="at-featured-tags">
+                                            <a href="/Student/Phong/ChiTietPhong?iMaPhong=@item.MaPhong">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
