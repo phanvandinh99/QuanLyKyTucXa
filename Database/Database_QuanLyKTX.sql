@@ -33,6 +33,24 @@ create  table DienChinhSach
 	DiemDienChinhSach float default(1),
 )
 go
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con liệt sĩ', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con thương binh', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con bệnh bênh', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Khuyết tật', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Hội nghèo', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Hộ cận nghèo', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Mồ côi cha lẫn mẹ', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Sinh viên mồ côi cha', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Sinh viên mồ côi mẹ', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Vùng kinh tế đặc biệt khó khăn', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Gia đình đặc biệt khó khăn', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Gia đình khó khăn', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Ảnh hưởng chất độc da cam', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Sinh viên mắc bệnh hiểm nghèo', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Dân tộc thiểu số', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Đảng viên', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Đoàn viên', 1);
+go
 create table SinhVienChinhSach
 (
 	MaSVChinhSach int identity(1,1) primary key,
