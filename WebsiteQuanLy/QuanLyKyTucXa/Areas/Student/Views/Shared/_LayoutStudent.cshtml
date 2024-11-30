@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@using QuanLyKyTucXa.Models
+@using System.Text;
+
+<!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -31,6 +34,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+
+    <!-- #region Thông tin tài khoản người dùng -->
+    @{
+        var cookie = Request.Cookies["TKSinhVien"];
+        string sMaSinhVien = "";
+        string sHo = "";
+        string sTen = "";
+
+        if (cookie != null)
+        {
+            sMaSinhVien = cookie["MaSinhVien"];
+            sHo = HttpUtility.UrlDecode(cookie["Ho"], System.Text.Encoding.UTF8);
+            sTen = HttpUtility.UrlDecode(cookie["Ten"], System.Text.Encoding.UTF8);
+        }
+
+        // Bạn có thể gán giá trị này vào ViewBag để sử dụng trong các view kế thừa
+        ViewBag.sMaSinhVien = sMaSinhVien;
+        ViewBag.sHo = sHo;
+        //ViewBag.sTen = sTen;
+    }
+    <!-- #endregion Thông tin tài khoản người dùng -->
 </head>
 <body class="at-home">
     <div class="preloader-outer">
@@ -59,10 +83,24 @@
                                     </ul>
                                 </div>
                                 <div class="at-loginarea float-right">
-                                    <a href="javascript:void(0);" class="at-loginoption" data-toggle="modal" data-target="#loginpopup">Đăng Nhập</a>
-                                    <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#registerpopup">Đăng Ký</a>
+                                    @if (String.IsNullOrEmpty(sMaSinhVien))
+                                    {
+                                        <a href="javascript:void(0);" class="at-loginoption" data-toggle="modal" data-target="#loginpopup">Đăng Nhập</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" class="at-loginoption">Xin chào: @sHo @sTen</a>
+
+                                    }
                                     <div class="at-detailsbtn-topbar">
-                                        <a href="javascript:void(0);" class="at-btn at-btnactive">Hồ sơ</a>
+                                        @if (String.IsNullOrEmpty(sMaSinhVien))
+                                        {
+                                            <a href="/SinhVien/DangKy" class="at-btn at-btnactive">Đăng Ký</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="javascript:void(0);" class="at-btn at-btnactive">Hồ sơ</a>
+                                        }
                                         <em>OR</em>
                                         <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Tìm Kiếm</a>
                                     </div>
@@ -153,7 +191,7 @@
                                                 <a href="javascript:void(0);">Sinh Viên</a>
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="/Student/Home/TraCuuPhong">Tra Cứu Phòng</a>
+                                                        <a href="/Student/Phong/TraCuuPhong">Tra Cứu Phòng</a>
                                                     </li>
                                                     <li>
                                                         <a href="propertygrid.html.htm">property grid</a>
@@ -237,9 +275,9 @@
                                                 </ul>
                                             </li>
 
-                                            <li class="nav-item">
+                                            @*<li class="nav-item">
                                                 <a href="howitworks.html.htm">Xem hồ sơ</a>
-                                            </li>
+                                            </li>*@
                                             <li class="nav-item">
                                                 <a href="about.html.htm">Thông Báo</a>
                                             </li>
@@ -257,28 +295,28 @@
                                                 </a>
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="legalprivacy.html.htm">legal privacy</a>
+                                                        <a href="#">Nội Quy KT</a>
                                                     </li>
                                                     <li class="menu-item-has-children page_item_has_children">
-                                                        <a href="javascript:void(0);">blog</a>
+                                                        <a href="javascript:void(0);">Liên Hệ</a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="bloglist.html.htm">blog list</a>
+                                                                <a href="#">Nhà Trường</a>
                                                             </li>
                                                             <li>
-                                                                <a href="bloggrid.html.htm">blog grid</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blogsingle.html.htm">blog single</a>
+                                                                <a href="#">Ban Quản Lý KTX</a>
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li>
-                                                        <a href="404.html.htm">404 Error</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="comingsoon.html.htm">comingsoon.html</a>
-                                                    </li>
+                                                    @if (!String.IsNullOrEmpty(sMaSinhVien))
+                                                    {
+                                                        <li>
+                                                            <a href="#">Đổi Mật Khẩu</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/TaiKhoan/DangXuat">Đăng Xuất</a>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </li>
                                         </ul>
@@ -414,53 +452,7 @@
         <!-- Footer End -->
     </div>
     <!-- Wrapper End -->
-    <!-- Login Popup Start-->
-    <div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="loginpopup" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="at-modalcontent modal-content">
-                <div class="at-popuptitle">
-                    <h4>Login</h4>
-                    <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
-                </div>
-                <div class="modal-body">
-                    <form class="at-formtheme at-formlogin">
-                        <fieldset>
-                            <div class="form-group">
-                                <input type="text" name="email" value="" class="form-control" placeholder="Your Email*" required="">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" value="" class="form-control" placeholder="Password*">
-                            </div>
-                            <div class="form-group at-btnarea">
-                                <span class="at-checkbox">
-                                    <input id="at-login" type="checkbox" name="rememberme">
-                                    <label for="at-login">Remember me here</label>
-                                </span>
-                                <button type="submit" class="at-btn">login</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <span class="at-optionsbar"><em>or</em></span>
-                    <div class="at-loginicon">
-                        <ul>
-                            <li><a href="javascript:void(0);" class="at-facebookbox"><i class="fab fa-facebook-f"></i>Via facebook</a></li>
-                            <li><a href="javascript:void(0);" class="at-googlebox"><i class="fab fa-facebook-f"></i>Via facebook</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="at-popup-footerterms">
-                        <span>By signing in  you agree to these <a href="javascript:void(0);"> Terms &amp; Conditions</a> &amp; consent to<a href="javascript:void(0);"> Cookie Policy &amp; Privacy Policy.</a></span>
-                    </div>
-                    <div class="at-loginfooterinfo">
-                        <a href="javascript:void(0);"><em>Not a member?</em> Signup Now</a>
-                        <a href="javascript:;" class="at-forgot-password">Forgot password?</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Login Popup End-->
+    <div id="DangNhapPartial"></div>
     <!-- Register Popup Start-->
     <div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="registerpopup" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -523,7 +515,7 @@
     <script src="~/Assets/Student/js/lightpick.js"></script>
     <script src="~/Assets/Student/js/main-min.js"></script>
 
-    @*Get partialview*@
+    @*Get partialview Menu*@
     <script>
     $(document).ready(function () {
         $.ajax({
@@ -534,6 +526,22 @@
             },
             error: function () {
                 console.log("Không thể tải menu")
+            }
+        });
+    });
+    </script>
+
+    @*Get partialview Đăng nhập*@
+    <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("DangNhapPartial", "Partial")',
+            type: 'GET',
+            success: function (data) {
+                $('#DangNhapPartial').html(data);
+            },
+            error: function () {
+                console.log("Không thể tải form đăng nhập")
             }
         });
     });

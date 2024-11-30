@@ -1,0 +1,44 @@
+﻿<!-- #region Form đăng nhập -->
+<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="loginpopup" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="at-modalcontent modal-content">
+            <div class="at-popuptitle">
+                <h4>Đăng Nhập</h4>
+                <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post, new { @class = "at-formtheme at-formlogin" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <div class="form-group">
+                            <input type="text" name="sMaSinhVien" value="" class="form-control" placeholder="Mã sinh viên *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="sMatKhau" class="form-control" placeholder="Mật khẩu *" required>
+                        </div>
+                        <div class="form-group at-btnarea">
+                            <span class="at-checkbox">
+                                <input id="at-login" type="checkbox" name="rememberme">
+                                <label for="at-login">Nhớ mật khẩu</label>
+                            </span>
+                            <button type="submit" class="at-btn">Đăng Nhập</button>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="at-popup-footerterms">
+                    <span>
+                        Sinh viên cần đăng nhập vào hệ thống để đặt phòng, xem thông tin phòng...
+                    </span>
+                </div>
+                <div class="at-loginfooterinfo">
+                    <a href="/SinhVien/DangKy"><em>Chưa có tài khoản?</em> Đăng Ký</a>
+                    <a href="#" class="at-forgot-password">Quyên Mật Khẩu?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion Form đăng nhập -->

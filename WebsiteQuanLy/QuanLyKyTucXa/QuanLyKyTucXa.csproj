@@ -1036,6 +1036,8 @@
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
     <Compile Include="Areas\Student\Controllers\PartialController.cs" />
     <Compile Include="Areas\Student\Controllers\PhongController.cs" />
+    <Compile Include="Areas\Student\Controllers\SinhVienController.cs" />
+    <Compile Include="Areas\Student\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Common\Const\Constant.cs" />
     <Compile Include="Global.asax.cs">
@@ -1103,6 +1105,8 @@
     <Content Include="Areas\Student\Views\Phong\_TraCuuPhongPartial.cshtml" />
     <Content Include="Areas\Student\Views\Phong\TraCuuPhongNamgCao.cshtml" />
     <Content Include="Areas\Student\Views\Partial\LeftMenuOfDetailed.cshtml" />
+    <Content Include="Areas\Student\Views\SinhVien\DangKy.cshtml" />
+    <Content Include="Areas\Student\Views\Partial\DangNhapPartial.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1118,6 +1122,8 @@
     <Folder Include="Areas\QLKTX\Controllers\" />
     <Folder Include="Areas\QLKTX\Data\" />
     <Folder Include="Areas\QLKTX\Views\Shared\" />
+    <Folder Include="Areas\Student\Views\TaiKhoan\" />
+    <Folder Include="Assets\Student\images\AnhSinhVien\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>
   <PropertyGroup>

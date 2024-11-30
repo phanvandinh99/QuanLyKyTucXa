@@ -23,6 +23,10 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
             ViewBag.listTang = await _db.Tang.ToListAsync();
             ViewBag.listLoaiPhong = await _db.LoaiPhong.ToListAsync();
 
+            ViewBag.listPhong = await _db.Phong.Include(n => n.DichVuPhong)
+                                               .Where(n => n.ConTrong != 0)
+                                               .ToListAsync();
+
             return View();
         }
 

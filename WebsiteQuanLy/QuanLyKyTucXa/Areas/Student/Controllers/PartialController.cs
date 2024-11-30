@@ -1,5 +1,6 @@
 ﻿using QuanLyKyTucXa.Models;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 
@@ -21,6 +22,12 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                                          .ToList().Take(10);
 
             return PartialView("LeftMenuOfDetailed");
+        }
+
+        // Hiển thị menu partial form đăng nhập
+        public ActionResult DangNhapPartial()
+        {
+            return PartialView("DangNhapPartial");
         }
     }
 }

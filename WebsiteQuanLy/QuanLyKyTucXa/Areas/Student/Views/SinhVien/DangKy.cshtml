@@ -1,0 +1,253 @@
+﻿@using QuanLyKyTucXa.Models
+@model IEnumerable<DienChinhSach>
+
+@{
+    ViewBag.Title = "Trang Đăng Ký Thông Tin";
+    Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
+}
+
+@{
+    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.listLoaiKhu as IEnumerable<LoaiKhu>;
+    IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
+    IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
+}
+
+<div>
+    <!-- #region Banner -->
+    <div class="at-haslayout at-innerbannerholder">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-12">
+                    <div class="at-innerbannercontent">
+                        <div class="at-title"><h2>Đăng Ký Thông Tin</h2></div>
+                        <ol class="at-breadcrumb">
+                            <li><a href="~/Student/Home/Index">Trang Chủ</a></li>
+                            <li>Đăng ký thông tin cá nhân sinh viên</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Banner -->
+    <!-- #region Tra cứu phòng -->
+    <div class="at-innerbanner-holder at-haslayout at-innerbannersearch">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="at-innerbanner-search">
+                        @using (Html.BeginForm("TraCuuPhong", "Phong", FormMethod.Post, new { @class = "at-formtheme at-form-advancedsearch" }))
+                        {
+                            <fieldset>
+                                @if (listLoaiKhu != null && listLoaiKhu.Any())
+                                {
+                                    <div class="form-group">
+                                        <div class="at-select">
+                                            <select id="loaiKhu" name="MaLoaiKhu" class="form-control">
+                                                <option value="">-- Chọn Loại Khu --</option>
+                                                @foreach (var loaikhu in ViewBag.listLoaiKhu)
+                                                {
+                                                    <option value="@loaikhu.MaLoaiKhu">@loaikhu.TenLoaiKhu</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (listKhu != null && listKhu.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="khu" name="MaKhu" class="form-control">
+                                                <option value="">-- Chọn Khu --</option>
+                                                <!-- Options will be dynamically populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (listTang != null && listTang.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="tang" name="MaTang" class="form-control">
+                                                <option value="">-- Chọn Tầng --</option>
+                                                <!-- Options will be dynamically populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="at-btnarea">
+                                    <button type="submit" class="at-btn">Tìm Kiếm</button>
+                                </div>
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tra cứu phòngc -->
+    <!-- Main Start -->
+    <main id="at-main" class="at-main at-haslayout">
+        <div class="at-haslayout at-main-section">
+            <div class="container">
+                <div class="row">
+                    <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+                        <!-- Sidebar: Phòng Còn Trống -->
+                        <div id="left-menu-container"></div>
+
+                        <!-- Form Đăng ký -->
+                        <div class="col-lg-8">
+                            <div class="card shadow-lg">
+                                <div class="card-header text-white text-center py-4">
+                                    <h3 class="mb-0">Đăng ký thông tin sinh viên</h3>
+                                </div>
+                                <div class="card-body px-5">
+                                    @using (Html.BeginForm("DangKy", "SinhVien", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label for="MaSinhVien" class="form-label">Mã Sinh Viên</label>
+                                                <input type="text" class="form-control form-control-lg" id="MaSinhVien" name="MaSinhVien" placeholder="Nhập mã sinh viên" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="MatKhau" class="form-label">Mật Khẩu</label>
+                                                <input type="text" class="form-control form-control-lg" id="MatKhau" name="MatKhau" placeholder="Nhập mật khẩu" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label for="Ho" class="form-label">Họ</label>
+                                                <input type="text" class="form-control form-control-lg" id="Ho" name="Ho" placeholder="Nhập họ" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Ten" class="form-label">Tên</label>
+                                                <input type="text" class="form-control form-control-lg" id="Ten" name="Ten" placeholder="Nhập tên" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="AnhChanDung" class="form-label">Ảnh Chân Dung</label>
+                                            <input type="file" class="form-control form-control-lg" id="AnhChanDung" name="AnhChanDung" accept="image/*" required>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label for="GioiTinh" class="form-label">Giới Tính</label>
+                                                <select id="GioiTinh" name="GioiTinh" class="form-select" required>
+                                                    <option value="0">Nữ</option>
+                                                    <option value="1" selected>Nam</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="NgaySinh" class="form-label">Ngày Sinh</label>
+                                                <input type="date" class="form-control form-control-lg" id="NgaySinh" name="NgaySinh" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label for="Email" class="form-label">Email</label>
+                                                <input type="email" class="form-control form-control-lg" id="Email" name="Email" placeholder="Nhập email" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="SDT" class="form-label">Số điện thoại</label>
+                                                <input type="tel" class="form-control form-control-lg" id="SDT" name="SDT" placeholder="Nhập số điện thoại" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label for="DanToc" class="form-label">Dân Tộc</label>
+                                                <select id="DanToc" name="DanToc" class="form-select" required>
+                                                    <option value="Kinh" selected>Kinh</option>
+                                                    <option value="Tày">Tày</option>
+                                                    <option value="Thái">Thái</option>
+                                                    <option value="Mường">Mường</option>
+                                                    <option value="Khmer">Khmer</option>
+                                                    <option value="Hoa">Hoa</option>
+                                                    <option value="Nùng">Nùng</option>
+                                                    <option value="H'Mông">H'Mông</option>
+                                                    <option value="Dao">Dao</option>
+                                                    <option value="Gia Rai">Gia Rai</option>
+                                                    <option value="Ê Đê">Ê Đê</option>
+                                                    <option value="Ba Na">Ba Na</option>
+                                                    <option value="Xơ Đăng">Xơ Đăng</option>
+                                                    <option value="Sán Chay">Sán Chay</option>
+                                                    <option value="Cơ Ho">Cơ Ho</option>
+                                                    <option value="Chăm">Chăm</option>
+                                                    <option value="Sán Dìu">Sán Dìu</option>
+                                                    <option value="Hrê">Hrê</option>
+                                                    <option value="Ra Glai">Ra Glai</option>
+                                                    <option value="Mnông">Mnông</option>
+                                                    <option value="Thổ">Thổ</option>
+                                                    <option value="Stiêng">Stiêng</option>
+                                                    <option value="Khơ Mú">Khơ Mú</option>
+                                                    <option value="Bru - Vân Kiều">Bru - Vân Kiều</option>
+                                                    <option value="Tà Ôi">Tà Ôi</option>
+                                                    <option value="Giáy">Giáy</option>
+                                                    <option value="Cơ Tu">Cơ Tu</option>
+                                                    <option value="Gié Triêng">Gié Triêng</option>
+                                                    <option value="Mạ">Mạ</option>
+                                                    <option value="Kháng">Kháng</option>
+                                                    <option value="Co">Co</option>
+                                                    <option value="Chơ Ro">Chơ Ro</option>
+                                                    <option value="Hà Nhì">Hà Nhì</option>
+                                                    <option value="Chu Ru">Chu Ru</option>
+                                                    <option value="Lào">Lào</option>
+                                                    <option value="La Chí">La Chí</option>
+                                                    <option value="La Ha">La Ha</option>
+                                                    <option value="Phù Lá">Phù Lá</option>
+                                                    <option value="La Hủ">La Hủ</option>
+                                                    <option value="Lự">Lự</option>
+                                                    <option value="Lô Lô">Lô Lô</option>
+                                                    <option value="Chứt">Chứt</option>
+                                                    <option value="Mảng">Mảng</option>
+                                                    <option value="Pà Thẻn">Pà Thẻn</option>
+                                                    <option value="Cờ Lao">Cờ Lao</option>
+                                                    <option value="Bố Y">Bố Y</option>
+                                                    <option value="Cống">Cống</option>
+                                                    <option value="Ngái">Ngái</option>
+                                                    <option value="Si La">Si La</option>
+                                                    <option value="Pu Péo">Pu Péo</option>
+                                                    <option value="Brâu">Brâu</option>
+                                                    <option value="Ơ Đu">Ơ Đu</option>
+                                                    <option value="Rơ Măm">Rơ Măm</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="DiemUuTien" class="form-label">Điểm Ưu Tiên</label>
+                                                <input type="tel" class="form-control form-control-lg" id="DiemUuTien" name="DiemUuTien" placeholder="Tính theo điện chính sách" readonly>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dịch vụ đi kèm -->
+                                        <div class="mb-4">
+                                            <label class="form-label">Diện chính sách:</label>
+                                            @foreach (var item in Model)
+                                            {
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="ChinhSach@item.MaDienChinhSach" name="ChinhSach[]" value="@item.MaDienChinhSach">
+                                                    <label class="form-check-label" for="ChinhSach_@item.MaDienChinhSach">@item.TenDienChinhSach</label>
+                                                </div>
+                                            }
+                                        </div>
+                                        <!-- Nút Đăng ký -->
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-success btn-lg px-5">Đăng ký</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>

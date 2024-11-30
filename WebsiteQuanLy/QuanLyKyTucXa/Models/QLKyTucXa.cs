@@ -25,8 +25,8 @@ namespace QuanLyKyTucXa.Models
         public virtual DbSet<LoaiPhong> LoaiPhong { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
         public virtual DbSet<Phong> Phong { get; set; }
-        //public virtual DbSet<Quyen> Quyen { get; set; }
-        //public virtual DbSet<SinhVien> SinhVien { get; set; }
+        public virtual DbSet<Quyen> Quyen { get; set; }
+        public virtual DbSet<SinhVien> SinhVien { get; set; }
         public virtual DbSet<SinhVienChinhSach> SinhVienChinhSach { get; set; }
         public virtual DbSet<Tang> Tang { get; set; }
         public virtual DbSet<ThoiHan> ThoiHan { get; set; }
