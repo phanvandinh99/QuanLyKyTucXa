@@ -23,7 +23,8 @@ create table SinhVien
 	Email nvarchar(100) not null,
 	SDT nvarchar(12) not null,
 	DanToc varchar(100) not null,
-	DiemUuTien float default(0)
+	DiemUuTien float default(0),
+	TrangThai bit null,
 )
 go
 create  table DienChinhSach
