@@ -819,6 +819,9 @@
     <Content Include="Assets\Student\images\about\img-04.jpg" />
     <Content Include="Assets\Student\images\about\img-05.jpg" />
     <Content Include="Assets\Student\images\ad-img.jpg" />
+    <Content Include="Assets\Student\images\AnhGiuong\Giuong_ChoXacNhan.png" />
+    <Content Include="Assets\Student\images\AnhGiuong\Giuong_DaO.png" />
+    <Content Include="Assets\Student\images\AnhGiuong\Giuong_Trong.png" />
     <Content Include="Assets\Student\images\articles\clb_ktx.jpg" />
     <Content Include="Assets\Student\images\articles\grid\img-01.jpg" />
     <Content Include="Assets\Student\images\articles\grid\img-02.jpg" />

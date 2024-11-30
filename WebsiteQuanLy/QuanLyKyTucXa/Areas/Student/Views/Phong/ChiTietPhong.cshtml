@@ -62,7 +62,6 @@
                                         <div class="at-select">
                                             <select id="khu" name="MaKhu" class="form-control">
                                                 <option value="">-- Chọn Khu --</option>
-                                                <!-- Options will be dynamically populated by JavaScript -->
                                             </select>
                                         </div>
                                     </div>
@@ -74,7 +73,6 @@
                                         <div class="at-select">
                                             <select id="tang" name="MaTang" class="form-control">
                                                 <option value="">-- Chọn Tầng --</option>
-                                                <!-- Options will be dynamically populated by JavaScript -->
                                             </select>
                                         </div>
                                     </div>
@@ -97,277 +95,7 @@
             <div class="container">
                 <div class="row">
                     <div id="at-twocolumns" class="at-twocolumns at-haslayout">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-4 float-right">
-                            <aside id="at-sidebar" class="at-sidebar float-left mt-md-0">
-                                <div class="at-sideholder">
-                                    <a href="javascript:void(0);" id="at-closesidebar" class="at-closesidebar"><i class="ti-close"></i></a>
-                                    <div class="at-sidescrollbar">
-                                        <div class="at-widgets-holder at-textfee-holder">
-                                            <div class="at-widgets-title at-title-textfee" id="headingone" data-toggle="collapse" data-target="#collapseone" aria-expanded="true" aria-controls="collapseone" role="heading">
-                                                <h2>$2528<span>/for 03 nights</span></h2>
-                                            </div>
-                                            <div class="at-widgets-content collapse show" id="collapseone" aria-labelledby="headingone">
-                                                <ul class="at-taxesfees">
-                                                    <li><span>$640 x 3 nights <em>$1920<i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i></em></span></li>
-                                                    <li><span>Car Rental <em>$222<i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i></em></span></li>
-                                                    <li><span>Fresh Groceries <em>$16<i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i></em></span></li>
-                                                    <li><span>Medical Representative <em>$50<i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i></em></span></li>
-                                                    <li class="at-textfee"><span>Taxes &amp; Fees<i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i><em>$320</em></span></li>
-                                                    <li class="at-toteltextfee"><span>Total<em>$2528</em></span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="at-booking-holder">
-                                                <form class="at-formtheme at-formbanner">
-                                                    <fieldset class="at-datetime">
-                                                        <legend class="at-formtitle">When To Check In?</legend>
-                                                        <div class="form-group">
-                                                            <div class="at-selectdate-holder">
-                                                                <div class="at-select">
-                                                                    <label>Check-In:</label>
-                                                                    <input type="text" id="at-startdate" class="form-control" placeholder="date">
-                                                                </div>
-                                                                <div class="at-select">
-                                                                    <label>Check-Out:</label>
-                                                                    <input type="text" id="at-enddate" class="form-control" placeholder="date">
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <fieldset class="at-guestsform">
-                                                        <legend class="at-formtitle">Guests</legend>
-                                                        <div class="form-group">
-                                                            <ul class="at-guestsinfo">
-                                                                <li>
-                                                                    <div class="at-gueststitle">
-                                                                        <span>Adults</span>
-                                                                    </div>
-                                                                    <div class="at-guests-radioholder">
-
-                                                                        <div class="at-dropdown">
-                                                                            <span><em class="selected-search-type">01 </em><i class="ti-angle-down"></i></span>
-                                                                        </div>
-                                                                        <div class="at-radioholder" style="">
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults1" data-title="01" type="radio" name="adults" value="adults" checked="">
-                                                                                <label for="at-adults1">01</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults2" data-title="02" type="radio" name="adults" value="adults2">
-                                                                                <label for="at-adults2">02</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults3" data-title="03" type="radio" name="adults" value="adults3">
-                                                                                <label for="at-adults3">03</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults4" data-title="04" type="radio" name="adults" value="adults4">
-                                                                                <label for="at-adults4">04</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults5" data-title="05" type="radio" name="adults" value="adults5">
-                                                                                <label for="at-adults5">05</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults6" data-title="06" type="radio" name="adults" value="adults6">
-                                                                                <label for="at-adults6">06</label>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="at-gueststitle">
-                                                                        <span>Children <em>(Ages 2–12)</em></span>
-                                                                    </div>
-                                                                    <div class="at-guests-radioholder">
-                                                                        <div class="at-dropdown">
-                                                                            <span><em class="selected-search-type">03 </em><i class="ti-angle-down"></i></span>
-                                                                        </div>
-                                                                        <div class="at-radioholder" style="">
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv1" data-title="01" type="radio" name="adults" value="adultsv1">
-                                                                                <label for="at-adultsv1">01</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv2" data-title="02" type="radio" name="adults" value="adultsv2">
-                                                                                <label for="at-adultsv2">02</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv3" data-title="03" type="radio" name="adults" value="adultsv3" checked="">
-                                                                                <label for="at-adultsv3">03</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv4" data-title="04" type="radio" name="adults" value="adultsv4">
-                                                                                <label for="at-adultsv4">04</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv5" data-title="05" type="radio" name="adults" value="adultsv5">
-                                                                                <label for="at-adultsv5">05</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv6" data-title="06" type="radio" name="adults" value="adultsv6">
-                                                                                <label for="at-adultsv6">06</label>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="at-gueststitle">
-                                                                        <span>Infants <em>(Under 2)</em></span>
-                                                                    </div>
-                                                                    <div class="at-guests-radioholder">
-                                                                        <div class="at-dropdown at-dropdownonclick2">
-                                                                            <span><em class="selected-search-type">02 </em><i class="ti-angle-down"></i></span>
-                                                                        </div>
-                                                                        <div class="at-radioholder" style="">
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv1b" data-title="01" type="radio" name="adultsb" value="adultsb">
-                                                                                <label for="at-adultsv1b">01</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adultsv2b" data-title="02" type="radio" name="adultsb" value="adults2b" checked="">
-                                                                                <label for="at-adultsv2b">02</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults3b" data-title="03" type="radio" name="adultsb" value="adults3b">
-                                                                                <label for="at-adults3b">03</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults4b" data-title="04" type="radio" name="adultsb" value="adults4b">
-                                                                                <label for="at-adults4b">04</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults5b" data-title="05" type="radio" name="adultsb" value="adults5b">
-                                                                                <label for="at-adults5b">05</label>
-                                                                            </span>
-                                                                            <span class="at-radio">
-                                                                                <input id="at-adults6b" data-title="06" type="radio" name="adultsb" value="adults6b">
-                                                                                <label for="at-adults6b">06</label>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <legend class="at-formtitle">Add-on Services</legend>
-                                                        <div id="at-services-checkbox" class="at-services-checkbox" data-readmore="" aria-expanded="false" style="max-height: none; height: 136px;">
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-transport" type="checkbox" name="apartment1" checked="">
-                                                                <label for="at-transport">Airport Transport</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-rental" type="checkbox" name="condo1">
-                                                                <label for="at-rental">Car Rental</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-groceries" type="checkbox" name="multi1">
-                                                                <label for="at-groceries">Fresh Groceries</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-driver" type="checkbox" name="single1">
-                                                                <label for="at-driver">Driver</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-medical" type="checkbox" name="farm1">
-                                                                <label for="at-medical">Medical Representative</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-loft1" type="checkbox" name="loft1" checked="">
-                                                                <label for="at-loft1">Loft</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-villa1" type="checkbox" name="villa1">
-                                                                <label for="at-villa1">Villa</label>
-                                                            </span>
-                                                            <span class="at-checkbox at-checkboxvtwo">
-                                                                <input id="at-townhouse1" type="checkbox" name="townhouse1" checked="">
-                                                                <label for="at-townhouse1">Townhouse</label>
-                                                            </span>
-                                                        </div><div class="at-showall" data-readmore-toggle="at-services-checkbox" aria-controls="at-services-checkbox"><a href="#">show all</a></div>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <div class="at-btnarea">
-                                                            <a href="javascript:void(0)" class="at-btn at-btnactive">Book Now</a>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="at-widgets-holder">
-                                            <div class="at-widgets-title">
-                                                <h2>About Host</h2>
-                                            </div>
-                                            <div class="at-widgets-content at-authorholder at-authorholdertwo">
-                                                <figure class="at-authorimg at-verifieduser">
-                                                    <img src="images/blog-single/user-img/img-07.jpg" alt="img description">
-                                                    <i class="fa fa-shield-alt"></i>
-                                                </figure>
-                                                <div class="at-authordetails">
-                                                    <div class="at-featurerating">
-                                                        <span class="at-stars"><span></span></span><em>14236 review</em>
-                                                    </div>
-                                                    <h3>Bhagatveer Singh</h3>
-                                                    <span>Languages can speak <i class="far fa-question-circle toltip-content tipso_style" data-tipso="Plus Member"></i></span>
-                                                </div>
-                                                <div class="at-btnarea">
-                                                    <a href="javascript:void(0);" class="at-btn">View All My Ads</a>
-                                                    <a href="javascript:void(0);" class="at-btncontact">Contact Direct To Host</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="at-widgets-holder">
-                                            <div class="at-widgets-title">
-                                                <h2>Share Property</h2>
-                                            </div>
-                                            <div class="at-widgets-content at-widgets-mt at-sharingicons">
-                                                <ul class="at-socialicons at-socialiconsbg">
-                                                    <li class="at-facebook">
-                                                        <a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
-                                                    </li>
-                                                    <li class="at-twitter">
-                                                        <a href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
-                                                    </li>
-                                                    <li class="at-facebook-messenger">
-                                                        <a href="javascript:void(0);"><i class="fab fa-facebook-messenger"></i></a>
-                                                    </li>
-                                                    <li class="at-linkedin">
-                                                        <a href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
-                                                    </li>
-                                                    <li class="at-whatsapp">
-                                                        <a href="javascript:void(0);"><i class="fab fa-whatsapp"></i></a>
-                                                    </li>
-                                                    <li class="at-viber">
-                                                        <a href="javascript:void(0);"><i class="fab fa-viber"></i></a>
-                                                    </li>
-                                                    <li class="at-googleplus">
-                                                        <a href="javascript:void(0);"><i class="fab fa-google-plus-g"></i></a>
-                                                    </li>
-                                                    <li class="at-instagram">
-                                                        <a href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
-                                                    </li>
-                                                    <li class="at-code">
-                                                        <a href="javascript:void(0);"><i class="fa fa-code"></i></a>
-                                                    </li>
-                                                    <li class="at-share">
-                                                        <a href="javascript:void(0);"><i class="fa fa-clone"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="at-adholder">
-                                            <figure class="at-adimg">
-                                                <a href="javascript:void(0);">
-                                                    <img src="images/ad-img.jpg" alt="img description">
-                                                </a>
-                                                <figcaption><span>Advertisement  300px X 250px</span></figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
+                        <div id="left-menu-container"></div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-8 float-left">
                             <div class="at-gridlist-option at-option-mt">
                                 <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
@@ -419,27 +147,32 @@
                                     <div class="at-description">
                                         <p>Thông tin giường của phòng @Model.TenPhong</p>
                                     </div>
+
                                     <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
                                         <div class="at-nearbylocations">
-                                            <ul class="at-locationsinfo">
+                                            <ul class="list-unstyled" style="padding-left: 0;">
                                                 @if (Model.Giuong.Count > 0)
                                                 {
                                                     foreach (var giuong in Model.Giuong)
                                                     {
-                                                        <li>
-                                                            <span>@giuong.TenGiuong</span>
-
-                                                            @if (Constant.GiuongTrong.Equals(@giuong.TrangThai))
+                                                        <li class="d-flex align-items-center mb-2">
+                                                            @if (Constant.GiuongTrong.Equals(giuong.TrangThai))
                                                             {
-                                                                <span>Trống</span>
+                                                                <input type="radio" name="GiuongChon" value="@giuong.MaGiuong" id="giuong_@giuong.MaGiuong" class="form-check-input me-2" />
+                                                                <label for="giuong_@giuong.MaGiuong" class="d-flex align-items-center mb-0">
+                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_Trong.png" alt="Giường trống" class="me-2" style="width: 20px; height: 20px;" />
+                                                                    <span>&nbsp; @giuong.TenGiuong - Trống</span>
+                                                                </label>
                                                             }
-                                                            else if (Constant.ChoXacNhan.Equals(@giuong.TrangThai))
+                                                            else if (Constant.ChoXacNhan.Equals(giuong.TrangThai))
                                                             {
-                                                                <span>Chờ Xác Nhận</span>
+                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_ChoXacNhan.png" alt="Chờ xác nhận" class="me-2" style="width: 20px; height: 20px;" />
+                                                                <span>&nbsp; @giuong.TenGiuong - Chờ Xác Nhận</span>
                                                             }
                                                             else
                                                             {
-                                                                <span>Đã Đăng Ký</span>
+                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_DaO.png" alt="Đã đăng ký" class="me-2" style="width: 20px; height: 20px;" />
+                                                                <span>&nbsp; @giuong.TenGiuong - Đã Đăng Ký</span>
                                                             }
                                                         </li>
                                                     }
@@ -447,20 +180,17 @@
                                             </ul>
                                         </div>
                                     </div>
+
                                 </div>
-
-                                <fieldset>
-                                    <div class="at-btnarea">
-                                        <a href="javascript:void(0)" class="at-btn at-btnactive">Đăng Ký</a>
-                                    </div>
-                                </fieldset>
-
+                                <div class="at-btnarea">
+                                    <a href="javascript:void(0)" class="at-btn at-btnactive">Đăng Ký</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Two Columns End -->
+        </div>
     </main>
 </div>
 
