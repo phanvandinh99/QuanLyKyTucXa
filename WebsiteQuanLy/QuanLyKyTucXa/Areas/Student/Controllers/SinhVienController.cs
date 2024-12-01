@@ -1,4 +1,5 @@
-﻿using QuanLyKyTucXa.Models;
+﻿using QuanLyKyTucXa.Common.Const;
+using QuanLyKyTucXa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -85,7 +86,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                     SDT = sinhVienModel.SDT,
                     DanToc = sinhVienModel.DanToc,
                     DiemUuTien = 0,
-                    TrangThai = false
+                    TrangThai = Constant.CanXacThucTaiKhoan
                 };
 
                 _db.SinhVien.Add(sinhVien);

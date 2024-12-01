@@ -10,6 +10,7 @@
         public const string DaDangKy = "C";
 
         public const bool CanXacThucTaiKhoan = false;
+        public const bool DaXacThucTaiKhoan = true;
 
 
     }

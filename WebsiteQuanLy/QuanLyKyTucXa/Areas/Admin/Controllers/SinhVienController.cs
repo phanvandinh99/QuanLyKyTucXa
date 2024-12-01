@@ -35,7 +35,7 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 List<SinhVien> listSinhVien = await _db.SinhVien.Where(n => n.TrangThai == Constant.CanXacThucTaiKhoan)
                                                                 .ToListAsync();
 
-                return View();
+                return View(listSinhVien);
             }
             catch (Exception ex)
             {
@@ -43,6 +43,35 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 Console.WriteLine(ex.ToString());
 
                 TempData["ToastMessage"] = "error|Tìm kiếm nâng cao thất bại.";
+                return RedirectToAction("Index", "SinhVien");
+            }
+        }
+
+        // Xóa sinh viên khỏi hệ thống
+        public async Task<ActionResult> XoaSinhVien(String sMaSinhVien)
+        {
+            try
+            {
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(sMaSinhVien);
+                if (null == sinhVien)
+                {
+                    TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
+                    return RedirectToAction("XacThucSinhVien", "SinhVien");
+
+                }
+                //_db.SinhVien.Remove(sinhVien);
+                //await _db.SaveChangesAsync();
+
+                TempData["ToastMessage"] = "success|Xóa sinh viên thành công.";
+
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Không thể xóa sinh viên.";
                 return RedirectToAction("Index", "SinhVien");
             }
         }
