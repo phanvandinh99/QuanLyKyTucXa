@@ -51,10 +51,10 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
             {
                 // Kiểm tra mã sinh viên đã tồn tại hay chưa
                 SinhVien maSinhVien = await _db.SinhVien.FindAsync(sinhVienModel.MaSinhVien);
-                if (maSinhVien == null)
+                if (maSinhVien != null)
                 {
                     TempData["ToastMessage"] = "error|Mã sinh viên đã tồn tại trong hệ thống.";
-                    return View();
+                    return RedirectToAction("DangKy", "SinhVien");
                 }
 
                 // Xử lý upload ảnh
@@ -107,7 +107,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Đăng ký thông tin thành công.";
-                return View();
+                return RedirectToAction("DangKy", "SinhVien");
+
             }
             catch (DbEntityValidationException ex)
             {
@@ -120,7 +121,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 }
 
                 TempData["ToastMessage"] = "error|Đăng ký thông tin thất bại do lỗi xác thực dữ liệu.";
-                return View();
+                return RedirectToAction("DangKy", "SinhVien");
             }
         }
 

@@ -226,12 +226,15 @@
                                         <!-- Dịch vụ đi kèm -->
                                         <div class="mb-4">
                                             <label class="form-label">Diện chính sách:</label>
-                                            @foreach (var item in Model)
+                                            @if (null != Model)
                                             {
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="ChinhSach@item.MaDienChinhSach" name="ChinhSach[]" value="@item.MaDienChinhSach">
-                                                    <label class="form-check-label" for="ChinhSach_@item.MaDienChinhSach">@item.TenDienChinhSach</label>
-                                                </div>
+                                                foreach (var item in Model)
+                                                {
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="ChinhSach@item.MaDienChinhSach" name="ChinhSach[]" value="@item.MaDienChinhSach">
+                                                        <label class="form-check-label" for="ChinhSach_@item.MaDienChinhSach">@item.TenDienChinhSach</label>
+                                                    </div>
+                                                }
                                             }
                                         </div>
                                         <!-- Nút Đăng ký -->

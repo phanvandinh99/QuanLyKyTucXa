@@ -84,8 +84,8 @@ go
 insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 1);
 insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 1);
 insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu C', 1);
-insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu A', 2);
-insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu B', 2);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu D', 2);
+insert into Khu (TenKhu, MaLoaiKhu) values (N'Khu E', 2);
 go
 create table Tang
 (
