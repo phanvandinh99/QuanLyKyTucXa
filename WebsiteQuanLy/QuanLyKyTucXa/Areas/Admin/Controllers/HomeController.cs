@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKyTucXa.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,14 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Admin/Home
+        private readonly QLKyTucXa _db;
+
+        public HomeController(QLKyTucXa db)
+        {
+            _db = db;
+        }
+
+        // Trang chủ Admin
         public ActionResult Index()
         {
             return View();

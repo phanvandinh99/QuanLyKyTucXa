@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace QuanLyKyTucXa.Common.Const
+﻿namespace QuanLyKyTucXa.Common.Const
 {
     public class Constant
     {
@@ -13,6 +8,9 @@ namespace QuanLyKyTucXa.Common.Const
         public const string GiuongTrong = "A";
         public const string ChoXacNhan = "B";
         public const string DaDangKy = "C";
+
+        public const bool CanXacThucTaiKhoan = false;
+
 
     }
 }

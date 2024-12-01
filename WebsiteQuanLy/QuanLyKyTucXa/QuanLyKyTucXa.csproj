@@ -1033,6 +1033,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
@@ -1110,6 +1111,7 @@
     <Content Include="Areas\Student\Views\Partial\LeftMenuOfDetailed.cshtml" />
     <Content Include="Areas\Student\Views\SinhVien\DangKy.cshtml" />
     <Content Include="Areas\Student\Views\Partial\DangNhapPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\SinhVien\XacThucSinhVien.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
