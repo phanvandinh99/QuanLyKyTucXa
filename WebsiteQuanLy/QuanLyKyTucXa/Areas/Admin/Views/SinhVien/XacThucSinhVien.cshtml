@@ -4,8 +4,6 @@
 @{
     ViewBag.Title = "Xác thực tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-
-
 }
 
 <!-- #region Nội dung chính-->
@@ -116,8 +114,8 @@
                                     <div class="datatable-dropdown">
                                         <label>
                                             <select class="datatable-selector">
-                                                <option value="1">1</option>
-                                                <option value="2" selected="">2</option>
+                                                <option value="5" selected>5</option>
+                                                <option value="10">10</option>
                                                 <option value="15">15</option>
                                                 <option value="20">20</option>
                                                 <option value="25">25</option>
@@ -225,10 +223,8 @@
                                 <div class="datatable-bottom">
                                     <div class="datatable-info">
                                         <a href="#" class="btn btn-primary">Duyệt</a>
-                                        Showing 1 to 10 of 26 entries
                                     </div>
-                                    @*<nav class="datatable-pagination"></nav>
-                                        <nav class="pagination"></nav>*@
+                                    <nav class="pagination"></nav>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +242,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
             valueNames: ['ho', 'ten', 'ngaySinh', 'gioiTinh', 'email', 'sdt', 'diemUuTien', 'thaoTac'],
-            page: 1,
+            page: 5,
             pagination: true
         };
 
