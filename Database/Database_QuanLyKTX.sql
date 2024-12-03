@@ -25,6 +25,7 @@ create table SinhVien
 	DanToc varchar(100) not null,
 	DiemUuTien float default(0),
 	TrangThai bit not null,
+	DaXoa bit not null,
 )
 go
 create  table DienChinhSach
@@ -316,6 +317,7 @@ create table HopDong
 	MaSinhVien varchar(10),
 	MaThoiHan int,
 	TaiKhoanNV varchar(10),
+	DaXoa bit not null,
 
 	Constraint fk_HopDong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 	Constraint fk_HopDong_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),

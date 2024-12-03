@@ -1114,6 +1114,8 @@
     <Content Include="Areas\Student\Views\Partial\DangNhapPartial.cshtml" />
     <Content Include="Areas\Admin\Views\SinhVien\XacThucSinhVien.cshtml" />
     <Content Include="Areas\Admin\Views\SinhVien\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\SinhVien\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SinhVien\SinhVienDaXoa.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

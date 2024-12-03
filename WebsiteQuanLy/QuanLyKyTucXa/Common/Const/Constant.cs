@@ -2,16 +2,21 @@
 {
     public class Constant
     {
+        // Kiểm tra đổi mật khẩu
         public const bool DoiMatKhau = true;
         public const bool KhongDoiMatKhau = false;
 
+        // Trạng thái giường
         public const string GiuongTrong = "A";
         public const string ChoXacNhan = "B";
         public const string DaDangKy = "C";
 
+        // Kiểm tra xác thực tài khoản sinh viên
         public const bool CanXacThucTaiKhoan = false;
         public const bool DaXacThucTaiKhoan = true;
 
-
+        // Kiểm tra xóa tài khoản sinh viên
+        public const bool HoatDong = false;
+        public const bool Xoa = true;
     }
 }

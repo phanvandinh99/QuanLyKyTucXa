@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace QuanLyKyTucXa.Areas.Admin.Controllers
 {
@@ -20,11 +18,46 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
             _db = db;
         }
 
-        // Danh sách sinh viên
-        public ActionResult Index()
+        // Danh sách sinh viên hoạt động
+        public async Task<ActionResult> Index()
         {
+            try
+            {
+                List<SinhVien> listSinhVien = await _db.SinhVien.Where(n => n.TrangThai == Constant.DaXacThucTaiKhoan &&
+                                                                       n.DaXoa == Constant.HoatDong)
+                                                                .ToListAsync();
 
-            return View();
+                return View(listSinhVien);
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Không tìm thấy danh sách sinh viên.";
+                return RedirectToAction("Index", "SinhVien");
+            }
+        }
+
+        // Danh sách sinh viên đã xóa
+        public async Task<ActionResult> SinhVienDaXoa()
+        {
+            try
+            {
+                List<SinhVien> listSinhVien = await _db.SinhVien.Where(n => n.TrangThai == Constant.DaXacThucTaiKhoan &&
+                                                                       n.DaXoa == Constant.Xoa)
+                                                                .ToListAsync();
+
+                return View(listSinhVien);
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Không tìm thấy danh sách sinh viên.";
+                return RedirectToAction("Index", "SinhVien");
+            }
         }
 
         // Danh sách sinh viên cần xác thực tài khoản
@@ -42,7 +75,7 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 // logerror
                 Console.WriteLine(ex.ToString());
 
-                TempData["ToastMessage"] = "error|Tìm kiếm nâng cao thất bại.";
+                TempData["ToastMessage"] = "error|Không tìm thấy danh sách sinh viên.";
                 return RedirectToAction("Index", "SinhVien");
             }
         }
@@ -150,6 +183,46 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
 
                 TempData["ToastMessage"] = "error|Xem diện chính sách thất bại.";
                 return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+        }
+
+        // Cập nhật trạng thái xóa sinh viên
+        public async Task<ActionResult> CapNhatXoaSinhVien(String sMaSinhVien)
+        {
+            try
+            {
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(sMaSinhVien);
+                if (null == sinhVien)
+                {
+                    TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
+                    return RedirectToAction("Index", "SinhVien");
+                }
+                if (sinhVien.DaXoa == Constant.HoatDong)
+                {
+                    sinhVien.DaXoa = Constant.Xoa;
+                    await _db.SaveChangesAsync();
+
+                    TempData["ToastMessage"] = "success|Đã xóa sinh viên.";
+
+                    return RedirectToAction("Index", "SinhVien");
+                }
+                else
+                {
+                    sinhVien.DaXoa = Constant.HoatDong;
+                    await _db.SaveChangesAsync();
+
+                    TempData["ToastMessage"] = "success|Đã hoàn tác sinh viên.";
+
+                    return RedirectToAction("SinhVienDaXoa", "SinhVien");
+                }
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xóa sinh viên thất bại.";
+                return RedirectToAction("Index", "SinhVien");
             }
         }
 
