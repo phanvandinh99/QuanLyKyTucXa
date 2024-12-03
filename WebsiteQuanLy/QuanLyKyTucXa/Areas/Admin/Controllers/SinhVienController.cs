@@ -250,6 +250,11 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                     }
                 }
 
+                if (sinhVien.DanToc != "Kinh")
+                {
+                    diemUuTien += 1;
+                }
+
                 sinhVien.DiemUuTien = diemUuTien;
                 sinhVien.TrangThai = Constant.DaXacThucTaiKhoan;
 
