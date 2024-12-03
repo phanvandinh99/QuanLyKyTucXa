@@ -18,5 +18,9 @@
         // Kiểm tra xóa tài khoản sinh viên
         public const bool HoatDong = false;
         public const bool Xoa = true;
+
+        // Quyền
+        public const int Admin = 1;
+        public const int BanQuanLy = 2;
     }
 }

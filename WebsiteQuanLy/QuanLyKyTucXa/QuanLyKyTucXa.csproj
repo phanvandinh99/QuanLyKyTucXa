@@ -164,6 +164,8 @@
     <Content Include="Assets\Admin\images\alert\balance.png" />
     <Content Include="Assets\Admin\images\alert\learning.png" />
     <Content Include="Assets\Admin\images\alert\social.png" />
+    <Content Include="Assets\Admin\images\AnhNhanVien\Admin.jpg" />
+    <Content Include="Assets\Admin\images\AnhNhanVien\BanQuanLy.png" />
     <Content Include="Assets\Admin\images\avtar\11.jpg" />
     <Content Include="Assets\Admin\images\avtar\16.jpg" />
     <Content Include="Assets\Admin\images\avtar\3.jpg" />
@@ -1034,6 +1036,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
@@ -1116,6 +1119,10 @@
     <Content Include="Areas\Admin\Views\SinhVien\CapNhat.cshtml" />
     <Content Include="Areas\Admin\Views\SinhVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SinhVien\SinhVienDaXoa.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ThemMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\NhanVienDaXoa.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Thêm Mới Nhân Viên";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Thêm Mới Nhân Viên
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Nhân Viên</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Ban Quản Lý</h4>
+                        <p class="f-m-light mt-1">
+                            Là bộ phận nhân viên <b>quản lý mọi hoạt động của sinh viên</b> tham gia như:
+                            Duyệt hồ sơ đăng ký phòng, tính toán thu tiền điện, nước hàng tháng với sinh viên...<br />
+                            Và các hoạt động ngoại khóa khác tại ký túc xá sinh viên
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ThemMoi", "NhanVien", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "row g-3 needs-validation custom-input" }))
+                        {
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="Ho">Họ <span class="text-danger">*</span></label>
+                                <input class="form-control" name="Ho" type="text" placeholder="Họ" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="Ten">Tên <span class="text-danger">*</span></label>
+                                <input class="form-control" name="Ten" type="text" placeholder="Tên" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="TaiKhoanNV">Tài Khoản <span class="text-danger">*</span></label>
+                                <input class="form-control" name="TaiKhoanNV" type="text" placeholder="Tài khoản" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="MatKhau">Mật Khẩu <span class="text-danger">*</span></label>
+                                <input class="form-control" name="MatKhau" type="password" placeholder="***" required>
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label class="form-label" for="AnhChanDung">Ảnh Chân Dung <span class="text-danger">*</span></label>
+                                <input class="form-control" name="AnhChanDung" type="file" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="validationTooltip04">Giới Tính <span class="text-danger">*</span></label>
+                                <select class="form-select" id="GioiTinh" name="GioiTinh" required="">
+                                    <option value="0">Nữ </option>
+                                    <option value="1" selected>Nam </option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="NgaySinh">Ngày Sinh <span class="text-danger">*</span></label>
+                                <input class="form-control" name="NgaySinh" type="date" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="Email">Email <span class="text-danger">*</span></label>
+                                <input class="form-control" type="Email" name="Email" placeholder="địa chỉ email" required>
+                            </div>
+                            <div class="col-md-2 position-relative">
+                                <label class="form-label" for="SDT">Số Điện Thoại <span class="text-danger">*</span></label>
+                                <input class="form-control" name="SDT" type="number" min="0" placeholder="địa chỉ email" required>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Thêm Mới</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+

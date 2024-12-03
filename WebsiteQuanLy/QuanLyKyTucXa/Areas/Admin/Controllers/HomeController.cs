@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,7 +18,7 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
         }
 
         // Trang chủ Admin
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             return View();
         }

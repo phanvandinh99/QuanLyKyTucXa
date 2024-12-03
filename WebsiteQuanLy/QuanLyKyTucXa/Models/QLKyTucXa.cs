@@ -51,9 +51,9 @@ namespace QuanLyKyTucXa.Models
                 .Property(e => e.TaiKhoanNV)
                 .IsUnicode(false);
 
-            //modelBuilder.Entity<NhanVien>()
-            //    .Property(e => e.TaiKhoanNV)
-            //    .IsUnicode(false);
+            modelBuilder.Entity<NhanVien>()
+                .Property(e => e.TaiKhoanNV)
+                .IsUnicode(false);
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.MatKhau)
