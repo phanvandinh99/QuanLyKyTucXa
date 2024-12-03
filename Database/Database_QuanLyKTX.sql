@@ -96,35 +96,35 @@ create table Tang
 	Constraint fk_Tang_Khu Foreign Key (MaKhu) references Khu(MaKhu),
 )
 go
-insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 1);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 1);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 1);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 1);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4', 1);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5', 1);
 
-insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 2);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 2);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 2);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 2);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4', 2);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5', 2);
 
-insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5', 3);
 
-insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 3);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4', 3);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5', 3);
 
-insert into Tang (TenTang, MaKhu) values (N'Tầng 1 (A101 -> A110)', 4);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 2 (A201 -> A210)', 4);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 3 (A301 -> A310)', 4);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 4 (A401 -> A410)', 4);
-insert into Tang (TenTang, MaKhu) values (N'Tầng 5 (A501 -> A510)', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 1', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 2', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 3', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 4', 4);
+insert into Tang (TenTang, MaKhu) values (N'Tầng 5', 4);
 go
 create table TrangThai
 (
@@ -171,21 +171,21 @@ create table Phong
 )
 go
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A101', 1, 7, 0, 1100000, default, 1, 1, 1);
+values (N'Phòng A101', 0, 2, 0, 1100000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A102', 1, 7, 0, 1200000, default, 1, 1, 1);
+values (N'Phòng A102', 0, 4, 0, 1200000, default, 1, 2, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A103', 1, 7, 0, 1300000, default, 1, 1, 1);
+values (N'Phòng A103', 0, 6, 0, 1300000, default, 1, 3, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A104', 1, 7, 0, 1400000, default, 1, 1, 1);
+values (N'Phòng A104', 0, 8, 0, 1400000, default, 1, 4, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A105', 1, 7, 0, 1500000, default, 1, 1, 1);
+values (N'Phòng A105', 0, 10, 0, 1500000, default, 1, 5, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A106', 1, 7, 0, 1600000, default, 1, 1, 1);
+values (N'Phòng A106', 0, 12, 0, 1600000, default, 1, 6, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A107', 1, 7, 0, 1000000, default, 1, 1, 1);
+values (N'Phòng A107', 0, 2, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A108', 1, 7, 0, 1000000, default, 1, 1, 1);
+values (N'Phòng A108', 0, 2, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
 values (N'Phòng A109', 1, 7, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
