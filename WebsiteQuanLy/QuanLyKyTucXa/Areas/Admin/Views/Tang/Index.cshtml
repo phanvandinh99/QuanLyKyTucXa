@@ -137,6 +137,11 @@
                                                         <span class="f-light f-w-600">Tên Tên Tầng</span>
                                                     </span>
                                                 </th>
+                                                <th data-sortable="true" style="width: 30%;">
+                                                    <span class="datatable-sorter sort" data-sort="SoPhong">
+                                                        <span class="f-light f-w-600">Số Phòng Tương Ứng</span>
+                                                    </span>
+                                                </th>
                                                 <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="TenKhu">
                                                         <span class="f-light f-w-600">Loại Khu</span>
@@ -162,6 +167,7 @@
                                                     <tr data-index="@item.MaTang">
                                                         <td class="MaTang"><p class="f-light">@item.MaTang</p></td>
                                                         <td class="TenTang"><p class="f-light">@item.TenTang</p></td>
+                                                        <td class="SoPhong"><p class="f-light">@item.Phong.Count()</p></td>
                                                         <td class="TenKhu"><p class="f-light">@item.Khu.TenKhu</p></td>
                                                         <td class="TenLoaiKhu"><p class="f-light">@item.Khu.LoaiKhu.TenLoaiKhu</p></td>
                                                         <td class="thaoTac">
@@ -201,7 +207,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['MaTang', 'TenTang', 'TenKhu', 'TenLoaiKhu'],
+            valueNames: ['MaTang', 'TenTang', 'SoPhong', 'TenKhu', 'TenLoaiKhu'],
             page: 5, // Số dòng hiển thị trên trang
             pagination: true
         };

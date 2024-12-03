@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -21,7 +22,9 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
         {
             try
             {
-                List<Tang> listTang = await _db.Tang.ToListAsync();
+                List<Tang> listTang = await _db.Tang.OrderBy(n => n.MaKhu)
+                                                    .ThenBy(n => n.MaTang)
+                                                    .ToListAsync();
 
                 return View(listTang);
             }
