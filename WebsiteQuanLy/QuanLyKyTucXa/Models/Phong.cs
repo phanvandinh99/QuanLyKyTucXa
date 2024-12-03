@@ -29,7 +29,7 @@ namespace QuanLyKyTucXa.Models
 
         public int? ConTrong { get; set; }
 
-        public double? GiaDichVu { get; set; }
+        public double GiaDichVu { get; set; }
 
         public double GiaThue { get; set; }
 

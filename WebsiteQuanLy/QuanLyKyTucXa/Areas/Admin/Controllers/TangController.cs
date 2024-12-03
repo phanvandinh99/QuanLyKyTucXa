@@ -33,7 +33,7 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 // logerror
                 Console.WriteLine(ex.ToString());
 
-                TempData["ToastMessage"] = "error|Xem danh sách tàng thất bại.";
+                TempData["ToastMessage"] = "error|Xem danh sách tầng thất bại.";
                 return RedirectToAction("Index", "Tang");
             }
         }

@@ -22,6 +22,8 @@ namespace QuanLyKyTucXa.Models
         [StringLength(100)]
         public string TenLoaiPhong { get; set; }
 
+        public int SoGiuong { get; set; }
+
         [StringLength(100)]
         public string HinhAnh { get; set; }
 

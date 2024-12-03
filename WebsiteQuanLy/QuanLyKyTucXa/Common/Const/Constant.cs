@@ -22,5 +22,15 @@
         // Quyền
         public const int Admin = 1;
         public const int BanQuanLy = 2;
+
+        // Trạng Thái Phòng
+        public const int DangHoatDong = 1;
+        public const int DangSuaChua = 2;
+        public const int DangXay = 3;
+
+        // Xóa dịch vụ phòng
+        public const bool DichVuPhong = true;
+        public const bool XoaDichVuPhong = false;
+
     }
 }

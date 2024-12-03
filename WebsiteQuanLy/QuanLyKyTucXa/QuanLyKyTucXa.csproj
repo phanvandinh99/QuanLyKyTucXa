@@ -1038,6 +1038,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\khuController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhongController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\TangController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
@@ -1131,6 +1132,8 @@
     <Content Include="Areas\Admin\Views\Tang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Tang\ThemMoi.cshtml" />
     <Content Include="Areas\Admin\Views\Tang\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\Phong\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Phong\ThemMoi.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
