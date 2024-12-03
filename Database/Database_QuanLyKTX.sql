@@ -140,16 +140,17 @@ create table LoaiPhong
 (
 	MaLoaiPhong int identity(1,1) primary key,
 	TenLoaiPhong nvarchar(100) not null,
+	SoGiuong int not null,
 	HinhAnh nvarchar(100) null,
 	DonGia float not null,
 )
 go
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 2 sinh viên', N'img-2SV.jpg', 1000000);
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 4 sinh viên', N'img-4SV_1.jpg', 1100000);
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 6 sinh viên', N'img-6SV.jpg', 1200000);
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 8 sinh viên', N'img-8SV.jpeg', 1300000);
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 10 sinh viên', N'img-10SV.jpg', 1400000);
-insert into LoaiPhong (TenLoaiPhong, HinhAnh, DonGia) values (N'Phòng 12 sinh viên', N'img-12SV.jpg', 1500000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 2 sinh viên', 2, N'img-2SV.jpg', 700000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 4 sinh viên', 4, N'img-4SV_1.jpg', 600000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 6 sinh viên', 6, N'img-6SV.jpg', 500000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 8 sinh viên', 8, N'img-8SV.jpeg', 400000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 10 sinh viên', 10, N'img-10SV.jpg', 300000);
+insert into LoaiPhong (TenLoaiPhong, SoGiuong, HinhAnh, DonGia) values (N'Phòng 12 sinh viên', 12, N'img-12SV.jpg', 200000);
 go
 create table Phong
 (
@@ -157,7 +158,7 @@ create table Phong
 	TenPhong nvarchar(100) not null,
 	DaO int default(0),
 	ConTrong int default(0),
-	GiaDichVu float default(0),
+	GiaDichVu float not null,
 	GiaThue float not null,
 	TrangThai bit default(0),
 	MaTang int,
@@ -170,25 +171,25 @@ create table Phong
 )
 go
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A101', 1, 7, default, 1100000, default, 1, 1, 1);
+values (N'Phòng A101', 1, 7, 0, 1100000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A102', 1, 7, default, 1200000, default, 1, 1, 1);
+values (N'Phòng A102', 1, 7, 0, 1200000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A103', 1, 7, default, 1300000, default, 1, 1, 1);
+values (N'Phòng A103', 1, 7, 0, 1300000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A104', 1, 7, default, 1400000, default, 1, 1, 1);
+values (N'Phòng A104', 1, 7, 0, 1400000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A105', 1, 7, default, 1500000, default, 1, 1, 1);
+values (N'Phòng A105', 1, 7, 0, 1500000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A106', 1, 7, default, 1600000, default, 1, 1, 1);
+values (N'Phòng A106', 1, 7, 0, 1600000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A107', 1, 7, default, 1000000, default, 1, 1, 1);
+values (N'Phòng A107', 1, 7, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A108', 1, 7, default, 1000000, default, 1, 1, 1);
+values (N'Phòng A108', 1, 7, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A109', 1, 7, default, 1000000, default, 1, 1, 1);
+values (N'Phòng A109', 1, 7, 0, 1000000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A110-', 1, 7, default, 1000000, default, 1, 1, 1);
+values (N'Phòng A110-', 1, 7, 0, 1000000, default, 1, 1, 1);
 go
 create table Giuong
 (
@@ -219,7 +220,7 @@ create table DichVu
 (
 	MaDichVu int identity(1,1) primary key,
 	TenDichVu nvarchar(100) not null,
-	DonGia float,
+	DonGia float not null,
 )
 go
 insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh riêng', 0);
@@ -288,6 +289,9 @@ create table Quyen
 	TenQuyen nvarchar(100) not null,
 )
 go
+insert into Quyen (TenQuyen) values (N'Admin');
+insert into Quyen (TenQuyen) values (N'Ban Quản Lý');
+go
 create table NhanVien
 (
 	TaiKhoanNV varchar(10) primary key,
@@ -300,10 +304,16 @@ create table NhanVien
 	Email nvarchar(100) not null,
 	SDT nvarchar(12) not null,
 	DoiMatKhau bit,
+	TrangThai bit not null,
 	MaQuyen int,
 
 	Constraint fk_NhanVien_Quyen Foreign Key (MaQuyen) references Quyen(MaQuyen),
 )
+go
+insert into NhanVien (TaiKhoanNV, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, TrangThai, MaQuyen) 
+values ('Admin', 'Abc123', 'Admin.jpg', N'Nhân Viên', N'Admin', 0, '01/01/1990', 'Admin@gmail.com', '0971234567', 0, 1);
+insert into NhanVien (TaiKhoanNV, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, TrangThai, MaQuyen) 
+values ('BanQuanLy', 'Abc123', 'BanQuanLy.png', N'Ban Quản', N'Lý', 0, '01/01/1991', 'BanQuanLy@gmail.com', '0971234568', 0, 2);
 go
 create table HopDong
 (
