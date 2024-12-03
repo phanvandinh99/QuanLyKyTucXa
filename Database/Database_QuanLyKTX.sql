@@ -38,7 +38,7 @@ insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con li
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con thương binh', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con bệnh bênh', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Khuyết tật', 1);
-insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Hội nghèo', 1);
+insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Hộ nghèo', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Hộ cận nghèo', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Mồ côi cha lẫn mẹ', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Sinh viên mồ côi cha', 1);
@@ -48,7 +48,6 @@ insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Gia đ
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Gia đình khó khăn', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Ảnh hưởng chất độc da cam', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Sinh viên mắc bệnh hiểm nghèo', 1);
-insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Dân tộc thiểu số', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Đảng viên', 1);
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Đoàn viên', 1);
 go
@@ -59,8 +58,8 @@ create table SinhVienChinhSach
 	MaSinhVien varchar(10),
 	MaDienChinhSach int,
 	TrangThai bit default(0),
-	Constraint fk_SinhVienChinhSach Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
-	Constraint fk_DienChinhSach Foreign Key (MaDienChinhSach) references DienChinhSach(MaDienChinhSach),
+	Constraint fk_SinhVienChinhSach Foreign Key (MaSinhVien) references SinhVien(MaSinhVien) ON DELETE CASCADE,
+	Constraint fk_DienChinhSach Foreign Key (MaDienChinhSach) references DienChinhSach(MaDienChinhSach) ON DELETE CASCADE,
 )
 go
 create table LoaiKhu
