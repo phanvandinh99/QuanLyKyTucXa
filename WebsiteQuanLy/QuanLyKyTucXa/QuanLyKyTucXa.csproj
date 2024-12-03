@@ -1043,6 +1043,7 @@
     <Compile Include="Areas\Admin\Controllers\TangController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
     <Compile Include="Areas\Student\Controllers\PartialController.cs" />
@@ -1134,6 +1135,7 @@
     <Content Include="Areas\Admin\Views\Tang\CapNhat.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\ThemMoi.cshtml" />
+    <Content Include="Areas\QLKTX\Views\Shared\_LayoutBQL.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1146,9 +1148,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\DangNhap\Data\" />
     <Folder Include="Areas\DangNhap\Views\Shared\" />
-    <Folder Include="Areas\QLKTX\Controllers\" />
     <Folder Include="Areas\QLKTX\Data\" />
-    <Folder Include="Areas\QLKTX\Views\Shared\" />
+    <Folder Include="Areas\QLKTX\Views\Home\" />
     <Folder Include="Areas\Student\Views\TaiKhoan\" />
     <Folder Include="Assets\Student\images\AnhSinhVien\" />
     <Folder Include="Views\Student\" />

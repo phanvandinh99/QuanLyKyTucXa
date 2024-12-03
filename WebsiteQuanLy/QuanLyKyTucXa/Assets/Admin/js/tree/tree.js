@@ -1,4 +1,4 @@
-/**=====================
+﻿/**=====================
     Tree JS Start
 ==========================**/
 
@@ -6,7 +6,7 @@
   let data = [
     {
       id: "0",
-      text: "Applications",
+      text: "Chức Năng",
       children: [
         {
           id: "0-0",
@@ -121,7 +121,7 @@
   let data1 = [
     {
       id: "0",
-      text: "Applications",
+      text: "Chức Năng",
       children: [
         {
           id: "0-0",
