@@ -1,0 +1,84 @@
+﻿@using QuanLyKyTucXa.Models
+@model Tang
+@{
+    ViewBag.Title = "Cập Nhật Tầng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    IEnumerable<Khu> listKhu = ViewBag.Khu as IEnumerable<Khu>;
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Quản Lý Tầng
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Tầng</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Tầng</h4>
+                        <p class="f-m-light mt-1">
+                            Là các tầng thuộc khu bao gồm các phòng ở sinh viên
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-wrapper border rounded-3">
+                            @using (Html.BeginForm("CapNhat", "Tang", FormMethod.Post, new { @class = "row g-3" }))
+                            {
+                                <input class="form-control" name="MaTang" type="text" value="@Model.MaTang" hidden>
+
+                                <div class="col-md-12">
+                                    <label class="form-label" for="TenTang">Tên Tầng <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="TenTang" type="text" value="@Model.TenTang" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Khu</label>
+                                    <select id="MaKhu" name="MaKhu" class="form-select" required>
+                                        @foreach (var item in listKhu)
+                                        {
+                                            <option value="@item.MaKhu"
+                                                    @((item.MaKhu == Model.MaKhu) ? "selected" : "")>
+                                                @item.TenKhu
+                                            </option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Thêm Mới </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
