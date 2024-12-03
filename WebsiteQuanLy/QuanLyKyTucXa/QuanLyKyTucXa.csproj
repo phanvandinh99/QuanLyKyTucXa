@@ -1036,6 +1036,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\khuController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
@@ -1123,6 +1124,9 @@
     <Content Include="Areas\Admin\Views\NhanVien\CapNhat.cshtml" />
     <Content Include="Areas\Admin\Views\NhanVien\ThemMoi.cshtml" />
     <Content Include="Areas\Admin\Views\NhanVien\NhanVienDaXoa.cshtml" />
+    <Content Include="Areas\Admin\Views\khu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\khu\ThemMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\khu\CapNhat.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
