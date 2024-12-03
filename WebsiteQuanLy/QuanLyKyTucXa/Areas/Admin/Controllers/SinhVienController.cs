@@ -94,29 +94,153 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 // logerror
                 Console.WriteLine(ex.ToString());
 
-                TempData["ToastMessage"] = "error|Xem chi tiết thất bại .";
+                TempData["ToastMessage"] = "error|Xem chi tiết thất bại.";
                 return RedirectToAction("XacThucSinhVien", "SinhVien");
             }
         }
 
-        [HttpPost]
-        public ActionResult Duyet(List<string> studentIds)
+        // Xem chi tiết sinh viên
+        public async Task<ActionResult> CapNhat(String sMaSinhVien)
         {
-            if (studentIds != null && studentIds.Any())
+            try
             {
-                foreach (var id in studentIds)
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(sMaSinhVien);
+                if (null == sinhVien)
                 {
-                    // Xử lý từng mã sinh viên được duyệt
-                    // Ví dụ: SinhVienService.DuyetSinhVien(id);
+                    TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
+                    return RedirectToAction("XacThucSinhVien", "SinhVien");
                 }
-                TempData["Message"] = "Duyệt thành công!";
-            }
-            else
-            {
-                TempData["Message"] = "Không có sinh viên nào được chọn.";
-            }
 
-            return RedirectToAction("XacThucSinhVien", "SinhVien");
+                return View(sinhVien);
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xem chi tiết thất bại.";
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+        }
+
+        // Xóa diện chính sách sinh viên
+        public async Task<ActionResult> XoaDienChinhSach(int iMaSVChinhSach)
+        {
+            try
+            {
+                SinhVienChinhSach sinhVienChinhSach = await _db.SinhVienChinhSach.FindAsync(iMaSVChinhSach);
+                if (null == sinhVienChinhSach)
+                {
+                    TempData["ToastMessage"] = "error|Không tìm thấy diện chính sách sinh viên.";
+                    return RedirectToAction("XacThucSinhVien", "SinhVien");
+                }
+                String maSinhVien = sinhVienChinhSach.MaSinhVien;
+
+                _db.SinhVienChinhSach.Remove(sinhVienChinhSach);
+                await _db.SaveChangesAsync();
+
+                TempData["ToastMessage"] = "success|Xóa diện chính sách sinh viên.";
+
+                return RedirectToAction("CapNhat", "SinhVien", new { sMaSinhVien = maSinhVien });
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xem diện chính sách thất bại.";
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+        }
+
+        public async Task<ActionResult> DuyetSinhVien(String sMaSinhVien)
+        {
+            try
+            {
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(sMaSinhVien);
+                if (null == sinhVien)
+                {
+                    TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
+                    return RedirectToAction("XacThucSinhVien", "SinhVien");
+                }
+
+                var sinhVienChinhSach = await _db.SinhVienChinhSach.Where(sv => sv.MaSinhVien == sMaSinhVien)
+                                                                   .ToListAsync();
+
+                double diemUuTien = 0;
+                foreach (var item in sinhVienChinhSach)
+                {
+                    var dienChinhSach = await _db.DienChinhSach.FindAsync(item.MaDienChinhSach);
+                    if (dienChinhSach != null)
+                    {
+                        diemUuTien += dienChinhSach.DiemDienChinhSach;
+                    }
+                }
+
+                sinhVien.DiemUuTien = diemUuTien;
+                sinhVien.TrangThai = Constant.DaXacThucTaiKhoan;
+
+                await _db.SaveChangesAsync();
+
+                TempData["ToastMessage"] = "success|Đã duyệt thông tin sinh viên.";
+
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Đã duyệt thông tin thất bại.";
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+        }
+
+        public async Task<ActionResult> DuyetDanhSach(List<string> sMaSinhVien)
+        {
+            try
+            {
+                if (sMaSinhVien != null && sMaSinhVien.Any())
+                {
+                    foreach (var maSinhVien in sMaSinhVien)
+                    {
+                        SinhVien sinhVien = await _db.SinhVien.FindAsync(maSinhVien);
+
+                        var sinhVienChinhSach = await _db.SinhVienChinhSach.Where(sv => sv.MaSinhVien == maSinhVien)
+                                                                   .ToListAsync();
+
+                        double diemUuTien = 0;
+                        foreach (var item in sinhVienChinhSach)
+                        {
+                            var dienChinhSach = await _db.DienChinhSach.FindAsync(item.MaDienChinhSach);
+                            if (dienChinhSach != null)
+                            {
+                                diemUuTien += dienChinhSach.DiemDienChinhSach;
+                            }
+                        }
+
+                        sinhVien.DiemUuTien = diemUuTien;
+                        sinhVien.TrangThai = Constant.DaXacThucTaiKhoan;
+                    }
+                    await _db.SaveChangesAsync();
+
+                    TempData["ToastMessage"] = "success|Duyệt danh sách sinh viên.";
+                }
+                else
+                {
+                    TempData["ToastMessage"] = "error|Không có sinh viên duyệt.";
+                }
+
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Đã duyệt thông tin thất bại.";
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
         }
 
 

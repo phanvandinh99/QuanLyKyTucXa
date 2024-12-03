@@ -1,0 +1,255 @@
+﻿@using QuanLyKyTucXa.Models
+@model SinhVien
+
+@{
+    ViewBag.Title = "Cập Nhật Sinh Viên";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Cập Nhật Sinh Viên
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Sinh Viên</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="edit-profile">
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Tài Khoản</h4>
+                            <div class="card-options">
+                                <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row mb-2">
+                                    <div class="profile-title">
+                                        <div class="media">
+                                            <img class="img-70 rounded-circle" alt="" src="~/Assets/Student/images/AnhSinhVien/@Model.AnhChanDung">
+                                            <div class="media-body">
+                                                <h5 class="mb-1">@Model.Ho  @Model.Ten</h5>
+                                                <p>@(Model.TrangThai ? "Hoạt Động" : "Chưa Phê Duyệt")</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mã Sinh Viên</label>
+                                    <input class="form-control" value="@Model.MaSinhVien" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mật Khẩu Hiện Tại</label>
+                                    <input class="form-control" type="text" value="@Model.MatKhau" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mật Khẩu Mới <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" name="MatKhau" placeholder="Nhập mật khẩu mới" required>
+                                </div>
+                                <div class="form-footer">
+                                    <button class="btn btn-primary btn-block">Đổi Mật Khẩu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <form class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Thông Tin Cá Nhân</h4>
+                            <div class="card-options">
+                                <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Họ <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="Ho" value="@Model.Ho">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tên <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="Ten" value="@Model.Ten">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Ảnh Chân Dung (@Model.AnhChanDung)</label>
+                                        <input type="file" class="form-control form-control-lg" name="AnhChanDung">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Giới Tính</label>
+                                        <select id="GioiTinh" name="GioiTinh" class="form-select" required>
+                                            <option value="0" @(Model.GioiTinh ? "selected" : "")>Nữ</option>
+                                            <option value="1" @(Model.GioiTinh ? "selected" : "")>Nam</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Ngày Sinh <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control form-control-lg" id="NgaySinh" name="NgaySinh" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="email" value="@Model.Email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Số Điện Thoại <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="number" value="@Model.SDT">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <label class="form-label">Dân Tộc</label>
+                                    <div class="mb-3">
+                                        <select id="DanToc" name="DanToc" class="form-select" required>
+                                            <option value="Kinh" @(Model.DanToc == "Kinh" ? "selected" : "")>Kinh</option>
+                                            <option value="Tày" @(Model.DanToc == "Tày" ? "selected" : "")>Tày</option>
+                                            <option value="Thái" @(Model.DanToc == "Thái" ? "selected" : "")>Thái</option>
+                                            <option value="Mường" @(Model.DanToc == "Mường" ? "selected" : "")>Mường</option>
+                                            <option value="Khmer" @(Model.DanToc == "Khmer" ? "selected" : "")>Khmer</option>
+                                            <option value="Hoa" @(Model.DanToc == "Hoa" ? "selected" : "")>Hoa</option>
+                                            <option value="Nùng" @(Model.DanToc == "Nùng" ? "selected" : "")>Nùng</option>
+                                            <option value="H'Mông" @(Model.DanToc == "H'Mông" ? "selected" : "")>H'Mông</option>
+                                            <option value="Dao" @(Model.DanToc == "Dao" ? "selected" : "")>Dao</option>
+                                            <option value="Gia Rai" @(Model.DanToc == "Gia Rai" ? "selected" : "")>Gia Rai</option>
+                                            <option value="Ê Đê" @(Model.DanToc == "Ê Đê" ? "selected" : "")>Ê Đê</option>
+                                            <option value="Ba Na" @(Model.DanToc == "Ba Na" ? "selected" : "")>Ba Na</option>
+                                            <option value="Xơ Đăng" @(Model.DanToc == "Xơ Đăng" ? "selected" : "")>Xơ Đăng</option>
+                                            <option value="Sán Chay" @(Model.DanToc == "Sán Chay" ? "selected" : "")>Sán Chay</option>
+                                            <option value="Cơ Ho" @(Model.DanToc == "Cơ Ho" ? "selected" : "")>Cơ Ho</option>
+                                            <option value="Chăm" @(Model.DanToc == "Chăm" ? "selected" : "")>Chăm</option>
+                                            <option value="Sán Dìu" @(Model.DanToc == "Sán Dìu" ? "selected" : "")>Sán Dìu</option>
+                                            <option value="Hrê" @(Model.DanToc == "Hrê" ? "selected" : "")>Hrê</option>
+                                            <option value="Ra Glai" @(Model.DanToc == "Ra Glai" ? "selected" : "")>Ra Glai</option>
+                                            <option value="Mnông" @(Model.DanToc == "Mnông" ? "selected" : "")>Mnông</option>
+                                            <option value="Thổ" @(Model.DanToc == "Thổ" ? "selected" : "")>Thổ</option>
+                                            <option value="Stiêng" @(Model.DanToc == "Stiêng" ? "selected" : "")>Stiêng</option>
+                                            <option value="Khơ Mú" @(Model.DanToc == "Khơ Mú" ? "selected" : "")>Khơ Mú</option>
+                                            <option value="Bru - Vân Kiều" @(Model.DanToc == "Bru - Vân Kiều" ? "selected" : "")>Bru - Vân Kiều</option>
+                                            <option value="Tà Ôi" @(Model.DanToc == "Tà Ôi" ? "selected" : "")>Tà Ôi</option>
+                                            <option value="Giáy" @(Model.DanToc == "Giáy" ? "selected" : "")>Giáy</option>
+                                            <option value="Cơ Tu" @(Model.DanToc == "Cơ Tu" ? "selected" : "")>Cơ Tu</option>
+                                            <option value="Gié Triêng" @(Model.DanToc == "Gié Triêng" ? "selected" : "")>Gié Triêng</option>
+                                            <option value="Mạ" @(Model.DanToc == "Mạ" ? "selected" : "")>Mạ</option>
+                                            <option value="Kháng" @(Model.DanToc == "Kháng" ? "selected" : "")>Kháng</option>
+                                            <option value="Co" @(Model.DanToc == "Co" ? "selected" : "")>Co</option>
+                                            <option value="Chơ Ro" @(Model.DanToc == "Chơ Ro" ? "selected" : "")>Chơ Ro</option>
+                                            <option value="Hà Nhì" @(Model.DanToc == "Hà Nhì" ? "selected" : "")>Hà Nhì</option>
+                                            <option value="Chu Ru" @(Model.DanToc == "Chu Ru" ? "selected" : "")>Chu Ru</option>
+                                            <option value="Lào" @(Model.DanToc == "Lào" ? "selected" : "")>Lào</option>
+                                            <option value="La Chí" @(Model.DanToc == "La Chí" ? "selected" : "")>La Chí</option>
+                                            <option value="La Ha" @(Model.DanToc == "La Ha" ? "selected" : "")>La Ha</option>
+                                            <option value="Phù Lá" @(Model.DanToc == "Phù Lá" ? "selected" : "")>Phù Lá</option>
+                                            <option value="La Hủ" @(Model.DanToc == "La Hủ" ? "selected" : "")>La Hủ</option>
+                                            <option value="Lự" @(Model.DanToc == "Lự" ? "selected" : "")>Lự</option>
+                                            <option value="Lô Lô" @(Model.DanToc == "Lô Lô" ? "selected" : "")>Lô Lô</option>
+                                            <option value="Chứt" @(Model.DanToc == "Chứt" ? "selected" : "")>Chứt</option>
+                                            <option value="Mảng" @(Model.DanToc == "Mảng" ? "selected" : "")>Mảng</option>
+                                            <option value="Pà Thẻn" @(Model.DanToc == "Pà Thẻn" ? "selected" : "")>Pà Thẻn</option>
+                                            <option value="Cờ Lao" @(Model.DanToc == "Cờ Lao" ? "selected" : "")>Cờ Lao</option>
+                                            <option value="Bố Y" @(Model.DanToc == "Bố Y" ? "selected" : "")>Bố Y</option>
+                                            <option value="Cống" @(Model.DanToc == "Cống" ? "selected" : "")>Cống</option>
+                                            <option value="Ngái" @(Model.DanToc == "Ngái" ? "selected" : "")>Ngái</option>
+                                            <option value="Si La" @(Model.DanToc == "Si La" ? "selected" : "")>Si La</option>
+                                            <option value="Pu Péo" @(Model.DanToc == "Pu Péo" ? "selected" : "")>Pu Péo</option>
+                                            <option value="Brâu" @(Model.DanToc == "Brâu" ? "selected" : "")>Brâu</option>
+                                            <option value="Ơ Đu" @(Model.DanToc == "Ơ Đu" ? "selected" : "")>Ơ Đu</option>
+                                            <option value="Rơ Măm" @(Model.DanToc == "Rơ Măm" ? "selected" : "")>Rơ Măm</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Điểm Ưu Tiên</label>
+                                        <input class="form-control" type="number" value="@Model.DiemUuTien">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Cập Nhật</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Thuộc Diện Chính Sách</h4>
+                            <div class="card-options">
+                                <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                            </div>
+                        </div>
+                        <div class="table-responsive add-project custom-scrollbar">
+                            <table class="table card-table table-vcenter text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Tên Diện Chính Sách</th>
+                                        <th>Điểm Tương Ứng</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.SinhVienChinhSach.Count > 0)
+                                    {
+                                        foreach (var item in Model.SinhVienChinhSach)
+                                        {
+                                            <tr>
+                                                <td><a class="text-inherit" href="#">@item.DienChinhSach.TenDienChinhSach </a></td>
+                                                <td>@item.DienChinhSach.DiemDienChinhSach</td>
+                                                <td class="text-end">
+                                                    <a class="btn btn-danger btn-sm" href="/Admin/SinhVien/XoaDienChinhSach?iMaSVChinhSach=@item.MaSVChinhSach">
+                                                        <i class="fa fa-trash"></i> Xóa
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a href="/Admin/SinhVien/DuyetSinhVien?sMaSinhVien=@Model.MaSinhVien" class="btn btn-primary" type="submit">Duyệt Sinh Viên</a>
+                            <a href="/Admin/SinhVien/XoaSinhVien?sMaSinhVien=@Model.MaSinhVien" class="btn btn-danger">Xóa Sinh Viên</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

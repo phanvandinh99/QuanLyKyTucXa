@@ -20,7 +20,7 @@
                 <div class="col-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index.html">
+                            <a href="/Admin/Home/Index">
                                 <svg class="stroke-icon">
                                     <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
                                 </svg>
@@ -123,7 +123,7 @@
                                         <input class="datatable-input search" placeholder="Tìm kiếm..." type="search" />
                                     </div>
                                 </div>
-                                @using (Html.BeginForm("Duyet", "SinhVien", FormMethod.Post))
+                                @using (Html.BeginForm("DuyetDanhSach", "SinhVien", FormMethod.Post))
                                 {
                                     <div class="datatable-container">
                                         <table class="table datatable-table" id="project-status">
@@ -184,7 +184,7 @@
                                                         <tr data-index="@item.MaSinhVien">
                                                             <td>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input checkbox-primary" type="checkbox" name="studentIds" value="@item.MaSinhVien">
+                                                                    <input class="form-check-input checkbox-primary" type="checkbox" name="sMaSinhVien" value="@item.MaSinhVien">
                                                                 </div>
                                                             </td>
                                                             <td class="ho">
@@ -203,8 +203,11 @@
                                                             <td class="diemUuTien"><p class="f-light">@item.DiemUuTien</p></td>
                                                             <td class="thaoTac">
                                                                 <div class="product-action">
-                                                                    <a href="#"><i class="fa fa-edit"></i></a>
-                                                                    <a href="/Admin/SinhVien/XoaSinhVien?sMaSinhVien=@item.MaSinhVien"><i class="fa fa-remove"></i></a>
+                                                                    <a href="#"><i class="fa fa-info-circle"></i></a>
+                                                                    <a href="/Admin/SinhVien/CapNhat?sMaSinhVien=@item.MaSinhVien"><i class="fa fa-edit"></i></a>
+                                                                    <a href="/Admin/SinhVien/XoaSinhVien?sMaSinhVien=@item.MaSinhVien" class="text-danger">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>

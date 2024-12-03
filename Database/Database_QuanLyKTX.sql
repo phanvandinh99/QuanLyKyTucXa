@@ -24,14 +24,14 @@ create table SinhVien
 	SDT nvarchar(12) not null,
 	DanToc varchar(100) not null,
 	DiemUuTien float default(0),
-	TrangThai bit null,
+	TrangThai bit not null,
 )
 go
 create  table DienChinhSach
 (
 	MaDienChinhSach int identity(1,1) primary key,
 	TenDienChinhSach nvarchar(255) not null,
-	DiemDienChinhSach float default(1),
+	DiemDienChinhSach float not null,
 )
 go
 insert into DienChinhSach (TenDienChinhSach, DiemDienChinhSach) values (N'Con liệt sĩ', 1);

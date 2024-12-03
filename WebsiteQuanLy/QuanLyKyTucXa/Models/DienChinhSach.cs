@@ -22,7 +22,7 @@ namespace QuanLyKyTucXa.Models
         [StringLength(255)]
         public string TenDienChinhSach { get; set; }
 
-        public double? DiemDienChinhSach { get; set; }
+        public double DiemDienChinhSach { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SinhVienChinhSach> SinhVienChinhSach { get; set; }

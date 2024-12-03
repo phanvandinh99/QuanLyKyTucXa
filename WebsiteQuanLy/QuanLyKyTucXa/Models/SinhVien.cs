@@ -54,7 +54,7 @@ namespace QuanLyKyTucXa.Models
 
         public double? DiemUuTien { get; set; }
 
-        public bool? TrangThai { get; set; }
+        public bool TrangThai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HopDong> HopDong { get; set; }
