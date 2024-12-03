@@ -57,10 +57,9 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 {
                     TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
                     return RedirectToAction("XacThucSinhVien", "SinhVien");
-
                 }
-                //_db.SinhVien.Remove(sinhVien);
-                //await _db.SaveChangesAsync();
+                _db.SinhVien.Remove(sinhVien);
+                await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Xóa sinh viên thành công.";
 
@@ -72,9 +71,54 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
                 Console.WriteLine(ex.ToString());
 
                 TempData["ToastMessage"] = "error|Không thể xóa sinh viên.";
-                return RedirectToAction("Index", "SinhVien");
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
             }
         }
+
+        // Xem chi tiết sinh viên
+        public async Task<ActionResult> XemChiTiet(String sMaSinhVien)
+        {
+            try
+            {
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(sMaSinhVien);
+                if (null == sinhVien)
+                {
+                    TempData["ToastMessage"] = "error|Không tìm thấy sinh viên.";
+                    return RedirectToAction("XacThucSinhVien", "SinhVien");
+                }
+
+                return View(sinhVien);
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xem chi tiết thất bại .";
+                return RedirectToAction("XacThucSinhVien", "SinhVien");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Duyet(List<string> studentIds)
+        {
+            if (studentIds != null && studentIds.Any())
+            {
+                foreach (var id in studentIds)
+                {
+                    // Xử lý từng mã sinh viên được duyệt
+                    // Ví dụ: SinhVienService.DuyetSinhVien(id);
+                }
+                TempData["Message"] = "Duyệt thành công!";
+            }
+            else
+            {
+                TempData["Message"] = "Không có sinh viên nào được chọn.";
+            }
+
+            return RedirectToAction("XacThucSinhVien", "SinhVien");
+        }
+
 
     }
 }

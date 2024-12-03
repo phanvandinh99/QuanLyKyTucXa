@@ -255,7 +255,7 @@ body.dark-only.box-layout {
     1.1 Reset CSS start
 ==========================**/
 .f-light {
-  color: #86909C;
+  color: #000;
 }
 
 svg.f-light {
@@ -29279,7 +29279,7 @@ html:hover .cursor {
 }
 
 .f-light {
-  color: #86909C;
+  color: #000;
 }
 
 .vector-image {
@@ -49688,3 +49688,37 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   5.9 Box-layout CSS Ends
 ==========================**/
 /*# sourceMappingURL=style.css.map */
+
+
+.pagination {
+    display: flex;
+    justify-content: center!important;
+    list-style: none;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+    .pagination li {
+        margin: 0 5px;
+    }
+
+    .pagination a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+            color: #0056b3;
+        }
+
+    .pagination .active a {
+        background-color: #006666;
+        color: white;
+        border-color: #006666;
+    }
