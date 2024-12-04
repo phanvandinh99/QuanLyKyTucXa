@@ -9,6 +9,22 @@ namespace QuanLyKyTucXa
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Route cho sinh viên
+            routes.MapRoute(
+                name: "Student",
+                url: "Student/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "QuanLyKyTucXa.Areas.Student.Controllers" }
+            ).DataTokens.Add("area", "Student");
+
+            // Route cho khu vực QLKTX
+            routes.MapRoute(
+                name: "QLKTX",
+                url: "QLKTX/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "QuanLyKyTucXa.Areas.QLKTX.Controllers" }
+            ).DataTokens.Add("area", "QLKTX");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

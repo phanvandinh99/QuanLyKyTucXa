@@ -1056,6 +1056,7 @@
     <Compile Include="Areas\Student\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\Student\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
+    <Compile Include="Common\AuthAttribute.cs" />
     <Compile Include="Common\Const\Constant.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

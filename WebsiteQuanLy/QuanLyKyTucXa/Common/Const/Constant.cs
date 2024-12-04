@@ -39,5 +39,9 @@
         // Thời hạn đăng ký
         public const bool ApDungThoiHanDangKy = true;
         public const bool HuyApDungThoiHanDangKy = false;
+
+        // User Nhân viên
+        public const bool NhanVienHoatDong = true;
+        public const bool NhanVienKhoa = false;
     }
 }

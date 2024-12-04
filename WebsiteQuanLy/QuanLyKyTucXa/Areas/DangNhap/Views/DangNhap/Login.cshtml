@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- icon website -->
-    <link rel="shortcut icon" href="~/Assets/Admin/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/Assets/Student/images/favicon.png" type="image/x-icon">
     <!-- Title -->
     <title>Đăng Nhập</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,27 +35,27 @@
             <div class="col-xl-5 p-0">
                 <div class="login-card login-dark">
                     <div>
-                        @*<div>
-                                <a class="logo text-start" href="index.html">
-                                    <img class="img-fluid for-dark"
-                                         src="~/Assets/Admin/images/logo/logo.png" alt="looginpage">
-                                    <img class="img-fluid for-light"
-                                         src="~/Assets/Admin/images/logo/logo_dark.png" alt="looginpage">
-                                </a>
-                            </div>*@
+
                         <div class="login-main">
-                            <form class="theme-form">
+                            <div>
+                                <a class="logo text-center">
+                                    <img class="img-fluid for-light"
+                                         src="~/Assets/Student/images/logo_black.png" alt="looginpage">
+                                </a>
+                            </div>
+                            @using (Html.BeginForm("Login", "DangNhap", FormMethod.Post, new { @class = "theme-form" }))
+                            {
+                                @Html.AntiForgeryToken()
                                 <h4>Đăng nhập với tài khoản được cấp</h4>
-                                <p>Nhập Email & Password để đăng nhập</p>
+                                <p>Nhập Username & Password để đăng nhập</p>
                                 <div class="form-group">
-                                    <label class="col-form-label">Email</label>
-                                    <input class="form-control" type="email" required="" placeholder="Email@gmail.com">
+                                    <label class="col-form-label">Username</label>
+                                    <input class="form-control" type="text" name="sTaiKhoan" placeholder="Tài khoản...">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input position-relative">
-                                        <input class="form-control" type="password" name="login[password]" required=""
-                                               placeholder="*********">
+                                        <input class="form-control" type="password" name="sMatKhau" required="" placeholder="*********">
                                         <div class="show-hide"><span class="show"> </span></div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                         }, false);
                                     })();
                                 </script>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>

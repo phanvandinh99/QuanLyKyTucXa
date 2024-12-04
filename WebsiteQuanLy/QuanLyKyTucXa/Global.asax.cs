@@ -1,4 +1,6 @@
-﻿using QuanLyKyTucXa.Models;
+﻿using QuanLyKyTucXa.Common;
+using QuanLyKyTucXa.Models;
+using System.Runtime.InteropServices;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Unity;
@@ -16,6 +18,9 @@ namespace QuanLyKyTucXa
             // Cấu hình Unity
             var container = BuildUnityContainer();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            // Đăng ký kiểm tra login toàn cục
+            GlobalFilters.Filters.Add(new AuthAttribute());
         }
 
         private IUnityContainer BuildUnityContainer()
