@@ -36,5 +36,8 @@
         public const bool DangApDung = true;
         public const bool DaXoa = false;
 
+        // Thời hạn đăng ký
+        public const bool ApDungThoiHanDangKy = true;
+        public const bool HuyApDungThoiHanDangKy = false;
     }
 }

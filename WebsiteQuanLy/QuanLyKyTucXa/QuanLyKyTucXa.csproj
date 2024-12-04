@@ -1046,6 +1046,8 @@
     <Compile Include="Areas\QLKTX\Controllers\DonGiaController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\LoaiHoaDonController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\PhongController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\ThoiHanDangKyController.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
     <Compile Include="Areas\Student\Controllers\HopDongController.cs" />
@@ -1076,7 +1078,7 @@
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\SinhVienChinhSach.cs" />
     <Compile Include="Models\Tang.cs" />
-    <Compile Include="Models\ThoiHan.cs" />
+    <Compile Include="Models\ThoiHanDangKy.cs" />
     <Compile Include="Models\TrangThai.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1146,6 +1148,9 @@
     <Content Include="Areas\QLKTX\Views\DonGia\Index.cshtml" />
     <Content Include="Areas\QLKTX\Views\DonGia\ThemMoi.cshtml" />
     <Content Include="Areas\QLKTX\Views\DonGia\CapNhat.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\ThemMoi.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\CapNhat.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1159,6 +1164,7 @@
     <Folder Include="Areas\DangNhap\Data\" />
     <Folder Include="Areas\DangNhap\Views\Shared\" />
     <Folder Include="Areas\QLKTX\Data\" />
+    <Folder Include="Areas\QLKTX\Views\Phong\" />
     <Folder Include="Areas\Student\Views\HopDong\" />
     <Folder Include="Areas\Student\Views\TaiKhoan\" />
     <Folder Include="Assets\Student\images\AnhSinhVien\" />

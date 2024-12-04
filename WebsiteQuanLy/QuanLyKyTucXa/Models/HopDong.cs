@@ -27,7 +27,7 @@ namespace QuanLyKyTucXa.Models
         [StringLength(10)]
         public string MaSinhVien { get; set; }
 
-        public int? MaThoiHan { get; set; }
+        public int? MaThoiHanDangKy { get; set; }
 
         [StringLength(10)]
         public string TaiKhoanNV { get; set; }
@@ -38,6 +38,6 @@ namespace QuanLyKyTucXa.Models
 
         public virtual SinhVien SinhVien { get; set; }
 
-        public virtual ThoiHan ThoiHan { get; set; }
+        public virtual ThoiHanDangKy ThoiHanDangKy { get; set; }
     }
 }

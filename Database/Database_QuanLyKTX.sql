@@ -202,19 +202,19 @@ create table Giuong
 )
 go
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 1', 'C', 1);
+values (N'Giường 1', 'C', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 2', 'B', 1);
+values (N'Giường 2', 'B', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 3', 'A', 1);
+values (N'Giường 3', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 4', 'A', 1);
+values (N'Giường 4', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 5', 'A', 1);
+values (N'Giường 5', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 6', 'A', 1);
+values (N'Giường 6', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Dường 7', 'A', 1);
+values (N'Giường 7', 'A', 1);
 go
 create table DichVu
 (
@@ -223,8 +223,8 @@ create table DichVu
 	DonGia float not null,
 )
 go
-insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh riêng', 0);
-insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh trong', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh Ngoài dùng chung', 0);
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh Khép Kín', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Máy nóng lạnh', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Máy điều hòa', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Lọc nước', 10000);
@@ -256,10 +256,12 @@ values (default , default, 5, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
 values (default , default, 1, 2);
 go
-create table ThoiHan
+create table ThoiHanDangKy
 (
-	MaThoiHan int identity(1,1) primary key,
-	TenThoiHan nvarchar(100) not null,
+	MaThoiHanDangKy int identity(1,1) primary key,
+	TenThoiHanDangKy nvarchar(100) not null,
+	NgayMo Datetime not null,
+	NgayDong Datetime not null,
 	NgayBatDau Datetime not null,
 	NgayKetThuc Datetime not null,
 	TrangThai bit not null,
@@ -331,13 +333,13 @@ create table HopDong
 
 	MaPhong int,
 	MaSinhVien varchar(10),
-	MaThoiHan int,
+	MaThoiHanDangKy int,
 	TaiKhoanNV varchar(10),
 	DaXoa bit not null,
 
 	Constraint fk_HopDong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 	Constraint fk_HopDong_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
-	Constraint fk_HopDong_ThoiHan Foreign Key (MaThoiHan) references ThoiHan(MaThoiHan),
+	Constraint fk_HopDong_ThoiHanDangKy Foreign Key (MaThoiHanDangKy) references ThoiHanDangKy(MaThoiHanDangKy),
 	Constraint fk_HopDong_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go

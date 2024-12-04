@@ -1,0 +1,118 @@
+﻿@using QuanLyKyTucXa.Models
+@model ThoiHanDangKy
+
+@{
+    ViewBag.Title = "Cập nhật Thời Hạn Đăng Ký";
+    Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Quản Lý Thời Hạn Đăng Ký
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/QLKTX/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Thời Hạn Đăng Ký</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Thời Hạn Đăng Ký</h4>
+                        <p class="f-m-light mt-1">
+                            Là khoảng thời gian mà sinh viên có thể đăng ký phòng nếu đến ngày đăng ký do ban quản lý ký túc xá đề ra <br />
+                            Với thời hạn đăng ký dược ban quản lý ký túc xá đưa ra.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-wrapper border rounded-3">
+                            @using (Html.BeginForm("CapNhat", "ThoiHanDangKy", FormMethod.Post, new { @class = "row g-3" }))
+                            {
+                                <input class="form-control" name="MaThoiHanDangKy" type="hidden" value="@Model.MaThoiHanDangKy" required>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="TenThoiHanDangKy">Tên Thời Hạn Đăng Ký <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="TenThoiHanDangKy" type="text" value="@Model.TenThoiHanDangKy" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="NgayMo">Ngày Mở <span class="text-danger">*</span></label>
+                                    <input class="form-control digits" name="NgayMo" id="example-datetime-local-input" type="datetime-local"
+                                           value="@Model.NgayMo.ToString("yyyy-MM-ddTHH:mm")" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="NgayDong">Ngày Đóng <span class="text-danger">*</span></label>
+                                    <input class="form-control digits" name="NgayDong" id="example-datetime-local-input" type="datetime-local"
+                                           value="@Model.NgayDong.ToString("yyyy-MM-ddTHH:mm")" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="NgayBatDau">Ngày Bắt Đầu <span class="text-danger">*</span></label>
+                                    <input class="form-control digits" name="NgayBatDau" id="example-datetime-local-input" type="datetime-local"
+                                           value="@Model.NgayBatDau.ToString("yyyy-MM-ddTHH:mm")" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="NgayKetThuc">Ngày Kết Thúc <span class="text-danger">*</span></label>
+                                    <input class="form-control digits" name="NgayKetThuc" id="example-datetime-local-input" type="datetime-local"
+                                           value="@Model.NgayKetThuc.ToString("yyyy-MM-ddTHH:mm")" required>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Cập Nhật</button>
+                                </div>
+                            }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('form').on('submit', function (e) {
+            const ngayMo = new Date($('input[name="NgayMo"]').val());
+            const ngayDong = new Date($('input[name="NgayDong"]').val());
+            const ngayBatDau = new Date($('input[name="NgayBatDau"]').val());
+            const ngayKetThuc = new Date($('input[name="NgayKetThuc"]').val());
+
+            // Kiểm tra Ngày Mở <= Ngày Đóng
+            if (ngayMo > ngayDong) {
+                alert('Ngày Mở phải nhỏ hơn hoặc bằng Ngày Đóng');
+                e.preventDefault(); // Ngăn không cho form submit
+                return false;
+            }
+
+            // Kiểm tra Ngày Bắt Đầu < Ngày Kết Thúc
+            if (ngayBatDau >= ngayKetThuc) {
+                alert('Ngày Bắt Đầu phải nhỏ hơn Ngày Kết Thúc');
+                e.preventDefault(); // Ngăn không cho form submit
+                return false;
+            }
+
+            // Nếu tất cả điều kiện đều đúng, form sẽ submit bình thường
+        });
+    });
+</script>
+
+

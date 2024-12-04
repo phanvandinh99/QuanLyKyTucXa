@@ -29,7 +29,7 @@ namespace QuanLyKyTucXa.Models
         public virtual DbSet<SinhVien> SinhVien { get; set; }
         public virtual DbSet<SinhVienChinhSach> SinhVienChinhSach { get; set; }
         public virtual DbSet<Tang> Tang { get; set; }
-        public virtual DbSet<ThoiHan> ThoiHan { get; set; }
+        public virtual DbSet<ThoiHanDangKy> ThoiHanDangKy { get; set; }
         public virtual DbSet<TrangThai> TrangThai { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -6,21 +6,25 @@ namespace QuanLyKyTucXa.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ThoiHan")]
-    public partial class ThoiHan
+    [Table("ThoiHanDangKy")]
+    public partial class ThoiHanDangKy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ThoiHan()
+        public ThoiHanDangKy()
         {
             HopDong = new HashSet<HopDong>();
         }
 
         [Key]
-        public int MaThoiHan { get; set; }
+        public int MaThoiHanDangKy { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string TenThoiHan { get; set; }
+        public string TenThoiHanDangKy { get; set; }
+
+        public DateTime NgayMo { get; set; }
+
+        public DateTime NgayDong { get; set; }
 
         public DateTime NgayBatDau { get; set; }
 
