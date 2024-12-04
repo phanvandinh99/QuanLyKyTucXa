@@ -6,10 +6,6 @@
     Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
-@{
-    IEnumerable<LoaiHoaDon> listLoaiHoaDon = ViewBag.LoaiHoaDon as IEnumerable<LoaiHoaDon>;
-}
-
 <div class="page-body">
     <!-- #region Tiêu đề -->
     <div class="container-fluid">
@@ -17,7 +13,7 @@
             <div class="row">
                 <div class="col-6">
                     <h4>
-                        Quản Lý Loại Hóa Đơn
+                        Quản Lý Loại Đơn Giá
                     </h4>
                 </div>
                 <div class="col-6">
@@ -30,7 +26,7 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">Trang Chủ </li>
-                        <li class="breadcrumb-item active">Quản Lý Loại Hóa Đơn</li>
+                        <li class="breadcrumb-item active">Quản Lý Loại Đơn Giá</li>
                     </ol>
                 </div>
             </div>
@@ -45,7 +41,7 @@
                     <div class="card-header">
                         <h4>Đơn Giá</h4>
                         <p class="f-m-light mt-1">
-                            Là các đơn giá thuộc loại hóa đơn được tính theo giá thực tế sinh sống
+                            Là các đơn giá thuộc loại Đơn Giá được tính theo giá thực tế sinh sống
                         </p>
                     </div>
                     <div class="card-body">
@@ -54,25 +50,12 @@
                             {
                                 <input class="form-control" name="MaDonGia" type="hidden" value="@Model.MaDonGia" readonly>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="MaDonGia">Đơn Vị <span class="text-danger">*</span></label>
-                                    <input class="form-control" name="MaDonGia" type="text" value="@Model.DonVi">
+                                    <label class="form-label" for="DonVi">Đơn Vị <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="DonVi" type="text" value="@Model.DonVi">
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="MaDonGia">Đơn Giá <span class="text-danger">*</span></label>
-                                    <input class="form-control" name="MaDonGia" type="text" value="@Model.DonGia1" required>
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label">Loại Hóa Đơn</label>
-                                    <select id="MaLoaiDonGia" name="MaLoaiDonGia" class="form-select" required>
-                                        @foreach (var item in listLoaiHoaDon)
-                                        {
-                                            <option value="@item.MaLoaiHoaDon"
-                                                    @((item.MaLoaiHoaDon == Model.MaLoaiHoaDon) ? "selected" : "")>
-                                                @item.TenLoaiHoaDon
-                                            </option>
-
-                                        }
-                                    </select>
+                                    <label class="form-label" for="DonGia1">Đơn Giá <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="DonGia1" type="text" value="@Model.DonGia1" required>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary" type="submit">Cập Nhật </button>

@@ -32,5 +32,9 @@
         public const bool DichVuPhong = true;
         public const bool XoaDichVuPhong = false;
 
+        // Xóa đơn giá
+        public const bool DangApDung = true;
+        public const bool DaXoa = false;
+
     }
 }

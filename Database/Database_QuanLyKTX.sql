@@ -281,14 +281,14 @@ create table DonGia
 	MaDonGia int identity(1,1) primary key,
 	NgayBatDau Datetime not null,
 	NgayKetThuc Datetime null,
-	DonVi float null,
-	DonGia float null,
+	DonVi nvarchar(100) null,
+	DonGia float not null,
 	MaLoaiHoaDon int,
+	DaXoa bit not null,
 
 	Constraint fk_DonGia_LoaiHoaDon Foreign Key (MaLoaiHoaDon) references LoaiHoaDon(MaLoaiHoaDon),
 )
 go
-select * from DonGia
 create table Quyen
 (
 	MaQuyen int identity(1,1) primary key,

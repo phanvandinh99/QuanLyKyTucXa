@@ -4,7 +4,6 @@ namespace QuanLyKyTucXa.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("DonGia")]
     public partial class DonGia
@@ -22,12 +21,15 @@ namespace QuanLyKyTucXa.Models
 
         public DateTime? NgayKetThuc { get; set; }
 
-        public double? DonVi { get; set; }
+        [StringLength(100)]
+        public String DonVi { get; set; }
 
         [Column("DonGia")]
-        public double? DonGia1 { get; set; }
+        public double DonGia1 { get; set; }
 
         public int? MaLoaiHoaDon { get; set; }
+
+        public bool DaXoa { get; set; }
 
         public virtual LoaiHoaDon LoaiHoaDon { get; set; }
 

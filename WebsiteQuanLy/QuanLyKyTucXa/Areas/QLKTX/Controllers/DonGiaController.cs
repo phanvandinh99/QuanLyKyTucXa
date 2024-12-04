@@ -1,7 +1,9 @@
-﻿using QuanLyKyTucXa.Models;
+﻿using QuanLyKyTucXa.Common.Const;
+using QuanLyKyTucXa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -21,7 +23,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         {
             try
             {
-                List<DonGia> listDonGia = await _db.DonGia.ToListAsync();
+                List<DonGia> listDonGia = await _db.DonGia.Where(n=>n.DaXoa == Constant.DangApDung).ToListAsync();
 
                 return View(listDonGia);
             }
@@ -59,9 +61,18 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         {
             try
             {
+                // Kiểm tra đang thêm dơn giá loại nào
+                DonGia donGia = await _db.DonGia.FirstOrDefaultAsync(n => n.MaLoaiHoaDon == donGiaModel.MaLoaiHoaDon && n.DaXoa == true);
+
                 donGiaModel.NgayBatDau = DateTime.Now;
                 donGiaModel.NgayKetThuc = null;
+                donGiaModel.DaXoa = Constant.DangApDung;
                 _db.DonGia.Add(donGiaModel);
+
+                if (donGia != null)
+                {
+                    donGia.DaXoa = Constant.DaXoa;
+                }
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Thêm đơn giá thành công.";
@@ -78,13 +89,12 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         }
         #endregion
 
-        #region Cập nhật DonGia
+        #region Cập nhật Đơn Giá
         public async Task<ActionResult> CapNhat(int iMaDonGia)
         {
             try
             {
                 DonGia donGia = await _db.DonGia.FindAsync(iMaDonGia);
-                ViewBag.LoaiHoaDon = await _db.LoaiHoaDon.ToListAsync();
 
                 return View(donGia);
             }
@@ -109,7 +119,8 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                     TempData["ToastMessage"] = "error|Không tồn tại đơn giá.";
                     return RedirectToAction("Index", "DonGia");
                 }
-                donGia.NgayKetThuc = null;
+                donGia.DonVi = donGiaModel.DonVi;
+                donGia.DonGia1 = donGiaModel.DonGia1;
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Cập nhật đơn giá thành công.";
