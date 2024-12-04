@@ -271,6 +271,11 @@ create table LoaiHoaDon
 	TenLoaiHoaDon nvarchar(100) not null,
 )
 go
+insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Tiền Điện');
+insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Nước');
+insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Tiền Rác');
+insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Wifi');
+go
 create table DonGia
 (
 	MaDonGia int identity(1,1) primary key,
@@ -283,6 +288,7 @@ create table DonGia
 	Constraint fk_DonGia_LoaiHoaDon Foreign Key (MaLoaiHoaDon) references LoaiHoaDon(MaLoaiHoaDon),
 )
 go
+select * from DonGia
 create table Quyen
 (
 	MaQuyen int identity(1,1) primary key,

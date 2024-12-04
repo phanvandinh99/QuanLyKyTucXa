@@ -1,12 +1,11 @@
 ﻿@using QuanLyKyTucXa.Models
-@model Khu
 @{
-    ViewBag.Title = "Cập Nhật Khu";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Thêm Mới Đơn Giá";
+    Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
 @{
-    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.LoaiKhu as IEnumerable<LoaiKhu>;
+    IEnumerable<LoaiHoaDon> listLoaiHoaDon = ViewBag.LoaiHoaDon as IEnumerable<LoaiHoaDon>;
 }
 
 <div class="page-body">
@@ -16,20 +15,20 @@
             <div class="row">
                 <div class="col-6">
                     <h4>
-                        Quản Lý Khu
+                        Quản Lý Loại Hóa Đơn
                     </h4>
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/Admin/Home/Index">
+                            <a href="/QLKTX/Home/Index">
                                 <svg class="stroke-icon">
                                     <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
                                 </svg>
                             </a>
                         </li>
                         <li class="breadcrumb-item">Trang Chủ </li>
-                        <li class="breadcrumb-item active">Quản Lý Khu</li>
+                        <li class="breadcrumb-item active">Quản Lý Loại Hóa Đơn</li>
                     </ol>
                 </div>
             </div>
@@ -42,38 +41,34 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Khu</h4>
+                        <h4>Đơn Giá</h4>
                         <p class="f-m-light mt-1">
-                            Là các khu được phân bổ theo nhóm người ở Nam/Nữ riêng biệt
+                            Là các đơn giá thuộc loại hóa đơn được tính theo giá thực tế sinh sống
                         </p>
                     </div>
                     <div class="card-body">
                         <div class="card-wrapper border rounded-3">
-                            @using (Html.BeginForm("CapNhat", "Khu", FormMethod.Post, new { @class = "row g-3" }))
+                            @using (Html.BeginForm("ThemMoi", "DonGia", FormMethod.Post, new { @class = "row g-3" }))
                             {
                                 <div class="col-md-12">
-                                    <label class="form-label" for="MaKhu">Mã khu <span class="text-danger">*</span></label>
-                                    <input class="form-control" name="MaKhu" type="text" value="@Model.MaKhu" readonly>
+                                    <label class="form-label" for="DonVi">Đơn Vị</label>
+                                    <input class="form-control" name="DonVi" type="text" placeholder="Đơn vị">
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="TenKhu">Tên Khu <span class="text-danger">*</span></label>
-                                    <input class="form-control" name="TenKhu" type="text" value="@Model.TenKhu" required>
+                                    <label class="form-label" for="DonGia">Đơn Giá<span class="text-danger">*</span></label>
+                                    <input class="form-control" name="DonGia" type="text" placeholder="Đơn giá vnđ" required>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label">Loại Khu</label>
-                                    <select id="MaLoaiKhu" name="MaLoaiKhu" class="form-select" required>
-                                        @foreach (var item in listLoaiKhu)
+                                    <label class="form-label">Loại Hóa Đơn</label>
+                                    <select id="MaLoaiHoaDon" name="MaLoaiHoaDon" class="form-select" required>
+                                        @foreach (var item in listLoaiHoaDon)
                                         {
-                                            <option value="@item.MaLoaiKhu"
-                                                    @((item.MaLoaiKhu == Model.MaLoaiKhu) ? "selected" : "")>
-                                                @item.TenLoaiKhu
-                                            </option>
-
+                                            <option value="@item.MaLoaiHoaDon">@item.TenLoaiHoaDon</option>
                                         }
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">Cập Nhật </button>
+                                    <button class="btn btn-primary" type="submit">Thêm Mới </button>
                                 </div>
                             }
                         </div>
@@ -84,4 +79,6 @@
     </div>
     <!-- Container-fluid Ends-->
 </div>
+
+
 

@@ -1,0 +1,74 @@
+﻿@using QuanLyKyTucXa.Models
+@model LoaiHoaDon
+
+@{
+    ViewBag.Title = "Cập Nhật Loại Hóa Đơn";
+    Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
+}
+
+@{
+    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.LoaiKhu as IEnumerable<LoaiKhu>;
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Quản Lý Loại Hóa Đơn
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/QLKTX/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Loại Hóa Đơn</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Loại Hóa Đơn</h4>
+                        <p class="f-m-light mt-1">
+                            Là các loại hóa đơn mà sinh viên cần trả nếu đăng ký
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-wrapper border rounded-3">
+                            @using (Html.BeginForm("CapNhat", "LoaiHoaDon", FormMethod.Post, new { @class = "row g-3" }))
+                            {
+                                <input class="form-control" name="MaLoaiHoaDon" type="hidden" value="@Model.MaLoaiHoaDon" readonly>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="TenLoaiHoaDon">Tên Loại Hóa Đơn <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="TenLoaiHoaDon" type="text" value="@Model.TenLoaiHoaDon" required>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Cập Nhật </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+
+

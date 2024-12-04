@@ -1043,7 +1043,9 @@
     <Compile Include="Areas\Admin\Controllers\TangController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\DonGiaController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\LoaiHoaDonController.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
     <Compile Include="Areas\Student\Controllers\HopDongController.cs" />
@@ -1138,6 +1140,12 @@
     <Content Include="Areas\Admin\Views\Phong\ThemMoi.cshtml" />
     <Content Include="Areas\QLKTX\Views\Shared\_LayoutBQL.cshtml" />
     <Content Include="Areas\QLKTX\Views\Home\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\LoaiHoaDon\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\LoaiHoaDon\ThemMoi.cshtml" />
+    <Content Include="Areas\QLKTX\Views\LoaiHoaDon\CapNhat.cshtml" />
+    <Content Include="Areas\QLKTX\Views\DonGia\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\DonGia\ThemMoi.cshtml" />
+    <Content Include="Areas\QLKTX\Views\DonGia\CapNhat.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
