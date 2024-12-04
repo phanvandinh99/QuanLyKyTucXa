@@ -89,7 +89,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 return View(donGia);
             }
             catch (Exception ex)
-            {
+            { 
                 // logerror
                 Console.WriteLine(ex.ToString());
 
