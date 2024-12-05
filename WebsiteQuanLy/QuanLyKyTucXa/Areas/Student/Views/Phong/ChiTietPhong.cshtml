@@ -12,6 +12,7 @@
     IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
     IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
     IEnumerable<LoaiPhong> listLoaiPhong = ViewBag.listLoaiPhong as IEnumerable<LoaiPhong>;
+    IEnumerable<ThoiHanDangKy> listLThoiHanDangKy = ViewBag.listThoiHanDangKy as IEnumerable<ThoiHanDangKy>;
 
 }
 <div>
@@ -140,63 +141,106 @@
                                     </div>
                                 </div>
 
-                                <div id="at-locationsproperty" class="at-propertydetails at-locationsproperty">
-                                    <div class="at-propertytitle">
-                                        <h3>Giường</h3>
-                                    </div>
-                                    <div class="at-description">
-                                        <p>Thông tin giường của phòng @Model.TenPhong</p>
-                                    </div>
+                                @using (Html.BeginForm("DangKy", "HopDong", FormMethod.Post))
+                                {
+                                    <div id="at-locationsproperty" class="at-propertydetails at-locationsproperty">
+                                        <div class="at-propertytitle">
+                                            <h3>Giường</h3>
+                                        </div>
+                                        <div class="at-description">
+                                            <p>Thông tin giường của phòng @Model.TenPhong</p>
+                                        </div>
 
-                                    <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
-                                        <div class="at-nearbylocations">
-                                            <ul class="list-unstyled" style="padding-left: 0;">
-                                                @if (Model.Giuong.Count > 0)
-                                                {
-                                                    foreach (var giuong in Model.Giuong)
+                                        <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
+                                            <div class="at-nearbylocations">
+                                                <ul class="list-unstyled" style="padding-left: 0;">
+                                                    @if (Model.Giuong.Count > 0)
                                                     {
-                                                        <li class="d-flex align-items-center mb-2">
-                                                            @if (Constant.GiuongTrong.Equals(giuong.TrangThai))
-                                                            {
-                                                                <input type="radio" name="GiuongChon" value="@giuong.MaGiuong" id="giuong_@giuong.MaGiuong" class="form-check-input me-2" />
-                                                                <label for="giuong_@giuong.MaGiuong" class="d-flex align-items-center mb-0">
-                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_Trong.png" alt="Giường trống" class="me-2" style="width: 20px; height: 20px;" />
-                                                                    <span>&nbsp; @giuong.TenGiuong - Trống</span>
-                                                                </label>
-                                                            }
-                                                            else if (Constant.ChoXacNhan.Equals(giuong.TrangThai))
-                                                            {
-                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_ChoXacNhan.png" alt="Chờ xác nhận" class="me-2" style="width: 20px; height: 20px;" />
-                                                                <span>&nbsp; @giuong.TenGiuong - Chờ Xác Nhận</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_DaO.png" alt="Đã đăng ký" class="me-2" style="width: 20px; height: 20px;" />
-                                                                <span>&nbsp; @giuong.TenGiuong - Đã Đăng Ký</span>
-                                                            }
-                                                        </li>
+                                                        foreach (var giuong in Model.Giuong)
+                                                        {
+                                                            <li class="d-flex align-items-center mb-2">
+                                                                @if (Constant.GiuongTrong.Equals(giuong.TrangThai))
+                                                                {
+                                                                    <input type="radio" name="iGiuongChon" value="@giuong.MaGiuong" id="giuong_@giuong.MaGiuong" class="form-check-input me-2" />
+                                                                    <label for="giuong_@giuong.MaGiuong" class="d-flex align-items-center mb-0">
+                                                                        <img src="~/Assets/Student/images/AnhGiuong/Giuong_Trong.png" alt="Giường trống" class="me-2" style="width: 20px; height: 20px;" />
+                                                                        <span>&nbsp; @giuong.TenGiuong - Trống</span>
+                                                                    </label>
+                                                                }
+                                                                else if (Constant.ChoXacNhan.Equals(giuong.TrangThai))
+                                                                {
+                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_ChoXacNhan.png" alt="Chờ xác nhận" class="me-2" style="width: 20px; height: 20px;" />
+                                                                    <span>&nbsp; @giuong.TenGiuong - Chờ Xác Nhận</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_DaO.png" alt="Đã đăng ký" class="me-2" style="width: 20px; height: 20px;" />
+                                                                    <span>&nbsp; @giuong.TenGiuong - Đã Đăng Ký</span>
+                                                                }
+                                                            </li>
+                                                        }
                                                     }
+                                                    else
+                                                    {
+                                                        <div class="col-12">
+                                                            <label class="form-label text-danger">Lưu ý: Giường trống</label>
+                                                        </div>
+                                                    }
+                                                </ul>
+                                                @if (listLThoiHanDangKy != null && listLThoiHanDangKy.Any())
+                                                {
+
+                                                    <div class="col-12">
+                                                        <label class="form-label">Lựa Chọn Thời Gian Đăng Ký</label>
+                                                        @foreach (var item in listLThoiHanDangKy)
+                                                        {
+                                                            // Tính phần nguyên của số tháng
+                                                            var soThangThue = ((item.NgayKetThuc.Year - item.NgayBatDau.Year) * 12) + (item.NgayKetThuc.Month - item.NgayBatDau.Month);
+
+                                                            // Tính phần lẻ của tháng
+                                                            var ngayBatDau = item.NgayBatDau;
+                                                            var ngayKetThuc = item.NgayKetThuc;
+
+                                                            // Số ngày trong tháng của ngày bắt đầu
+                                                            int soNgayTrongThangBatDau = DateTime.DaysInMonth(ngayBatDau.Year, ngayBatDau.Month);
+
+                                                            // Tính phần lẻ của tháng nếu cần
+                                                            double phanLeThangBatDau = (soNgayTrongThangBatDau - ngayBatDau.Day + 1) / (double)soNgayTrongThangBatDau;
+                                                            double phanLeThangKetThuc = ngayKetThuc.Day / (double)DateTime.DaysInMonth(ngayKetThuc.Year, ngayKetThuc.Month);
+
+                                                            // Tổng số tháng bao gồm phần lẻ
+                                                            double tongSoThangThue = soThangThue + phanLeThangBatDau + phanLeThangKetThuc - 1;
+
+                                                            // Tính số ngày thuê
+                                                            var soNgayThue = (ngayKetThuc - ngayBatDau).Days;
+
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" id="invalidCheck" type="radio" value="@item.MaThoiHanDangKy" name="iMaThoiHanDangKy">
+                                                                <label class="form-check-label" for="invalidCheck">
+                                                                    Ngày Thuê: @item.NgayBatDau.ToString("dd/MM/yyyy") ~ Ngày Trả: @item.NgayKetThuc.ToString("dd/MM/yyyy")<br />
+                                                                    Số Tháng Thuê: @Math.Round(tongSoThangThue, 2) tháng<br />
+                                                                    Số Ngày Thuê: @soNgayThue ngày
+                                                                </label>
+                                                            </div>
+                                                        }
+                                                    </div>
                                                 }
-                                            </ul>
-                                            <div class="mb-3 row">
-                                                <label class="col-md-3 col-form-label">Date</label>
-                                                <div class="col-md-9">
-                                                    <input class="form-control digits" type="date" value="2024-05-01">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label class="col-md-3 col-form-label">Date</label>
-                                                <div class="col-md-9">
-                                                    <input class="form-control digits" type="date" value="2024-05-01">
-                                                </div>
+                                                else
+                                                {
+                                                    <div class="col-12">
+                                                        <label class="form-label text-danger">Lưu ý: Nhà trường chưa mở thời gian đăng ký phòng</label>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="at-btnarea">
-                                    <a href="javascript:void(0)" class="at-btn at-btnactive">Đăng Ký</a>
-                                </div>
+                                    if (Model.Giuong.Any(g => Constant.GiuongTrong.Equals(g.TrangThai)) && listLThoiHanDangKy != null && listLThoiHanDangKy.Any())
+                                    {
+                                        <div class="at-btnarea">
+                                            <button type="submit" id="btnDangKy" class="at-btn at-btnactive">Đăng Ký</button>
+                                        </div>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
@@ -205,4 +249,30 @@
         </div>
     </main>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const btnDangKy = document.getElementById("btnDangKy");
+
+        btnDangKy.addEventListener("click", function (e) {
+            // Kiểm tra giường đã chọn
+            const selectedGiuong = document.querySelector("input[name='iGiuongChon']:checked");
+            // Kiểm tra thời gian đăng ký đã chọn
+            const selectedThoiGian = document.querySelector("input[name='iMaThoiHanDangKy']:checked");
+
+            if (!selectedGiuong) {
+                alert("Vui lòng chọn giường!");
+                e.preventDefault(); // Ngăn gửi biểu mẫu
+                return;
+            }
+
+            if (!selectedThoiGian) {
+                alert("Vui lòng chọn thời gian đăng ký!");
+                e.preventDefault(); // Ngăn gửi biểu mẫu
+                return;
+            }
+        });
+    });
+</script>
+
+
 

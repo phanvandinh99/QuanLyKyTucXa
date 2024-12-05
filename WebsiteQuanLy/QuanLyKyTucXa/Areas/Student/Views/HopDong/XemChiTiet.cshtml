@@ -1,0 +1,209 @@
+﻿@using QuanLyKyTucXa.Models
+@using QuanLyKyTucXa.Common.Const
+@model HopDong
+
+@{
+    ViewBag.Title = "Xem chi tiết hợp đồng";
+    Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
+}
+
+@{
+    IEnumerable<LoaiKhu> listLoaiKhu = ViewBag.listLoaiKhu as IEnumerable<LoaiKhu>;
+    IEnumerable<Khu> listKhu = ViewBag.listKhu as IEnumerable<Khu>;
+    IEnumerable<Tang> listTang = ViewBag.listTang as IEnumerable<Tang>;
+    IEnumerable<LoaiPhong> listLoaiPhong = ViewBag.listLoaiPhong as IEnumerable<LoaiPhong>;
+    IEnumerable<ThoiHanDangKy> listLThoiHanDangKy = ViewBag.listThoiHanDangKy as IEnumerable<ThoiHanDangKy>;
+
+}
+<div>
+    <!-- Inner Banner Start -->
+    <div class="at-haslayout at-innerbannerholder">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-12">
+                    <div class="at-innerbannercontent">
+                        <div class="at-title"><h2>Chi Tiết Hợp Đồng</h2></div>
+                        <ol class="at-breadcrumb">
+                            <li><a href="~/Student/Home/Index">Trang Chủ</a></li>
+                            <li>Kết quả xem chi tiết hợp đồng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inner Banner End -->
+    <!-- Inner Banner Start -->
+    <div class="at-innerbanner-holder at-haslayout at-innerbannersearch">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="at-innerbanner-search">
+                        @using (Html.BeginForm("TraCuuPhong", "Phong", FormMethod.Post, new { @class = "at-formtheme at-form-advancedsearch" }))
+                        {
+                            <fieldset>
+                                @if (listLoaiKhu != null && listLoaiKhu.Any())
+                                {
+                                    <div class="form-group">
+                                        <div class="at-select">
+                                            <select id="loaiKhu" name="MaLoaiKhu" class="form-control">
+                                                <option value="">-- Chọn Loại Khu --</option>
+                                                @foreach (var loaikhu in ViewBag.listLoaiKhu)
+                                                {
+                                                    <option value="@loaikhu.MaLoaiKhu">@loaikhu.TenLoaiKhu</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (listKhu != null && listKhu.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="khu" name="MaKhu" class="form-control">
+                                                <option value="">-- Chọn Khu --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (listTang != null && listTang.Any())
+                                {
+                                    <div class="form-group">
+
+                                        <div class="at-select">
+                                            <select id="tang" name="MaTang" class="form-control">
+                                                <option value="">-- Chọn Tầng --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="at-btnarea">
+                                    <button type="submit" class="at-btn">Tìm Kiếm</button>
+                                </div>
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Home Slider End -->
+
+    <main id="at-main" class="at-main at-haslayout">
+        <!-- Two Columns Start -->
+        <div class="at-haslayout at-main-section at-propertysingle-mt">
+            <div class="container">
+                <div class="row">
+                    <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+                        <div id="left-menu-container"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-8 float-left">
+                            <div class="at-gridlist-option at-option-mt">
+                                <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
+                            </div>
+                            <div class="at-propertylinkdetails at-haslayout">
+                                <div id="at-thongtin" class="at-propertydetails at-detailsproperty">
+                                    <div class="at-propertytitle">
+                                        <h3>Thông Tin Hợp Đồng</h3>
+                                    </div>
+                                    <ul class="at-detailslisting">
+                                        <li><h4>Mã Hợp Đồng</h4><span>@Model.MaHopDong</span></li>
+                                        <li><h4>Tên Hợp Đồng</h4><span>@Model.ThoiHanDangKy.TenThoiHanDangKy</span></li>
+                                        <li><h4>Ngày Bắt Đầu</h4><span>@Model.ThoiHanDangKy.NgayBatDau</span></li>
+                                        <li><h4>Ngày Kết Thúc</h4><span>@Model.ThoiHanDangKy.NgayKetThuc</span></li>
+                                        @if (@Model.NgayDuyet != null)
+                                        {
+                                            <li><h4>Ngày Duyệt</h4><span>@Model.NgayDuyet</span></li>
+                                            <li><h4>Ngày Đến Hạn Thanh Toán</h4><span>@Model.NgayDenHanThanhToan</span></li>
+                                        }
+                                        <li><h4>Giá Thuê</h4><span>@Model.GiaThue.ToString("#,##0") vnđ</span></li>
+                                        <li><h4>Số Ngày Thuê</h4><span>@Model.SoNgayThue ngày</span></li>
+                                        <li><h4>Số Tháng Thuê</h4><span>@Model.SoThangThue tháng</span></li>
+                                        <li><h4>Thành Tiền</h4><span>@Model.ThanhTien.ToString("#,##0") vnđ</span></li>
+                                        <li><h4>phòng</h4><span>@Model.Phong.TenPhong</span></li>
+                                        <li><h4>Đã Ở/Còn Trống</h4><span>@Model.Phong.DaO/@Model.Phong.ConTrong</span></li>
+                                        <li><h4>Tầng</h4><span>@Model.Phong.Tang.TenTang</span></li>
+                                        <li><h4>Khu</h4><span>@Model.Phong.Tang.Khu.TenKhu</span></li>
+                                        <li><h4>Loại</h4><span>@Model.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu</span></li>
+                                    </ul>
+                                </div>
+                                <div id="at-dichvu" class="at-propertydetails at-aboutproperty">
+                                    <div class="at-propertytitle">
+                                        <h3>Dịch Vụ</h3>
+                                    </div>
+                                    <div class="at-description">
+                                        @if (Model.Phong.DichVuPhong.Count > 0)
+                                        {
+                                            foreach (var dichvu in Model.Phong.DichVuPhong)
+                                            {
+                                                var isLast = dichvu == Model.Phong.DichVuPhong.Last();
+                                                <span>@dichvu.DichVu.TenDichVu@(isLast ? "" : ", ")</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                @if (@Model.TrangThai != Constant.DangXacNhan)
+                                {
+                                    <a href="/Student/HopDong/Xoa?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="at-btn at-btnactive">Xóa</a>
+                                }
+                                else if (@Model.TrangThai != Constant.ChoThanhToan)
+                                {
+                                    <a href="/Student/HopDong/ThanhToan?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-primary">Thanh Toán</a>
+                                }
+                                <a href="/Student/HopDong/ThanhToan?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-primary">Thanh Toán</a>
+
+                                <div id="at-locationsproperty" class="at-propertydetails at-locationsproperty" style="display:none">
+                                    <div class="at-propertytitle">
+                                        <h3>Giường</h3>
+                                    </div>
+                                    <div class="at-description">
+                                        <p>Thông tin giường của phòng @Model.Phong.TenPhong</p>
+                                    </div>
+
+                                    <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
+                                        <div class="at-nearbylocations">
+                                            <ul class="list-unstyled" style="padding-left: 0;">
+                                                @if (Model.Phong.Giuong.Count > 0)
+                                                {
+                                                    foreach (var giuong in Model.Phong.Giuong)
+                                                    {
+                                                        <li class="d-flex align-items-center mb-2">
+                                                            @if (Constant.GiuongTrong.Equals(giuong.TrangThai))
+                                                            {
+                                                                <input type="radio" name="iGiuongChon" value="@giuong.MaGiuong" id="giuong_@giuong.MaGiuong" class="form-check-input me-2" />
+                                                                <label for="giuong_@giuong.MaGiuong" class="d-flex align-items-center mb-0">
+                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_Trong.png" alt="Giường trống" class="me-2" style="width: 20px; height: 20px;" />
+                                                                    <span>&nbsp; @giuong.TenGiuong - Trống</span>
+                                                                </label>
+                                                            }
+                                                            else if (Constant.ChoXacNhan.Equals(giuong.TrangThai))
+                                                            {
+                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_ChoXacNhan.png" alt="Chờ xác nhận" class="me-2" style="width: 20px; height: 20px;" />
+                                                                <span>&nbsp; @giuong.TenGiuong - Chờ Xác Nhận</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_DaO.png" alt="Đã đăng ký" class="me-2" style="width: 20px; height: 20px;" />
+                                                                <span>&nbsp; @giuong.TenGiuong - Đã Đăng Ký</span>
+                                                            }
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-12">
+                                                        <label class="form-label text-danger">Lưu ý: Giường trống</label>
+                                                    </div>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

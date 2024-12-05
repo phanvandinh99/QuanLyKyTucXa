@@ -16,11 +16,17 @@ namespace QuanLyKyTucXa.Models
         [StringLength(100)]
         public string TenHopDong { get; set; }
 
-        public DateTime NgayBatDau { get; set; }
+        public DateTime? NgayDuyet { get; set; }
 
-        //public DateTime NgayKetThuc { get; set; }
+        public DateTime? NgayDenHanThanhToan { get; set; }
 
-        public DateTime NgayDuyet { get; set; }
+        public double GiaThue { get; set; }
+
+        public int SoNgayThue { get; set; } 
+
+        public double SoThangThue { get; set; }
+
+        public double ThanhTien { get; set; }
 
         public int? MaPhong { get; set; }
 
@@ -32,7 +38,9 @@ namespace QuanLyKyTucXa.Models
         [StringLength(10)]
         public string TaiKhoanNV { get; set; }
 
-        public virtual NhanVien NhanVien { get; set; }
+        public int TrangThai { get; set; }
+
+        public bool ThanhToan { get; set; }
 
         public virtual Phong Phong { get; set; }
 

@@ -242,6 +242,9 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 ViewBag.listKhu = await _db.Khu.ToListAsync();
                 ViewBag.listTang = await _db.Tang.ToListAsync();
                 ViewBag.listLoaiPhong = await _db.LoaiPhong.ToListAsync();
+                ViewBag.listThoiHanDangKy = await _db.ThoiHanDangKy.Where(n => n.NgayMo <= DateTime.Now &&
+                                                                    n.NgayDong >= DateTime.Now)
+                                                             .ToListAsync();
 
                 return View(phong);
             }

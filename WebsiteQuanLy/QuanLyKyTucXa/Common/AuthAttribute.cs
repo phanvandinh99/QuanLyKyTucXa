@@ -19,9 +19,15 @@ namespace QuanLyKyTucXa.Common
             // Xác định Area từ URL
             var isAdminArea = requestUrl.StartsWith("/Admin", StringComparison.OrdinalIgnoreCase);
             var isQLKTXArea = requestUrl.StartsWith("/QLKTX", StringComparison.OrdinalIgnoreCase);
+            var isStudentArea = requestUrl.StartsWith("/Student", StringComparison.OrdinalIgnoreCase);
 
+            // Kiểm tra quyền truy cập cho Student
+            if (isStudentArea)
+            {
+                return;
+            }
             // Kiểm tra quyền truy cập cho Admin
-            if (isAdminArea)
+            else if (isAdminArea)
             {
                 var adminCookie = filterContext.HttpContext.Request.Cookies["NhanVienAdmin"];
                 if (adminCookie == null || string.IsNullOrEmpty(adminCookie["TaiKhoanNV"]))

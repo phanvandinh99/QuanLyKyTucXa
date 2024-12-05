@@ -43,5 +43,13 @@
         // User Nhân viên
         public const bool NhanVienHoatDong = true;
         public const bool NhanVienKhoa = false;
+
+        // Trạng thái hợp đồng
+        public const int DangXacNhan = 1;
+        public const int ChoThanhToan = 2;
+        public const int DaDuyet = 3;
+        public const bool DaThanhToan = true;
+        public const bool ChuaThanhToan = false;
+
     }
 }

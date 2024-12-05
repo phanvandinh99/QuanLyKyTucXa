@@ -1152,6 +1152,8 @@
     <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\Index.cshtml" />
     <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\ThemMoi.cshtml" />
     <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\CapNhat.cshtml" />
+    <Content Include="Areas\Student\Views\HopDong\Index.cshtml" />
+    <Content Include="Areas\Student\Views\HopDong\XemChiTiet.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1166,7 +1168,6 @@
     <Folder Include="Areas\DangNhap\Views\Shared\" />
     <Folder Include="Areas\QLKTX\Data\" />
     <Folder Include="Areas\QLKTX\Views\Phong\" />
-    <Folder Include="Areas\Student\Views\HopDong\" />
     <Folder Include="Areas\Student\Views\TaiKhoan\" />
     <Folder Include="Assets\Student\images\AnhSinhVien\" />
     <Folder Include="Views\Student\" />

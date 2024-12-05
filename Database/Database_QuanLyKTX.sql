@@ -327,20 +327,25 @@ create table HopDong
 (
 	MaHopDong int identity(1,1) primary key,
 	TenHopDong nvarchar(100) not null,
-	NgayBatDau Datetime not null,
-	NgayKetThuc Datetime not null,
-	NgayDuyet Datetime not null,
+	NgayDuyet Datetime null,
+	NgayDenHanThanhToan datetime null,
+	GiaThue float not null,
+	SoNgayThue int not null,
+	SoThangThue float not null,
+	ThanhTien float not null,
 
 	MaPhong int,
 	MaSinhVien varchar(10),
 	MaThoiHanDangKy int,
-	TaiKhoanNV varchar(10),
-	DaXoa bit not null,
+	TaiKhoanNV varchar(10) null,
+
+
+	TrangThai int not null, -- Đã duyệt / chờ thanh toán /chưa duyệt
+	ThanhToan bit not null, -- Đã thanh toán/ chưa thanh toán
 
 	Constraint fk_HopDong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 	Constraint fk_HopDong_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
 	Constraint fk_HopDong_ThoiHanDangKy Foreign Key (MaThoiHanDangKy) references ThoiHanDangKy(MaThoiHanDangKy),
-	Constraint fk_HopDong_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
 create table HoaDon

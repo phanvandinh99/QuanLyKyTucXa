@@ -27,7 +27,7 @@
 }
 html{scroll-behavior: smooth;}
 body {
-	color: #767676;
+	color: #000000;
 	background: #fff;
 	font:400 14px/23px 'Open Sans', sans-serif;
 }
@@ -123,7 +123,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-	color: #767676;
+	color: #000000;
 	outline: none;
 	height: 46px;
 	background:#fff;
@@ -146,15 +146,15 @@ textarea.form-control{
 	height: 200px;
 	padding-top:14px; 
 }
-.form-control::-webkit-input-placeholder { color: #767676; } /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: #767676; } /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: #767676; } /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: #767676; } /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color:#767676; } /* Microsoft Edge */
+.form-control::-webkit-input-placeholder { color: #000000; } /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: #000000; } /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: #000000; } /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: #000000; } /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color:#000000; } /* Microsoft Edge */
 input:focus,
 .select select:focus,
 .form-control:focus {
-	color: #767676;
+	color: #000000;
 	border-color: var(--themecolor);
 	-webkit-box-shadow:none !important;
 			box-shadow:none !important;
@@ -165,7 +165,7 @@ input:focus,
 	margin:0 0 10px;
 }
 label {
-	color: #767676;
+	color: #000000;
 	display: block;
 	font-weight: 400;
 	margin-bottom: 10px;
@@ -254,7 +254,7 @@ address { font-style: italic; }
 .at-select {
 	float:left;
 	width: 100%;
-	color:#767676;
+	color:#000000;
 	background: #fff;
 	position: relative;
 	text-transform:uppercase;
@@ -263,7 +263,7 @@ address { font-style: italic; }
 	top: 0;
 	right: 15px;
 	z-index: 1;
-	color: #767676;
+	color: #000000;
 	display: block;
 	content: "\e64b";
 	position: absolute;
@@ -283,7 +283,7 @@ address { font-style: italic; }
 	background: transparent;
 	-webkit-appearance: none;
 }
-.at-select select option { color:#767676; }
+.at-select select option { color:#000000; }
 /* Theme Custom CheckBox Radio */
 .at-radio,
 .at-radio label,
@@ -1439,7 +1439,7 @@ button.at-btn:focus{outline: none;}
 .at-loginfooterinfo a + a{border-left: 1px solid #eee;}
 .modal-footer .at-loginfooterinfo{margin: 0;}
 .at-loginfooterinfo a em{
-	color: #767676;
+	color: #000000;
 	font-style: normal;
 }
 /* Home Slider Style */
@@ -1495,7 +1495,7 @@ button.at-btn:focus{outline: none;}
 }
 .at-thumbnail-content h3 span{
 	display: block;
-	color: #767676;
+	color: #000000;
 	font-size: 16px;
 }
 .at-thumbnail-content .at-btn{
@@ -1893,7 +1893,7 @@ button.at-btn:focus{outline: none;}
 .fc-other-month.fc-future span{color:#f7f7f7;}
 .fc-head .fc-widget-header .fc-day-header{background: #fcfcfc;}
 .fc-head .fc-widget-header .fc-day-header span{
-	color: #767676;
+	color: #000000;
 	font: 700 13px/13px 'Open Sans', sans-serif;
 }
 .fc-row .fc-content-skeleton td{border-color: #eee;}
@@ -2307,7 +2307,7 @@ button.at-btn:focus{outline: none;}
 	font-size: 18px;
 }
 .at-featured-title h3 span em{
-	color: #767676;
+	color: #000000;
 	font-size: 13px;
 	font-weight: 400;
 	font-style: normal;
@@ -3568,7 +3568,7 @@ button.at-btn:focus{outline: none;}
     font-size: 16px;
 }
 .at-topratedtitle h3 span em {
-    color: #767676;
+    color: #000000;
     font-size: 13px;
     font-weight: 400;
     font-style: normal;
@@ -3614,7 +3614,7 @@ button.at-btn:focus{outline: none;}
 }
 .at-sidebarinfo a{
 	float: left;
-	color: #767676;
+	color: #000000;
 	padding-left:12px; 
 	font-size: 14px;
 	line-height: 16px;
@@ -3860,7 +3860,7 @@ button.at-btn:focus{outline: none;}
 }
 .at-legalprivacyinfo li + li{margin-top:14px; }
 .at-legalprivacyinfo li a{
-	color: #767676;
+	color: #000000;
 	font-size: 14px;
 	display: block;
 	line-height: inherit;
@@ -4342,7 +4342,7 @@ i.at-color6{background: #e74c3c;}
 	line-height: inherit;
 }
 .at-widgettag a{
-	color: #767676;
+	color: #000000;
 	padding: 0 20px;
 	font-weight: 700;
 	border-radius: 17px;
@@ -4364,7 +4364,7 @@ i.at-color6{background: #e74c3c;}
 	position: relative;
 }
 .at-tagsshare > a{
-	color: #767676;
+	color: #000000;
 	display: inline-block;
 	vertical-align: middle;
 	font: 700 14px/34px 'Nunito', sans-serif;
@@ -4449,7 +4449,7 @@ i.at-color6{background: #e74c3c;}
 .at-commentimg figcaption a{
 	width: 100%;
 	float: left;
-	color: #767676;
+	color: #000000;
 	font:700 14px/16px 'Nunito', sans-serif;
 }
 .at-commentimg figcaption a i{
@@ -4557,7 +4557,7 @@ i.at-color6{background: #e74c3c;}
 }
 .at-propertyholder .at-username address{
 	margin: 0;
-	color: #767676;
+	color: #000000;
 	font-size: 14px;
 	line-height: 14px;
 	font-style: normal;
@@ -4611,7 +4611,7 @@ i.at-color6{background: #e74c3c;}
 	list-style-type:none; 
 }
 .at-featureabout li a{
-	color: #767676;
+	color: #000000;
 	display: block;
 	font-size: 14px;
 	line-height: inherit;
@@ -4627,7 +4627,7 @@ i.at-color6{background: #e74c3c;}
 }
 .at-featureabout li + li{margin-left:26px; }
 .at-featureabout li .at-like:hover,
-.at-featureabout li .at-like:focus{color: #767676;}
+.at-featureabout li .at-like:focus{color: #000000;}
 .at-propertysilder{
 	float: left;
 	width: 100%;
@@ -4868,7 +4868,7 @@ i.at-color6{background: #e74c3c;}
 .at-locationsinfo li span em{
 	font-size: 13px;
 	font-style: normal;
-	color: #767676;
+	color: #000000;
 }
 .at-locationsinfo li span a{font-size: 13px;}
 .at-locationsproperty .at-btnmore{margin: 27px 0 0;}
@@ -5031,7 +5031,7 @@ i.at-color6{background: #e74c3c;}
 .at-title-textfee:after {
 	top: 50%;
 	right: 30px;
-	color: #767676;
+	color: #000000;
 	content: "\e648";
 	font-size: 16px;
 	margin: -10px 0 0;
@@ -5059,7 +5059,7 @@ i.at-color6{background: #e74c3c;}
 }
 .at-title-textfee h2 span{
 	font-size: 16px;
-	color: #767676;
+	color: #000000;
 	font-weight: 400;
 	line-height: inherit;
 	vertical-align: middle;
@@ -5237,7 +5237,7 @@ i.at-color6{background: #e74c3c;}
 .at-room-radioholdervtwo .at-radio label span em,
 .at-room-radioholdervtwo .at-checkbox label span,
 .at-room-radioholdervtwo .at-checkbox label span em{
-	color: #767676;
+	color: #000000;
 	font:400 14px/14px 'Open Sans', sans-serif;
 }
 .at-room-radioholdervtwo .at-radio label img,
@@ -5459,7 +5459,7 @@ i.at-color6{background: #e74c3c;}
 }
 .lightpick__day-of-the-week{
 	height: 50px;
-	color: #767676;
+	color: #000000;
 	border: 1px solid #eee;
 }
 .lightpick__days .lightpick__day{border-top: 0;}
@@ -5478,7 +5478,7 @@ i.at-color6{background: #e74c3c;}
 	top: 0;
 	right: 20px;
 	z-index: 1;
-	color: #767676;
+	color: #000000;
 	display: block;
 	content: "\e64b";
 	position: absolute;
