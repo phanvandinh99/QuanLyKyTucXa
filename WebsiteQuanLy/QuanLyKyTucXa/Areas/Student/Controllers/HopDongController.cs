@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -194,7 +196,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
 
         #region Thanh Toán Hợp Đồng
-        public async Task<ActionResult> ThanToan(int iMaHopDong)
+        public async Task<ActionResult> ThanhToan(int iMaHopDong)
         {
             try
             {
@@ -207,7 +209,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
                 #region VNPAY
                 // Thực hiện thanh toán bằng VNPAY
-                string returnUrl = "https://localhost:44359/GioHang/ReturnUrl";
+                string returnUrl = "https://localhost:44355/HopDong/ReturnUrl";
                 string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 string vnp_TmnCode = "QV4AJ3NO";
                 string vnp_HashSecret = "3CP0V5HCDJ6VFE1YPVYL85YUHK1SGLLP";
@@ -235,12 +237,6 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 string vnp_UrlEncode = vnp_Url + "?" + string.Join("&", vnp_Params.Select(kvp => kvp.Key + "=" + HttpUtility.UrlEncode(kvp.Value)).ToArray());
                 return Redirect(vnp_UrlEncode);
                 #endregion
-
-                _db.HopDong.Remove(hopDong);
-                await _db.SaveChangesAsync();
-                TempData["ToastMessage"] = "success|Xóa hợp đồng thành công.";
-
-                return RedirectToAction("Index", "HopDong");
             }
             catch (Exception ex)
             {
@@ -254,7 +250,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
         #endregion
 
         #region Thanh Toán VNPAY
-        public ActionResult ReturnUrl(string vnp_ResponseCode, string vnp_TransactionNo, string vnp_TxnRef)
+        public async Task<ActionResult> ReturnUrl(string vnp_ResponseCode, string vnp_TransactionNo, string vnp_TxnRef)
         {
             // Xử lý kết quả từ VNPAY khi redirect về
 
