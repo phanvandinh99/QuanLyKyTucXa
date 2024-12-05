@@ -315,20 +315,6 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
         }
         #endregion
 
-        #region HmacSHA512
-        private string HmacSHA512(string key, string data)
-        {
-            byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-
-            using (var hmac = new HMACSHA512(keyBytes))
-            {
-                byte[] hashBytes = hmac.ComputeHash(dataBytes);
-                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-            }
-        }
-        #endregion
-
         #region Xóa Hợp Đồng
         public async Task<ActionResult> Xoa(int iMaHopDong)
         {
