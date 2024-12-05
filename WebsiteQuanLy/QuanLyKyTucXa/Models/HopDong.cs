@@ -38,7 +38,7 @@ namespace QuanLyKyTucXa.Models
         [StringLength(10)]
         public string TaiKhoanNV { get; set; }
 
-        public int TrangThai { get; set; }
+        public bool TrangThai { get; set; }
 
         public bool ThanhToan { get; set; }
 

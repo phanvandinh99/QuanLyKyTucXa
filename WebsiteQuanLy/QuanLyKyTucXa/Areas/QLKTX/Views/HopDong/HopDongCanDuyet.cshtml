@@ -1,8 +1,10 @@
 ﻿@using QuanLyKyTucXa.Models
-@model List<LoaiHoaDon>
+@using QuanLyKyTucXa.Common.Const
+
+@model List<HopDong>
 
 @{
-    ViewBag.Title = "Loại Hóa Đơn";
+    ViewBag.Title = "Hợp Đồng Cần Phê Duyệt";
     Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
@@ -14,7 +16,7 @@
             <div class="row">
                 <div class="col-6">
                     <h4>
-                        Quản Lý Loại Hóa Đơn
+                        Quản Lý Hợp Đồng
                     </h4>
                 </div>
                 <div class="col-6">
@@ -27,7 +29,7 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">Trang Chủ </li>
-                        <li class="breadcrumb-item active">Quản Lý Loại Hóa Đơn</li>
+                        <li class="breadcrumb-item active">Quản Lý Hợp Đồng</li>
                     </ol>
                 </div>
             </div>
@@ -50,10 +52,10 @@
                                         </i>
                                     </a>
                                 </div>
-                                <a class="btn btn-primary" href="/QLKTX/LoaiHoaDon/ThemMoi">
-                                    <i class="fa fa-plus"></i>
-                                    Thêm Loại Hóa Đơn
-                                </a>
+                                @*<a class="btn btn-primary" href="/QLKTX/LoaiHoaDon/ThemMoi">
+                                        <i class="fa fa-plus"></i>
+                                        Thêm Hợp Đồng
+                                    </a>*@
                             </div>
                             <!-- #region Lọc -->
                             <div class="collapse" id="collapseProduct">
@@ -129,15 +131,35 @@
                                             <tr>
                                                 <th data-sortable="true" style="width: 10%;">
                                                     <span class="datatable-sorter sort" data-sort="MaKhu">
-                                                        <span class="f-light f-w-600">Mã Loại Hóa Đơn</span>
+                                                        <span class="f-light f-w-600">Mã Hợp Đồng</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 30%;">
+                                                <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="TenKhu">
-                                                        <span class="f-light f-w-600">Tên Loại Hóa Đơn</span>
+                                                        <span class="f-light f-w-600">Tên Hợp Đồng</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 9%;">
+                                                <th data-sortable="true" style="width: 15%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Ho</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 10%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Ten</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 20%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Trạng Thái</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 20%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Thanh Toán</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 10%;">
                                                     <span class="datatable-sorter sort" data-sort="thaoTac">
                                                         <span class="f-light f-w-600">Thao Tác</span>
                                                     </span>
@@ -149,14 +171,42 @@
                                             {
                                                 foreach (var item in Model)
                                                 {
-                                                    <tr data-index="@item.MaLoaiHoaDon">
-                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.MaLoaiHoaDon</p></td>
-                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.TenLoaiHoaDon</p></td>
+                                                    <tr data-index="@item.MaHopDong">
+                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.MaHopDong</p></td>
+                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.ThoiHanDangKy.TenThoiHanDangKy</p></td>
+                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.SinhVien.Ho</p></td>
+                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.SinhVien.Ten</p></td>
+                                                        @switch (@item.TrangThai)
+                                                        {
+                                                            case Constant.ChoDuyet:
+                                                                <td>Chờ Duyệt</td>
+                                                                break;
+
+                                                            case Constant.DaDuyet:
+                                                                <td>Đã Duyệt</td>
+                                                                break;
+                                                            default:
+                                                                <td>Trạng thái không xác định</td>
+                                                                break;
+                                                        }
+                                                        @switch (@item.ThanhToan)
+                                                        {
+                                                            case Constant.DaThanhToan:
+                                                                <td>Đã Thanh Toán</td>
+                                                                break;
+
+                                                            case Constant.ChuaThanhToan:
+                                                                <td>Chưa Thanh Toán</td>
+                                                                break;
+                                                            default:
+                                                                <td>Chưa Thanh Toán</td>
+                                                                break;
+                                                        }
                                                         <td class="thaoTac">
                                                             <div class="product-action">
-                                                                <a href="/QLKTX/LoaiHoaDon/CapNhat?iMaLoaiHoaDon=@item.MaLoaiHoaDon"><i class="fa fa-info-circle"></i></a>
-                                                                <a href="/QLKTX/LoaiHoaDon/CapNhat?iMaLoaiHoaDon=@item.MaLoaiHoaDon"><i class="fa fa-edit"></i></a>
-                                                                <a href="/QLKTX/LoaiHoaDon/Xoa?iMaLoaiHoaDon=@item.MaLoaiHoaDon" class="text-danger"><i class="fa fa-trash"></i></a>
+                                                                <a href="/QLKTX/HopDong/CapNhat?iMaHopDong=@item.MaHopDong"><i class="fa fa-info-circle"></i></a>
+                                                                <a href="/QLKTX/HopDong/CapNhat?iMaHopDong=@item.MaHopDong"><i class="fa fa-edit"></i></a>
+                                                                <a href="/QLKTX/HopDong/Xoa?iMaHopDong=@item.MaHopDong" class="text-danger"><i class="fa fa-trash"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>

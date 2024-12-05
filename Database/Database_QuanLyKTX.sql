@@ -223,8 +223,8 @@ create table DichVu
 	DonGia float not null,
 )
 go
-insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh Ngoài dùng chung', 0);
-insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh Khép Kín', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh chung', 0);
+insert into DichVu (TenDichVu, DonGia) values (N'Vệ sinh riêng', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Máy nóng lạnh', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Máy điều hòa', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Lọc nước', 10000);
@@ -340,7 +340,7 @@ create table HopDong
 	TaiKhoanNV varchar(10) null,
 
 
-	TrangThai int not null, -- Đã duyệt / chờ thanh toán /chưa duyệt
+	TrangThai bit not null, -- Chờ xác nhận / duyệt
 	ThanhToan bit not null, -- Đã thanh toán/ chưa thanh toán
 
 	Constraint fk_HopDong_Phong Foreign Key (MaPhong) references Phong(MaPhong),

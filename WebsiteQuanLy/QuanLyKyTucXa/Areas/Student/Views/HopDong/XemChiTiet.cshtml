@@ -142,15 +142,14 @@
                                         }
                                     </div>
                                 </div>
-                                @if (@Model.TrangThai != Constant.DangXacNhan)
+                                @if (@Model.TrangThai == Constant.ChoDuyet)
                                 {
                                     <a href="/Student/HopDong/Xoa?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="at-btn at-btnactive">Xóa</a>
                                 }
-                                else if (@Model.TrangThai != Constant.ChoThanhToan)
+                                @if (@Model.ThanhToan == Constant.ChuaThanhToan)
                                 {
                                     <a href="/Student/HopDong/ThanhToan?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-primary">Thanh Toán</a>
                                 }
-                                <a href="/Student/HopDong/ThanhToan?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-primary">Thanh Toán</a>
 
                                 <div id="at-locationsproperty" class="at-propertydetails at-locationsproperty" style="display:none">
                                     <div class="at-propertytitle">

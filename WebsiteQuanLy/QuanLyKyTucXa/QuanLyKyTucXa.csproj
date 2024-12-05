@@ -1045,6 +1045,7 @@
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
     <Compile Include="Areas\QLKTX\Controllers\DonGiaController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\HopDongController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\LoaiHoaDonController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\PhongController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\ThoiHanDangKyController.cs" />
@@ -1053,6 +1054,7 @@
     <Compile Include="Areas\Student\Controllers\HopDongController.cs" />
     <Compile Include="Areas\Student\Controllers\PartialController.cs" />
     <Compile Include="Areas\Student\Controllers\PhongController.cs" />
+    <Compile Include="Areas\Student\Controllers\PublictController.cs" />
     <Compile Include="Areas\Student\Controllers\SinhVienController.cs" />
     <Compile Include="Areas\Student\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
@@ -1154,6 +1156,11 @@
     <Content Include="Areas\QLKTX\Views\ThoiHanDangKy\CapNhat.cshtml" />
     <Content Include="Areas\Student\Views\HopDong\Index.cshtml" />
     <Content Include="Areas\Student\Views\HopDong\XemChiTiet.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HopDong\Index.cshtml" />
+    <Content Include="Areas\Student\Views\Publict\GioiThieu.cshtml" />
+    <Content Include="Areas\Student\Views\Publict\NoiQuy.cshtml" />
+    <Content Include="Areas\Student\Views\Publict\LienHe.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HopDong\HopDongCanDuyet.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

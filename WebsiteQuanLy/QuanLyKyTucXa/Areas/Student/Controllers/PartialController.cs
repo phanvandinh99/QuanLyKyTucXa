@@ -19,7 +19,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
         public ActionResult LeftMenuOfDetailed()
         {
             ViewBag.listPhong = _db.Phong.Where(n => n.ConTrong != 0)
-                                         .ToList().Take(10);
+                                         .OrderByDescending(n=>n.MaPhong)
+                                         .ToList().Take(6);
 
             return PartialView("LeftMenuOfDetailed");
         }

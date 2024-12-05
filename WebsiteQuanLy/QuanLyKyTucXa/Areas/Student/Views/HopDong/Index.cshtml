@@ -129,17 +129,14 @@
                                                     <td>@item.ThoiHanDangKy.NgayKetThuc</td>
                                                     @switch (@item.TrangThai)
                                                     {
-                                                        case Constant.DangXacNhan:
-                                                            <td>Đang Xác Nhận</td>
-                                                            break;
-
-                                                        case Constant.ChoThanhToan:
-                                                            <td>Chờ Thanh Toán</td>
+                                                        case Constant.ChoDuyet:
+                                                            <td>Chờ Duyệt</td>
                                                             break;
 
                                                         case Constant.DaDuyet:
                                                             <td>Đã Duyệt</td>
                                                             break;
+
                                                         default:
                                                             <td>Trạng thái không xác định</td>
                                                             break;

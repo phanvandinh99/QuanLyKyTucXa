@@ -3,7 +3,6 @@ using QuanLyKyTucXa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -172,7 +171,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                     MaThoiHanDangKy = iMaThoiHanDangKy,
                     TaiKhoanNV = null,
 
-                    TrangThai = Constant.DangXacNhan,
+                    TrangThai = Constant.ChoDuyet,
                     ThanhToan = Constant.ChuaThanhToan,
                 };
 
@@ -270,7 +269,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Thanh toán thành công.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
             else
             {
