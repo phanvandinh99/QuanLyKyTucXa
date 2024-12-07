@@ -225,7 +225,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
                 #region VNPAY
                 // Thực hiện thanh toán bằng VNPAY
-                string returnUrl = "https://localhost:44355/HopDong/ReturnUrl";
+                string returnUrl = "https://localhost:44355/Student/HopDong/ReturnUrl";
                 string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 string vnp_TmnCode = "QV4AJ3NO";
                 string vnp_HashSecret = "3CP0V5HCDJ6VFE1YPVYL85YUHK1SGLLP";
@@ -286,7 +286,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Thanh toán thành công.";
-                return RedirectToAction("Index", "Home", new { area = "Admin" });
+                return RedirectToAction("Index", "Home", new { area = "Student" });
             }
             else
             {

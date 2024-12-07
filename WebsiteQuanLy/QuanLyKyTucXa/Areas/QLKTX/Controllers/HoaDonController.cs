@@ -87,23 +87,67 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         }
         #endregion
 
-        #region Cập nhật Đơn Giá
-        public async Task<ActionResult> ThemHoaDon(int iMaKhu)
+        #region Thêm hóa đơn theo loại
+        public async Task<ActionResult> ThemHoaDon(int iMaKhu, int iMaLoaiHoaDon)
         {
             try
             {
-                List<Phong> list = await _db.Phong.Where(n => n.Tang.MaKhu == iMaKhu &&
-                                                         n.DaO != 0)
-                                                  .ToListAsync();
+                DateTime currentDate = DateTime.Now;
 
-                return View(list);
+                var listPhong = await (from p in _db.Phong
+                                       join g in _db.Giuong on p.MaPhong equals g.MaPhong
+                                       join h in _db.HopDong on g.MaGiuong equals h.MaGiuong
+                                       join t in _db.ThoiHanDangKy on h.MaThoiHanDangKy equals t.MaThoiHanDangKy
+                                       where p.Tang.MaKhu == iMaKhu &&
+                                                        p.DaO != 0 &&
+                                                        h.NgayDuyet != null &&
+                                                        t.NgayBatDau <= currentDate &&
+                                                        t.NgayKetThuc >= currentDate
+                                       select p)
+
+                 .Distinct()
+                 .ToListAsync();
+
+
+                //var listPhong = await (from p in _db.Phong
+                //                       join g in _db.Giuong on p.MaPhong equals g.MaPhong
+                //                       join h in _db.HopDong on g.MaGiuong equals h.MaGiuong
+                //                       join t in _db.ThoiHanDangKy on h.MaThoiHanDangKy equals t.MaThoiHanDangKy
+                //                       join hd in _db.HoaDon on p.MaPhong equals hd.MaPhong into HoaDonGroup
+                //                       from maxHd in HoaDonGroup.OrderByDescending(hd => hd.MaHoaDon).Take(1).DefaultIfEmpty() // Lấy hóa đơn có id lớn nhất hoặc null
+                //                       where p.Tang.MaKhu == iMaKhu &&
+                //                             p.DaO != 0 &&
+                //                             h.NgayDuyet != null &&
+                //                             t.NgayBatDau <= currentDate &&
+                //                             t.NgayKetThuc >= currentDate
+                //                       select new
+                //                       {
+                //                           Phong = p,
+                //                           HoaDon = maxHd // Hóa đơn lớn nhất hoặc null
+                //                       })
+                //       .Distinct()
+                //       .ToListAsync();
+
+
+                // Hóa đơn cũ để lấy chỉ số điện nước cũ
+                //LoaiHoaDon loaiHoaDon = await _db.LoaiHoaDon.Where(n=>n.).FindAsync(iMaLoaiHoaDon);
+                //if (loaiHoaDon == null)
+                //{
+                //    TempData["ToastMessage"] = "error|Không tồn tại loại hóa đơn.";
+                //    return RedirectToAction("Index", "HoaDon");
+                //}
+
+
+                return View(listPhong);
+
+
             }
             catch (Exception ex)
             {
                 // logerror
                 Console.WriteLine(ex.ToString());
 
-                TempData["ToastMessage"] = "error|Thêm hóa đơn giá thất bại.";
+                TempData["ToastMessage"] = "error|Thêm hóa đơn thất bại.";
                 return RedirectToAction("Index", "DonGia");
             }
         }

@@ -120,19 +120,19 @@
                                                             <input class="form-check-input checkbox-primary" type="checkbox">
                                                         </div>
                                                     </th>
-                                                    <th data-sortable="true" style="width: 26%;">
+                                                    <th data-sortable="true" style="width: 5%;">
                                                         <span class="datatable-sorter sort" data-sort="ho">
                                                             <span class="f-light f-w-600">Mã Phòng</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 10%;">
                                                         <span class="datatable-sorter sort" data-sort="ten">
-                                                            <span class="f-light f-w-600">Tên Phòng</span>
+                                                            <span class="f-light f-w-600">Phòng</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 10%;">
                                                         <span class="datatable-sorter sort" data-sort="ten">
-                                                            <span class="f-light f-w-600">Đã Ở</span>
+                                                            <span class="f-light f-w-600">Đã Ở/Còn Trống</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 10%;">
@@ -163,18 +163,23 @@
                                                                     <input class="form-check-input checkbox-primary" type="checkbox" name="sMaSinhVien" value="@item.MaPhong">
                                                                 </div>
                                                             </td>
-                                                            <td class="ten"><p class="f-light">@item.TenPhong</p></td>
-                                                            <td class="ten"><p class="f-light">@item.DaO</p></td>
+                                                            <td class="ten"><p class="f-light">@item.MaPhong</p></td>
+                                                            <td class="ten"><p class="f-light">@item.TenPhong, @item.Tang.TenTang</p></td>
+                                                            <td class="ten"><p class="f-light">@item.DaO/@item.ConTrong</p></td>
                                                             <td class="ten"><p class="f-light">@item.ConTrong</p></td>
-                                                            <td class="ten"><p class="f-light">Cu</p></td>
-                                                            <td class="ten"><p class="f-light">Moi</p></td>
+                                                            <td class="ten">
+                                                                <input class="form-control"/>
+                                                            </td>
+                                                            <td class="ten">
+                                                                <input class="form-control" />
+                                                            </td>
                                                         </tr>
                                                     }
                                                 }
                                                 else
                                                 {
                                                     <tr>
-                                                        <td colspan="9" class="text-center">Không có tài khoản sinh viên cần duyệt</td>
+                                                        <td colspan="9" class="text-center">Hiện tại phòng không có sinh viên đăng ký ở</td>
                                                     </tr>
                                                 }
                                             </tbody>
