@@ -3,6 +3,7 @@ using QuanLyKyTucXa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -58,5 +59,32 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 return RedirectToAction("Index", "HopDong");
             }
         }
+
+        #region Duyệt hợp đồng
+        public async Task<ActionResult> DuyetHopDong(int iMaHopDong)
+        {
+            try
+            {
+                HopDong hopDong = await _db.HopDong.FindAsync(iMaHopDong);
+                if (hopDong == null)
+                {
+                    TempData["ToastMessage"] = "error|Không tồn tại hợp đồng.";
+                    return RedirectToAction("HopDongCanDuyet", "HopDong");
+                }
+
+
+                //hopDong.
+                return RedirectToAction("HopDongCanDuyet", "HopDong");
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Duyệt hợp đồng thất bại.";
+                return RedirectToAction("HopDongCanDuyet", "HopDong");
+            }
+        }
+        #endregion
     }
 }

@@ -28,7 +28,7 @@ namespace QuanLyKyTucXa.Models
 
         public double ThanhTien { get; set; }
 
-        public int? MaPhong { get; set; }
+        public int? MaGiuong { get; set; }
 
         [StringLength(10)]
         public string MaSinhVien { get; set; }
@@ -42,7 +42,7 @@ namespace QuanLyKyTucXa.Models
 
         public bool ThanhToan { get; set; }
 
-        public virtual Phong Phong { get; set; }
+        public virtual Giuong Giuong{ get; set; }
 
         public virtual SinhVien SinhVien { get; set; }
 

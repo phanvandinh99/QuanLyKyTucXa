@@ -1060,6 +1060,8 @@
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Common\AuthAttribute.cs" />
     <Compile Include="Common\Const\Constant.cs" />
+    <Compile Include="Common\GeneratePassword.cs" />
+    <Compile Include="Common\SendMail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

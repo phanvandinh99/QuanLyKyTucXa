@@ -166,7 +166,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                     SoThangThue = tongSoThangThue,
                     ThanhTien = thanhTien,
 
-                    MaPhong = giuong.MaPhong,
+                    MaGiuong = giuong.MaPhong,
                     MaSinhVien = maSinhVien,
                     MaThoiHanDangKy = iMaThoiHanDangKy,
                     TaiKhoanNV = null,
