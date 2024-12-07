@@ -4,23 +4,23 @@ namespace QuanLyKyTucXa.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("LoaiHoaDon")]
-    public partial class LoaiHoaDon
+    [Table("LoaiThongBao")]
+    public partial class LoaiThongBao
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiHoaDon()
+        public LoaiThongBao()
         {
-            DonGia = new HashSet<DonGia>();
+            ThongBao = new HashSet<ThongBao>();
         }
 
         [Key]
-        public int MaLoaiHoaDon { get; set; }
+        public int MaLoaiThongBao { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string TenLoaiHoaDon { get; set; }
+        [StringLength(150)]
+        public string TenLoaiThongBao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonGia> DonGia { get; set; }
+        public virtual ICollection<ThongBao> ThongBao { get; set; }
     }
 }

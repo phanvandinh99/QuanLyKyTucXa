@@ -4,7 +4,6 @@ namespace QuanLyKyTucXa.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("NhanVien")]
     public partial class NhanVien
@@ -13,7 +12,8 @@ namespace QuanLyKyTucXa.Models
         public NhanVien()
         {
             HoaDon = new HashSet<HoaDon>();
-            HopDong = new HashSet<HopDong>();
+            ThongBao = new HashSet<ThongBao>();
+            ViPham = new HashSet<ViPham>();
         }
 
         [Key]
@@ -57,9 +57,12 @@ namespace QuanLyKyTucXa.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDon { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HopDong> HopDong { get; set; }
-
         public virtual Quyen Quyen { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongBao> ThongBao { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ViPham> ViPham { get; set; }
     }
 }

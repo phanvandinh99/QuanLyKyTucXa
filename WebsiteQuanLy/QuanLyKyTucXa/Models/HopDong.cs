@@ -1,10 +1,8 @@
 namespace QuanLyKyTucXa.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("HopDong")]
     public partial class HopDong
@@ -22,7 +20,7 @@ namespace QuanLyKyTucXa.Models
 
         public double GiaThue { get; set; }
 
-        public int SoNgayThue { get; set; } 
+        public int SoNgayThue { get; set; }
 
         public double SoThangThue { get; set; }
 
@@ -42,7 +40,7 @@ namespace QuanLyKyTucXa.Models
 
         public bool ThanhToan { get; set; }
 
-        public virtual Giuong Giuong{ get; set; }
+        public virtual Giuong Giuong { get; set; }
 
         public virtual SinhVien SinhVien { get; set; }
 

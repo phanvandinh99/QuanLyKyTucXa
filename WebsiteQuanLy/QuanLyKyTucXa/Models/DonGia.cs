@@ -22,7 +22,7 @@ namespace QuanLyKyTucXa.Models
         public DateTime? NgayKetThuc { get; set; }
 
         [StringLength(100)]
-        public String DonVi { get; set; }
+        public string DonVi { get; set; }
 
         [Column("DonGia")]
         public double DonGia1 { get; set; }
