@@ -163,7 +163,7 @@ create table Phong
 	ConTrong int default(0),
 	GiaDichVu float not null,
 	GiaThue float not null,
-	TrangThai bit default(0),
+	TrangThai bit default(1), -- 1 Đang hoạt động, 2 đang sửa chửa, 3 Đang xây
 	MaTang int,
 	MaLoaiPhong int,
 	MaTrangThai int,
@@ -177,6 +177,11 @@ insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTan
 values (N'Phòng A101', 0, 2, 0, 1100000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
 values (N'Phòng A102', 0, 2, 0, 1100000, default, 1, 1, 1);
+
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A201', 0, 2, 0, 1100000, default, 1, 1, 1);
+insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
+values (N'Phòng A202', 0, 2, 0, 1100000, default, 1, 1, 1);
 go
 create table Giuong
 (
@@ -196,6 +201,15 @@ insert into Giuong (TenGiuong, TrangThai, MaPhong)
 values (N'Giường 1', 'A', 2);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
 values (N'Giường 2', 'A', 2);
+
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
+values (N'Giường 1', 'A', 3);
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
+values (N'Giường 2', 'A', 3);
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
+values (N'Giường 1', 'A', 4);
+insert into Giuong (TenGiuong, TrangThai, MaPhong) 
+values (N'Giường 2', 'A', 4);
 go
 create table DichVu
 (

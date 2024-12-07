@@ -120,7 +120,8 @@
                                         <li><h4>Số Ngày Thuê</h4><span>@Model.SoNgayThue ngày</span></li>
                                         <li><h4>Số Tháng Thuê</h4><span>@Model.SoThangThue tháng</span></li>
                                         <li><h4>Thành Tiền</h4><span>@Model.ThanhTien.ToString("#,##0") vnđ</span></li>
-                                        <li><h4>phòng</h4><span>@Model.Giuong.Phong.TenPhong</span></li>
+                                        <li><h4>Giường</h4><span>(Mã giường: @Model.Giuong.MaGiuong) @Model.Giuong.TenGiuong</span></li>
+                                        <li><h4>phòng</h4><span>(Mã phòng: @Model.Giuong.Phong.MaPhong) @Model.Giuong.Phong.TenPhong</span></li>
                                         <li><h4>Đã Ở/Còn Trống</h4><span>@Model.Giuong.Phong.DaO/@Model.Giuong.Phong.ConTrong</span></li>
                                         <li><h4>Tầng</h4><span>@Model.Giuong.Phong.Tang.TenTang</span></li>
                                         <li><h4>Khu</h4><span>@Model.Giuong.Phong.Tang.Khu.TenKhu</span></li>

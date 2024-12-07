@@ -83,7 +83,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
         #region Thêm mới hợp đồng
         [HttpPost]
-        public async Task<ActionResult> DangKy(int iGiuongChon, int iMaThoiHanDangKy)
+        public async Task<ActionResult>  DangKy(int iGiuongChon, int iMaThoiHanDangKy)
         {
             // Lấy thông tin phòng từ giường
             Giuong giuong = await _db.Giuong.FindAsync(iGiuongChon);
@@ -167,7 +167,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                     SoThangThue = tongSoThangThue,
                     ThanhTien = thanhTien,
 
-                    MaGiuong = giuong.MaPhong,
+                    MaGiuong = giuong.MaGiuong,
                     MaSinhVien = maSinhVien,
                     MaThoiHanDangKy = iMaThoiHanDangKy,
                     TaiKhoanNV = null,
@@ -180,7 +180,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 _db.HopDong.Add(hoopDongThue);
 
                 #region Cập nhật lại trạng thái giường và hủy số lượng ở trong phòng
-                giuong.TrangThai = Constant.GiuongTrong;
+                giuong.TrangThai = Constant.ChoXacNhan;
 
                 Phong phong = await _db.Phong.FindAsync(giuong.Phong.MaPhong);
                 if (phong == null)
