@@ -178,6 +178,22 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
 
                 _db.HopDong.Add(hoopDongThue);
+
+                #region Cập nhật lại trạng thái giường và hủy số lượng ở trong phòng
+                giuong.TrangThai = Constant.GiuongTrong;
+
+                Phong phong = await _db.Phong.FindAsync(giuong.Phong.MaPhong);
+                if (phong == null)
+                {
+                    TempData["ToastMessage"] = "error|Không tồn tại phòng.";
+                    return RedirectToAction("Index", "HopDong");
+                }
+
+                phong.DaO++;
+                phong.ConTrong--;
+                await _db.SaveChangesAsync();
+                #endregion
+
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Thêm hợp đồng thuê thành công.";
@@ -319,9 +335,31 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 HopDong hopDong = await _db.HopDong.FindAsync(iMaHopDong);
                 if (hopDong == null)
                 {
-                    TempData["ToastMessage"] = "error|Hợp đồng không tồn tại khu.";
+                    TempData["ToastMessage"] = "error|Hợp đồng không tồn tại.";
                     return RedirectToAction("Index", "HopDong");
                 }
+
+                #region Cập nhật lại trạng thái giường và hủy số lượng ở trong phòng
+                Giuong giuong = await _db.Giuong.FindAsync(hopDong.MaGiuong);
+                if (giuong == null)
+                {
+                    TempData["ToastMessage"] = "error|Không tồn tại khu.";
+                    return RedirectToAction("Index", "HopDong");
+                }
+                giuong.TrangThai = Constant.GiuongTrong;
+
+
+                Phong phong = await _db.Phong.FindAsync(giuong.MaPhong);
+                if (phong == null)
+                {
+                    TempData["ToastMessage"] = "error|Không tồn tại phòng.";
+                    return RedirectToAction("Index", "HopDong");
+                }
+
+                phong.DaO--;
+                phong.ConTrong++;
+                await _db.SaveChangesAsync();
+                #endregion
 
                 _db.HopDong.Remove(hopDong);
                 await _db.SaveChangesAsync();

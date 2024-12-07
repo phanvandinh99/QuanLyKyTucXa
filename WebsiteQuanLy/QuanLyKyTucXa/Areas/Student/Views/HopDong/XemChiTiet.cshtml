@@ -120,11 +120,11 @@
                                         <li><h4>Số Ngày Thuê</h4><span>@Model.SoNgayThue ngày</span></li>
                                         <li><h4>Số Tháng Thuê</h4><span>@Model.SoThangThue tháng</span></li>
                                         <li><h4>Thành Tiền</h4><span>@Model.ThanhTien.ToString("#,##0") vnđ</span></li>
-                                        <li><h4>phòng</h4><span>@Model.Phong.TenPhong</span></li>
-                                        <li><h4>Đã Ở/Còn Trống</h4><span>@Model.Phong.DaO/@Model.Phong.ConTrong</span></li>
-                                        <li><h4>Tầng</h4><span>@Model.Phong.Tang.TenTang</span></li>
-                                        <li><h4>Khu</h4><span>@Model.Phong.Tang.Khu.TenKhu</span></li>
-                                        <li><h4>Loại</h4><span>@Model.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu</span></li>
+                                        <li><h4>phòng</h4><span>@Model.Giuong.Phong.TenPhong</span></li>
+                                        <li><h4>Đã Ở/Còn Trống</h4><span>@Model.Giuong.Phong.DaO/@Model.Giuong.Phong.ConTrong</span></li>
+                                        <li><h4>Tầng</h4><span>@Model.Giuong.Phong.Tang.TenTang</span></li>
+                                        <li><h4>Khu</h4><span>@Model.Giuong.Phong.Tang.Khu.TenKhu</span></li>
+                                        <li><h4>Loại</h4><span>@Model.Giuong.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu</span></li>
                                     </ul>
                                 </div>
                                 <div id="at-dichvu" class="at-propertydetails at-aboutproperty">
@@ -132,11 +132,11 @@
                                         <h3>Dịch Vụ</h3>
                                     </div>
                                     <div class="at-description">
-                                        @if (Model.Phong.DichVuPhong.Count > 0)
+                                        @if (Model.Giuong.Phong.DichVuPhong.Count > 0)
                                         {
-                                            foreach (var dichvu in Model.Phong.DichVuPhong)
+                                            foreach (var dichvu in Model.Giuong.Phong.DichVuPhong)
                                             {
-                                                var isLast = dichvu == Model.Phong.DichVuPhong.Last();
+                                                var isLast = dichvu == Model.Giuong.Phong.DichVuPhong.Last();
                                                 <span>@dichvu.DichVu.TenDichVu@(isLast ? "" : ", ")</span>
                                             }
                                         }
@@ -144,60 +144,12 @@
                                 </div>
                                 @if (@Model.TrangThai == Constant.ChoDuyet)
                                 {
-                                    <a href="/Student/HopDong/Xoa?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="at-btn at-btnactive">Xóa</a>
+                                    <a href="/Student/HopDong/Xoa?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-danger">Hủy Đăng Ký</a>
                                 }
                                 @if (@Model.ThanhToan == Constant.ChuaThanhToan)
                                 {
                                     <a href="/Student/HopDong/ThanhToan?iMaHopDong=@Model.MaHopDong" id="btnDangKy" class="btn btn-primary">Thanh Toán</a>
                                 }
-
-                                <div id="at-locationsproperty" class="at-propertydetails at-locationsproperty" style="display:none">
-                                    <div class="at-propertytitle">
-                                        <h3>Giường</h3>
-                                    </div>
-                                    <div class="at-description">
-                                        <p>Thông tin giường của phòng @Model.Phong.TenPhong</p>
-                                    </div>
-
-                                    <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
-                                        <div class="at-nearbylocations">
-                                            <ul class="list-unstyled" style="padding-left: 0;">
-                                                @if (Model.Phong.Giuong.Count > 0)
-                                                {
-                                                    foreach (var giuong in Model.Phong.Giuong)
-                                                    {
-                                                        <li class="d-flex align-items-center mb-2">
-                                                            @if (Constant.GiuongTrong.Equals(giuong.TrangThai))
-                                                            {
-                                                                <input type="radio" name="iGiuongChon" value="@giuong.MaGiuong" id="giuong_@giuong.MaGiuong" class="form-check-input me-2" />
-                                                                <label for="giuong_@giuong.MaGiuong" class="d-flex align-items-center mb-0">
-                                                                    <img src="~/Assets/Student/images/AnhGiuong/Giuong_Trong.png" alt="Giường trống" class="me-2" style="width: 20px; height: 20px;" />
-                                                                    <span>&nbsp; @giuong.TenGiuong - Trống</span>
-                                                                </label>
-                                                            }
-                                                            else if (Constant.ChoXacNhan.Equals(giuong.TrangThai))
-                                                            {
-                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_ChoXacNhan.png" alt="Chờ xác nhận" class="me-2" style="width: 20px; height: 20px;" />
-                                                                <span>&nbsp; @giuong.TenGiuong - Chờ Xác Nhận</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/Assets/Student/images/AnhGiuong/Giuong_DaO.png" alt="Đã đăng ký" class="me-2" style="width: 20px; height: 20px;" />
-                                                                <span>&nbsp; @giuong.TenGiuong - Đã Đăng Ký</span>
-                                                            }
-                                                        </li>
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    <div class="col-12">
-                                                        <label class="form-label text-danger">Lưu ý: Giường trống</label>
-                                                    </div>
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

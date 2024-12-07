@@ -134,7 +134,7 @@
                                                         <span class="f-light f-w-600">Mã HD</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 15%;">
+                                                <th data-sortable="true" style="width: 10%;">
                                                     <span class="datatable-sorter sort" data-sort="TenThoiHanDangKy">
                                                         <span class="f-light f-w-600">Tên Hợp Đồng</span>
                                                     </span>
@@ -144,12 +144,12 @@
                                                         <span class="f-light f-w-600">Ho</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 10%;">
+                                                <th data-sortable="true" style="width: 5%;">
                                                     <span class="datatable-sorter sort" data-sort="Ten">
                                                         <span class="f-light f-w-600">Ten</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 12%;">
+                                                <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="TenPhong">
                                                         <span class="f-light f-w-600">Giường</span>
                                                     </span>
@@ -181,7 +181,15 @@
                                                         <td class="TenThoiHanDangKy"><p class="f-light">@item.ThoiHanDangKy.TenThoiHanDangKy</p></td>
                                                         <td class="Ho"><p class="f-light">@item.SinhVien.Ho</p></td>
                                                         <td class="Ten"><p class="f-light">@item.SinhVien.Ten</p></td>
-                                                        <td class="TenPhong"><p class="f-light">@item.Giuong.TenGiuong/@item.Giuong.Phong.TenPhong</p></td>
+                                                        <td class="TenPhong">
+                                                            <p class="f-light">
+                                                                @item.Giuong.TenGiuong<br />
+                                                                @item.Giuong.Phong.TenPhong<br />
+                                                                @item.Giuong.Phong.Tang.TenTang<br />
+                                                                @item.Giuong.Phong.Tang.Khu.TenKhu<br />
+                                                                @item.Giuong.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu
+                                                            </p>
+                                                        </td>
                                                         @switch (@item.TrangThai)
                                                         {
                                                             case Constant.ChoDuyet:
@@ -211,7 +219,7 @@
                                                         <td class="thaoTac">
                                                             <div class="product-action">
                                                                 <a href="/QLKTX/HopDong/CapNhat?iMaHopDong=@item.MaHopDong"><i class="fa fa-info-circle"></i></a>
-                                                                <a href="/QLKTX/HopDong/CapNhat?iMaHopDong=@item.MaHopDong"><i class="fa fa-edit"></i></a>
+                                                                <a href="/QLKTX/HopDong/DuyetHopDong?iMaHopDong=@item.MaHopDong"><i class="fa fa-check" aria-hidden="true">Duyệt</i></a>
                                                                 <a href="/QLKTX/HopDong/Xoa?iMaHopDong=@item.MaHopDong" class="text-danger"><i class="fa fa-trash"></i></a>
                                                             </div>
                                                         </td>

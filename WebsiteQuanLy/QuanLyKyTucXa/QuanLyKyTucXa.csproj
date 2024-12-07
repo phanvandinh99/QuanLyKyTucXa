@@ -1044,6 +1044,7 @@
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
     <Compile Include="Areas\QLKTX\Controllers\DonGiaController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\HoaDonController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HopDongController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\LoaiHoaDonController.cs" />
@@ -1167,6 +1168,10 @@
     <Content Include="Areas\Student\Views\Publict\NoiQuy.cshtml" />
     <Content Include="Areas\Student\Views\Publict\LienHe.cshtml" />
     <Content Include="Areas\QLKTX\Views\HopDong\HopDongCanDuyet.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HopDong\CapNhat.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HoaDon\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HoaDon\HoaDonKhu.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HoaDon\ThemHoaDon.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

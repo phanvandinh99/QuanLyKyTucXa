@@ -151,7 +151,7 @@
                                             <p>Thông tin giường của phòng @Model.TenPhong</p>
                                         </div>
 
-                                        <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: 556px;">
+                                        <div id="at-nearbylocations-holder" class="at-nearbylocations-holder" data-readmore="" aria-expanded="false" style="max-height: none; height: auto!important;">
                                             <div class="at-nearbylocations">
                                                 <ul class="list-unstyled" style="padding-left: 0;">
                                                     @if (Model.Giuong.Count > 0)
@@ -232,14 +232,13 @@
                                                     </div>
                                                 }
                                             </div>
+
+                                            @if (Model.Giuong.Any(g => Constant.GiuongTrong.Equals(g.TrangThai)) && listLThoiHanDangKy != null && listLThoiHanDangKy.Any())
+                                            {
+                                                <button type="submit" id="btnDangKy" style="margin-top:30px" class="btn btn-primary">Đăng Ký</button>
+                                            }
                                         </div>
                                     </div>
-                                    if (Model.Giuong.Any(g => Constant.GiuongTrong.Equals(g.TrangThai)) && listLThoiHanDangKy != null && listLThoiHanDangKy.Any())
-                                    {
-                                        <div class="at-btnarea">
-                                            <button type="submit" id="btnDangKy" class="at-btn at-btnactive">Đăng Ký</button>
-                                        </div>
-                                    }
                                 }
                             </div>
                         </div>

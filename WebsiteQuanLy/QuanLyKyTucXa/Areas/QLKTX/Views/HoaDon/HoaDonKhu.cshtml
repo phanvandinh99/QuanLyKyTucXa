@@ -1,10 +1,8 @@
 ﻿@using QuanLyKyTucXa.Models
-@using QuanLyKyTucXa.Common.Const
-
-@model List<HopDong>
+@model List<Khu>
 
 @{
-    ViewBag.Title = "Danh Sách Hợp Đồng";
+    ViewBag.Title = "Thêm Hóa Đơn Theo Khu";
     Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
@@ -16,7 +14,7 @@
             <div class="row">
                 <div class="col-6">
                     <h4>
-                        Quản Lý Hợp Đồng
+                        Thêm Hóa Đơn @ViewBag.TenLoaiHoaDon
                     </h4>
                 </div>
                 <div class="col-6">
@@ -29,7 +27,7 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">Trang Chủ </li>
-                        <li class="breadcrumb-item active">Quản Lý Hợp Đồng</li>
+                        <li class="breadcrumb-item active">Thêm hóa Đơn @ViewBag.TenLoaiHoaDon</li>
                     </ol>
                 </div>
             </div>
@@ -43,20 +41,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="list-product-header">
-                            <div>
-                                <div class="light-box">
-                                    <a data-bs-toggle="collapse" href="#collapseProduct" role="button" aria-expanded="false" aria-controls="collapseProduct">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter filter-icon show">
-                                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-                                        </svg><i class="icon-close filter-close hide">
-                                        </i>
-                                    </a>
-                                </div>
-                                @*<a class="btn btn-primary" href="/QLKTX/LoaiHoaDon/ThemMoi">
-                                        <i class="fa fa-plus"></i>
-                                        Thêm Hợp Đồng
-                                    </a>*@
-                            </div>
                             <!-- #region Lọc -->
                             <div class="collapse" id="collapseProduct">
                                 <div class="card card-body list-product-body">
@@ -107,7 +91,7 @@
                             <!-- #endregion Lọc -->
                         </div>
 
-                        <div class="list-product" id="HopDong-list">
+                        <div class="list-product" id="LoaiHoaDon-list">
                             <div class="datatable-wrapper">
                                 <div class="datatable-top">
                                     <div class="datatable-dropdown">
@@ -129,43 +113,23 @@
                                     <table class="table datatable-table" id="project-status">
                                         <thead>
                                             <tr>
-                                                <th data-sortable="true" style="width: 5%;">
-                                                    <span class="datatable-sorter sort" data-sort="MaHopDong">
-                                                        <span class="f-light f-w-600">Mã HD</span>
-                                                    </span>
-                                                </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenThoiHanDangKy">
-                                                        <span class="f-light f-w-600">Tên Hợp Đồng</span>
+                                                    <span class="datatable-sorter sort" data-sort="MaKhu">
+                                                        <span class="f-light f-w-600">Mã Khu</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 15%;">
-                                                    <span class="datatable-sorter sort" data-sort="Ho">
-                                                        <span class="f-light f-w-600">Ho</span>
-                                                    </span>
-                                                </th>
-                                                <th data-sortable="true" style="width: 5%;">
-                                                    <span class="datatable-sorter sort" data-sort="Ten">
-                                                        <span class="f-light f-w-600">Ten</span>
-                                                    </span>
-                                                </th>
-                                                <th data-sortable="true" style="width: 20%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenPhong">
-                                                        <span class="f-light f-w-600">Giường</span>
-                                                    </span>
-                                                </th>
-                                                <th data-sortable="true" style="width: 8%;">
-                                                    <span class="datatable-sorter sort" data-sort="TrangThai">
-                                                        <span class="f-light f-w-600">Trạng Thái</span>
-                                                    </span>
-                                                </th>
-                                                <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="ThanhToan">
-                                                        <span class="f-light f-w-600">Thanh Toán</span>
-                                                    </span>
-                                                </th>
-                                                <th data-sortable="true" style="width: 10%;">
+                                                <th data-sortable="true" style="width: 30%;">
                                                     <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Tên Khu</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 30%;">
+                                                    <span class="datatable-sorter sort" data-sort="LoaiKhu">
+                                                        <span class="f-light f-w-600">Loại Khu</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 9%;">
+                                                    <span class="datatable-sorter sort" data-sort="thaoTac">
                                                         <span class="f-light f-w-600">Thao Tác</span>
                                                     </span>
                                                 </th>
@@ -176,49 +140,14 @@
                                             {
                                                 foreach (var item in Model)
                                                 {
-                                                    <tr data-index="@item.MaHopDong">
-                                                        <td class="MaHopDong"><p class="f-light">@item.MaHopDong</p></td>
-                                                        <td class="TenThoiHanDangKy"><p class="f-light">@item.ThoiHanDangKy.TenThoiHanDangKy</p></td>
-                                                        <td class="Ho"><p class="f-light">@item.SinhVien.Ho</p></td>
-                                                        <td class="Ten"><p class="f-light">@item.SinhVien.Ten</p></td>
-                                                        <td class="TenPhong">
-                                                            <p class="f-light">
-                                                                @item.Giuong.TenGiuong<br />
-                                                                @item.Giuong.Phong.TenPhong<br />
-                                                                @item.Giuong.Phong.Tang.TenTang<br />
-                                                                @item.Giuong.Phong.Tang.Khu.TenKhu<br />
-                                                                @item.Giuong.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu
-                                                            </p>
-                                                        </td>
-                                                        @switch (@item.TrangThai)
-                                                        {
-                                                            case Constant.ChoDuyet:
-                                                                <td class="TrangThai"><p class="f-light">Chờ Duyệt</p></td>
-                                                                break;
-
-                                                            case Constant.DaDuyet:
-                                                                <td class="TrangThai"><p class="f-light">Đã Duyệt</p></td>
-                                                                break;
-                                                            default:
-                                                                <td class="TrangThai"><p class="f-light">Trạng thái không xác định</p></td>
-                                                                break;
-                                                        }
-                                                        @switch (@item.ThanhToan)
-                                                        {
-                                                            case Constant.DaThanhToan:
-                                                                <td class="ThanhToan"><p class="f-light">Đã Thanh Toán</p></td>
-                                                                break;
-
-                                                            case Constant.ChuaThanhToan:
-                                                                <td class="ThanhToan"><p class="f-light">Chưa Thanh Toán</p></td>
-                                                                break;
-                                                            default:
-                                                                <td class="ThanhToan"><p class="f-light">Chưa Thanh Toán</p></td>
-                                                                break;
-                                                        }
+                                                    <tr data-index="@item.MaKhu">
+                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.MaKhu</p></td>
+                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.TenKhu</p></td>
+                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.LoaiKhu.TenLoaiKhu</p></td>
                                                         <td class="thaoTac">
                                                             <div class="product-action">
-                                                                <a href="/QLKTX/HopDong/CapNhat?iMaHopDong=@item.MaHopDong"><i class="fa fa-info-circle"></i></a>
+                                                                <a href="/QLKTX/LoaiHoaDon/CapNhat?iMaLoaiHoaDon=@item.MaKhu"><i class="fa fa-info-circle"></i></a>
+                                                                <a href="/QLKTX/LoaiHoaDon/CapNhat?iMaLoaiHoaDon=@item.MaKhu"><i class="fa fa-plug"></i>Thêm Mới</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -251,12 +180,12 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['MaHopDong', 'TenThoiHanDangKy', 'Ho', 'Ten', 'TenPhong', 'ThanhToan', 'TrangThai'],
+            valueNames: ['MaLoaiHoaDon', 'TenLoaiHoaDon'],
             page: 5, // Số dòng hiển thị trên trang
             pagination: true
         };
 
-        var studentList = new List('HopDong-list', options);
+        var studentList = new List('LoaiHoaDon-list', options);
 
         function updatePagination() {
             var selector = document.querySelector('.datatable-selector');
