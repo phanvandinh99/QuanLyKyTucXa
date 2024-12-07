@@ -50,5 +50,10 @@
         public const bool DaThanhToan = true;
         public const bool ChuaThanhToan = false;
 
+        // Thông báo đặt phòng thành công
+        public const string NoiDungDatPhong= "Bạn đã đặt phòng thành công";
+        public const int DuyetPhong = 1; // Loại thông báo: Duyệt phòng thành công
+        public const string TitleDatPhong = "Thông Báo Xác Nhận Ở Phòng Ký Túc Xá";
+
     }
 }

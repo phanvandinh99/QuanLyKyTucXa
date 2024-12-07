@@ -4,7 +4,7 @@
 @model List<HopDong>
 
 @{
-    ViewBag.Title = "Hợp Đồng Sinh Viên";
+    ViewBag.Title = "Danh Sách Hợp Đồng";
     Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
@@ -107,7 +107,7 @@
                             <!-- #endregion Lọc -->
                         </div>
 
-                        <div class="list-product" id="LoaiHoaDon-list">
+                        <div class="list-product" id="HopDong-list">
                             <div class="datatable-wrapper">
                                 <div class="datatable-top">
                                     <div class="datatable-dropdown">
@@ -129,38 +129,43 @@
                                     <table class="table datatable-table" id="project-status">
                                         <thead>
                                             <tr>
-                                                <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="MaKhu">
-                                                        <span class="f-light f-w-600">Mã Hợp Đồng</span>
+                                                <th data-sortable="true" style="width: 5%;">
+                                                    <span class="datatable-sorter sort" data-sort="MaHopDong">
+                                                        <span class="f-light f-w-600">Mã HD</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 20%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                <th data-sortable="true" style="width: 15%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenThoiHanDangKy">
                                                         <span class="f-light f-w-600">Tên Hợp Đồng</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 15%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="Ho">
                                                         <span class="f-light f-w-600">Ho</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="Ten">
                                                         <span class="f-light f-w-600">Ten</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 20%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                <th data-sortable="true" style="width: 12%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenPhong">
+                                                        <span class="f-light f-w-600">Giường</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 8%;">
+                                                    <span class="datatable-sorter sort" data-sort="TrangThai">
                                                         <span class="f-light f-w-600">Trạng Thái</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 20%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                <th data-sortable="true" style="width: 10%;">
+                                                    <span class="datatable-sorter sort" data-sort="ThanhToan">
                                                         <span class="f-light f-w-600">Thanh Toán</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="thaoTac">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
                                                         <span class="f-light f-w-600">Thao Tác</span>
                                                     </span>
                                                 </th>
@@ -172,34 +177,35 @@
                                                 foreach (var item in Model)
                                                 {
                                                     <tr data-index="@item.MaHopDong">
-                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.MaHopDong</p></td>
-                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.ThoiHanDangKy.TenThoiHanDangKy</p></td>
-                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.SinhVien.Ho</p></td>
-                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.SinhVien.Ten</p></td>
+                                                        <td class="MaHopDong"><p class="f-light">@item.MaHopDong</p></td>
+                                                        <td class="TenThoiHanDangKy"><p class="f-light">@item.ThoiHanDangKy.TenThoiHanDangKy</p></td>
+                                                        <td class="Ho"><p class="f-light">@item.SinhVien.Ho</p></td>
+                                                        <td class="Ten"><p class="f-light">@item.SinhVien.Ten</p></td>
+                                                        <td class="TenPhong"><p class="f-light">@item.Giuong.TenGiuong/@item.Giuong.Phong.TenPhong</p></td>
                                                         @switch (@item.TrangThai)
                                                         {
                                                             case Constant.ChoDuyet:
-                                                                <td>Chờ Duyệt</td>
+                                                                <td class="TrangThai"><p class="f-light">Chờ Duyệt</p></td>
                                                                 break;
 
                                                             case Constant.DaDuyet:
-                                                                <td>Đã Duyệt</td>
+                                                                <td class="TrangThai"><p class="f-light">Đã Duyệt</p></td>
                                                                 break;
                                                             default:
-                                                                <td>Trạng thái không xác định</td>
+                                                                <td class="TrangThai"><p class="f-light">Trạng thái không xác định</p></td>
                                                                 break;
                                                         }
                                                         @switch (@item.ThanhToan)
                                                         {
                                                             case Constant.DaThanhToan:
-                                                                <td>Đã Thanh Toán</td>
+                                                                <td class="ThanhToan"><p class="f-light">Đã Thanh Toán</p></td>
                                                                 break;
 
                                                             case Constant.ChuaThanhToan:
-                                                                <td>Chưa Thanh Toán</td>
+                                                                <td class="ThanhToan"><p class="f-light">Chưa Thanh Toán</p></td>
                                                                 break;
                                                             default:
-                                                                <td>Chưa Thanh Toán</td>
+                                                                <td class="ThanhToan"><p class="f-light">Chưa Thanh Toán</p></td>
                                                                 break;
                                                         }
                                                         <td class="thaoTac">
@@ -239,12 +245,12 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['MaLoaiHoaDon', 'TenLoaiHoaDon'],
+            valueNames: ['MaHopDong', 'TenThoiHanDangKy', 'Ho', 'Ten', 'TenPhong', 'ThanhToan', 'TrangThai'],
             page: 5, // Số dòng hiển thị trên trang
             pagination: true
         };
 
-        var studentList = new List('LoaiHoaDon-list', options);
+        var studentList = new List('HopDong-list', options);
 
         function updatePagination() {
             var selector = document.querySelector('.datatable-selector');

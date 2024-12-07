@@ -161,6 +161,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 {
                     TenHopDong = thoiHanDangKy.TenThoiHanDangKy,
                     NgayDuyet = null,
+                    NgayDenHanThanhToan = thoiHanDangKy.NgayKetThuc,
                     GiaThue = giuong.Phong.GiaThue,
                     SoNgayThue = soNgayThue,
                     SoThangThue = tongSoThangThue,

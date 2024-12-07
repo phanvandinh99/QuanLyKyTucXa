@@ -110,6 +110,7 @@
                                             <tr>
                                                 <th>Mã</th>
                                                 <th>Tên Hợp Đồng</th>
+                                                <th>Giường</th>
                                                 <th>Phòng</th>
                                                 <th>Ngày Ở</th>
                                                 <th>Ngày Kết Thúc</th>
@@ -124,7 +125,8 @@
                                                 <tr>
                                                     <td>@item.MaHopDong</td>
                                                     <td>@item.ThoiHanDangKy.TenThoiHanDangKy</td>
-                                                    <td>@item.Phong.TenPhong</td>
+                                                    <td>@item.Giuong.TenGiuong</td>
+                                                    <td>@item.Giuong.Phong.TenPhong</td>
                                                     <td>@item.ThoiHanDangKy.NgayBatDau</td>
                                                     <td>@item.ThoiHanDangKy.NgayKetThuc</td>
                                                     @switch (@item.TrangThai)

@@ -399,6 +399,7 @@ create table LoaiThongBao
 	TenLoaiThongBao nvarchar(150) not null,
 )
 go
+insert into LoaiThongBao (TenLoaiThongBao) values (N'Duyệt Phòng');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Điện');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Nước');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Hoàn Tất Thanh Toán');
