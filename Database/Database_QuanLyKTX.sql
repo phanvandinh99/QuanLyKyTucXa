@@ -334,7 +334,7 @@ create table HopDong
 	SoThangThue float not null,
 	ThanhTien float not null,
 
-	MaPhong int,
+	MaGiuong int,
 	MaSinhVien varchar(10),
 	MaThoiHanDangKy int,
 	TaiKhoanNV varchar(10) null,
@@ -343,7 +343,7 @@ create table HopDong
 	TrangThai bit not null, -- Chờ xác nhận / duyệt
 	ThanhToan bit not null, -- Đã thanh toán/ chưa thanh toán
 
-	Constraint fk_HopDong_Phong Foreign Key (MaPhong) references Phong(MaPhong),
+	Constraint fk_HopDong_Giuong Foreign Key (MaGiuong) references Giuong(MaGiuong),
 	Constraint fk_HopDong_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
 	Constraint fk_HopDong_ThoiHanDangKy Foreign Key (MaThoiHanDangKy) references ThoiHanDangKy(MaThoiHanDangKy),
 )
@@ -365,5 +365,57 @@ create table HoaDon
 	Constraint fk_HoaDon_Phong Foreign Key (MaPhong) references Phong(MaPhong),
 	Constraint fk_HoaDon_DonGia Foreign Key (MaDonGia) references DonGia(MaDonGia),
 	Constraint fk_HoaDon_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+)
+go
+create table LoaiViPham
+(
+	MaLoaiViPham int identity(1,1) primary key,
+	TenLoaiViPham nvarchar(150) not null,
+)
+go
+insert into LoaiViPham (TenLoaiViPham) values (N'Vi Phạm Nội Quy');
+insert into LoaiViPham (TenLoaiViPham) values (N'Quá hạn Thanh Toán');
+insert into LoaiViPham (TenLoaiViPham) values (N'Hư Hỏng Vật Chất');
+go
+create table ViPham
+(
+	MaViPham int identity(1,1) primary key,
+	NoiDung nvarchar(max) not null,
+	NgayGui datetime not null,
+	NgayXem datetime null,
+
+	MaLoaiViPham int,
+	MaSinhVien varchar(10),
+	TaiKhoanNV varchar(10),
+
+	Constraint fk_ViPham_LoaiViPham Foreign Key (MaLoaiViPham) references LoaiViPham(MaLoaiViPham),
+	Constraint fk_ViPham_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
+	Constraint fk_ViPham_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+)
+go
+create table LoaiThongBao
+(
+	MaLoaiThongBao int identity(1,1) primary key,
+	TenLoaiThongBao nvarchar(150) not null,
+)
+go
+insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Điện');
+insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Nước');
+insert into LoaiThongBao (TenLoaiThongBao) values (N'Hoàn Tất Thanh Toán');
+go
+create table ThongBao
+(
+	MaThongBao int identity(1,1) primary key,
+	NoiDung nvarchar(max) not null,
+	NgayGui datetime not null,
+	NgayXem datetime null,
+
+	MaLoaiThongBao int,
+	MaSinhVien varchar(10),
+	TaiKhoanNV varchar(10),
+
+	Constraint fk_ThongBao_LoaiThongBao Foreign Key (MaLoaiThongBao) references LoaiThongBao(MaLoaiThongBao),
+	Constraint fk_ThongBao_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
+	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
