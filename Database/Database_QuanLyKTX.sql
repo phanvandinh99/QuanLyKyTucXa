@@ -28,6 +28,9 @@ create table SinhVien
 	DaXoa bit not null,
 )
 go
+INSERT SinhVien (MaSinhVien, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, DanToc, DiemUuTien, TrangThai, DaXoa) 
+VALUES (N'111', N'Abc123', N'AnhTestSinhVien.jpg', N'Sinh Viên', N'Test', 0, CAST(N'1999-11-12 00:00:00.000' AS DateTime), N'Test@gmail.com', N'0971010281', N'Kinh', 0, 1, 0)
+go
 create  table DienChinhSach
 (
 	MaDienChinhSach int identity(1,1) primary key,
@@ -173,23 +176,7 @@ go
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
 values (N'Phòng A101', 0, 2, 0, 1100000, default, 1, 1, 1);
 insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A102', 0, 4, 0, 1200000, default, 1, 2, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A103', 0, 6, 0, 1300000, default, 1, 3, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A104', 0, 8, 0, 1400000, default, 1, 4, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A105', 0, 10, 0, 1500000, default, 1, 5, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A106', 0, 12, 0, 1600000, default, 1, 6, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A107', 0, 2, 0, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A108', 0, 2, 0, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A109', 1, 7, 0, 1000000, default, 1, 1, 1);
-insert into Phong (TenPhong, DaO, ConTrong, GiaDichVu, GiaThue, TrangThai, MaTang, MaLoaiPhong, MaTrangThai) 
-values (N'Phòng A110-', 1, 7, 0, 1000000, default, 1, 1, 1);
+values (N'Phòng A102', 0, 2, 0, 1100000, default, 1, 1, 1);
 go
 create table Giuong
 (
@@ -202,19 +189,13 @@ create table Giuong
 )
 go
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 1', 'C', 1);
+values (N'Giường 1', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 2', 'B', 1);
+values (N'Giường 2', 'A', 1);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 3', 'A', 1);
+values (N'Giường 1', 'A', 2);
 insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 4', 'A', 1);
-insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 5', 'A', 1);
-insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 6', 'A', 1);
-insert into Giuong (TenGiuong, TrangThai, MaPhong) 
-values (N'Giường 7', 'A', 1);
+values (N'Giường 2', 'A', 2);
 go
 create table DichVu
 (
@@ -248,13 +229,13 @@ values (default , default, 1, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
 values (default , default, 2, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
-values (default , default, 3, 1);
+values (default , default, 1, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
-values (default , default, 4, 1);
+values (default , default, 2, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
-values (default , default, 5, 1);
+values (default , default, 1, 1);
 insert into DichVuPhong (Xoa, NgayThem, MaPhong, MaDichVu) 
-values (default , default, 1, 2);
+values (default , default, 2, 2);
 go
 create table ThoiHanDangKy
 (
@@ -273,7 +254,7 @@ create table LoaiHoaDon
 	TenLoaiHoaDon nvarchar(100) not null,
 )
 go
-insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Tiền Điện');
+insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Điện');
 insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Nước');
 insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Tiền Rác');
 insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Wifi');
