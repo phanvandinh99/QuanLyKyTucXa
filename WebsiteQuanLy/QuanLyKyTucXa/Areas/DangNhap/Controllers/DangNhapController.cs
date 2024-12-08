@@ -60,6 +60,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
                                             ["Ho"] = HttpUtility.UrlEncode( nhanVien.Ho, Encoding.UTF8),
                                             ["Ten"] = HttpUtility.UrlEncode( nhanVien.Ten, Encoding.UTF8),
                                             ["MaQuyen"] = nhanVien.MaQuyen.ToString(),
+                                            ["AnhChanDung"] = nhanVien.AnhChanDung.ToString(),
                                 },
                                 Expires = DateTime.Now.AddDays(1)
                             };
@@ -77,6 +78,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
                                             ["Ho"] = HttpUtility.UrlEncode( nhanVien.Ho, Encoding.UTF8),
                                             ["Ten"] = HttpUtility.UrlEncode( nhanVien.Ten, Encoding.UTF8),
                                             ["MaQuyen"] = nhanVien.MaQuyen.ToString(),
+                                            ["AnhChanDung"] = nhanVien.AnhChanDung.ToString(),
                                 },
                                 Expires = DateTime.Now.AddDays(1)
                             };

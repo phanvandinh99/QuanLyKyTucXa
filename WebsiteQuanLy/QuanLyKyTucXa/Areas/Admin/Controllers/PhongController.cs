@@ -135,11 +135,11 @@ namespace QuanLyKyTucXa.Areas.Admin.Controllers
         #endregion
 
         #region Cập nhật Phòng
-        public async Task<ActionResult> CapNhat(int iMaTang)
+        public async Task<ActionResult> CapNhat(int iMaPhong)
         {
             try
             {
-                Phong phong = await _db.Phong.FindAsync(iMaTang);
+                Phong phong = await _db.Phong.FindAsync(iMaPhong);
                 ViewBag.Khu = await _db.Khu.ToListAsync();
 
                 return View(phong);

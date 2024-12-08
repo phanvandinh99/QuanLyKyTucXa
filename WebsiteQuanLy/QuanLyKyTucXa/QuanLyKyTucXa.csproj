@@ -1089,6 +1089,7 @@
     <Compile Include="Models\ThoiHanDangKy.cs" />
     <Compile Include="Models\ThongBao.cs" />
     <Compile Include="Models\TrangThai.cs" />
+    <Compile Include="Models\ViewModel\PhongHoaDonViewModel.cs" />
     <Compile Include="Models\ViPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1172,6 +1173,7 @@
     <Content Include="Areas\QLKTX\Views\HoaDon\Index.cshtml" />
     <Content Include="Areas\QLKTX\Views\HoaDon\HoaDonKhu.cshtml" />
     <Content Include="Areas\QLKTX\Views\HoaDon\ThemHoaDon.cshtml" />
+    <Content Include="Areas\QLKTX\Views\HoaDon\XemHoaDon.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

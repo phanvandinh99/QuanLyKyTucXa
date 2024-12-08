@@ -69,6 +69,7 @@
         string sTaiKhoanNV = "";
         string sHo = "";
         string sTen = "";
+        string sAnhChanDung = "";
         int iMaQuyen;
 
         if (cookie != null)
@@ -76,6 +77,7 @@
             sTaiKhoanNV = cookie["TaiKhoanNV"];
             sHo = HttpUtility.UrlDecode(cookie["Ho"], Encoding.UTF8);
             sTen = HttpUtility.UrlDecode(cookie["Ten"], Encoding.UTF8);
+            sAnhChanDung = cookie["AnhChanDung"];
             iMaQuyen = int.Parse(cookie["MaQuyen"]);
         }
     }
@@ -546,7 +548,7 @@
                         <!-- #region Tài Khoản -->
                         <li class="profile-nav onhover-dropdown">
                             <div class="media profile-media">
-                                <img class="b-r-10" src="~/Assets/Admin/images/dashboard/profile.png" alt="">
+                                <img class="b-r-10" src="~/Assets/Admin/images/AnhNhanVien/@sAnhChanDung" alt="" style="height:40px;width:40px">
                                 <div class="media-body d-xxl-block d-none box-col-none">
                                     <div class="d-flex align-items-center gap-2">
                                         <span>@sHo @sTen</span>

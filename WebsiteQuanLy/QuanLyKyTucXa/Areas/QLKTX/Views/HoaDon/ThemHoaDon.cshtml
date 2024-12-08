@@ -1,11 +1,14 @@
-﻿@using QuanLyKyTucXa.Models
-@model List<Phong>
+﻿@using QuanLyKyTucXa.Models.ViewModel
+@model List<PhongHoaDonViewModel>
 
 @{
     ViewBag.Title = "Thêm Hóa Đơn Phòng";
     Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
 }
 
+@{
+    var index = 0;
+}
 <!-- #region Nội dung chính-->
 <div class="page-body">
     <!-- #region Tiêu đề -->
@@ -109,17 +112,18 @@
                                         <input class="datatable-input search" placeholder="Tìm kiếm..." type="search" />
                                     </div>
                                 </div>
-                                @using (Html.BeginForm("DuyetDanhSach", "SinhVien", FormMethod.Post))
+                                @using (Html.BeginForm("TaoHoaDon", "HoaDon", FormMethod.Post))
                                 {
+                                    <input type="hidden" name="iMaLoaiHoaDon" value="@ViewBag.MaLoaiHoaDon" />
                                     <div class="datatable-container">
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th data-sortable="true" style="width: 3%;">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input checkbox-primary" type="checkbox">
-                                                        </div>
-                                                    </th>
+                                                    @*<th data-sortable="true" style="width: 3%;">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input checkbox-primary" type="checkbox">
+                                                            </div>
+                                                        </th>*@
                                                     <th data-sortable="true" style="width: 5%;">
                                                         <span class="datatable-sorter sort" data-sort="ho">
                                                             <span class="f-light f-w-600">Mã Phòng</span>
@@ -133,11 +137,6 @@
                                                     <th data-sortable="true" style="width: 10%;">
                                                         <span class="datatable-sorter sort" data-sort="ten">
                                                             <span class="f-light f-w-600">Đã Ở/Còn Trống</span>
-                                                        </span>
-                                                    </th>
-                                                    <th data-sortable="true" style="width: 10%;">
-                                                        <span class="datatable-sorter sort" data-sort="ten">
-                                                            <span class="f-light f-w-600">Còn Trống</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 13%;">
@@ -157,31 +156,41 @@
                                                 {
                                                     foreach (var item in Model)
                                                     {
-                                                        <tr data-index="@item.MaPhong">
+                                                        <tr data-index="@item.Phong.MaPhong">
+                                                            <td class="ten">
+                                                                <p class="f-light">@item.Phong.MaPhong</p>
+                                                            </td>
+                                                            <td class="ten">
+                                                                <p class="f-light">@item.Phong.TenPhong, @item.Phong.Tang.TenTang</p>
+                                                            </td>
+                                                            <td class="ten">
+                                                                <p class="f-light">@item.Phong.DaO/@item.Phong.ConTrong</p>
+                                                            </td>
+                                                            <td class="ten">
+                                                                <input class="form-control" type="number"
+                                                                       value="@(item.HoaDon?.ChuSoCuoi ?? 0)"
+                                                                       name="hoaDonModels[@index].ChuSoDau" readonly />
+                                                            </td>
+                                                            <td class="ten">
+                                                                <input class="form-control" type="number" placeholder="Số mới"
+                                                                       name="hoaDonModels[@index].ChuSoCuoi"
+                                                                       min="@(item.HoaDon?.ChuSoCuoi ?? 0)" required />
+                                                            </td>
                                                             <td>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input checkbox-primary" type="checkbox" name="sMaSinhVien" value="@item.MaPhong">
-                                                                </div>
-                                                            </td>
-                                                            <td class="ten"><p class="f-light">@item.MaPhong</p></td>
-                                                            <td class="ten"><p class="f-light">@item.TenPhong, @item.Tang.TenTang</p></td>
-                                                            <td class="ten"><p class="f-light">@item.DaO/@item.ConTrong</p></td>
-                                                            <td class="ten"><p class="f-light">@item.ConTrong</p></td>
-                                                            <td class="ten">
-                                                                <input class="form-control"/>
-                                                            </td>
-                                                            <td class="ten">
-                                                                <input class="form-control" />
+                                                                <!-- Thêm hidden input để truyền MaPhong -->
+                                                                <input type="hidden" name="hoaDonModels[@index].MaPhong" value="@item.Phong.MaPhong" />
                                                             </td>
                                                         </tr>
+                                                        index++; // Tăng chỉ số tuần tự
                                                     }
                                                 }
                                                 else
                                                 {
                                                     <tr>
-                                                        <td colspan="9" class="text-center">Hiện tại phòng không có sinh viên đăng ký ở</td>
+                                                        <td colspan="9" class="text-center">Hiện tại phòng không có sinh viên đăng ký ở, Nên không thể thêm hóa đơn</td>
                                                     </tr>
                                                 }
+
                                             </tbody>
                                         </table>
                                     </div>

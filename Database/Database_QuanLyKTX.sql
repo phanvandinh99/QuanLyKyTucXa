@@ -224,6 +224,8 @@ insert into DichVu (TenDichVu, DonGia) values (N'Máy nóng lạnh', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Máy điều hòa', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Lọc nước', 10000);
 insert into DichVu (TenDichVu, DonGia) values (N'Tủ lạnh', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Máy Giặt', 10000);
+insert into DichVu (TenDichVu, DonGia) values (N'Máy Sưởi', 10000);
 go
 create table DichVuPhong
 (
@@ -270,8 +272,6 @@ create table LoaiHoaDon
 go
 insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Điện');
 insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Hóa Đơn Nước');
-insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Tiền Rác');
-insert into LoaiHoaDon (TenLoaiHoaDon) values (N'Wifi');
 go
 create table DonGia
 (
