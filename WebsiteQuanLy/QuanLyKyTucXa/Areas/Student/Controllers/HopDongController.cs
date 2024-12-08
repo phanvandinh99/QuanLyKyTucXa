@@ -229,6 +229,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 string vnp_TmnCode = "QV4AJ3NO";
                 string vnp_HashSecret = "3CP0V5HCDJ6VFE1YPVYL85YUHK1SGLLP";
+                string ngayThanhToan = DateTime.Now.ToString("yyyyMMdd");
+                string vnpTxnRef = $"{ngayThanhToan}_{hopDong.MaHopDong}";
 
                 // Tạo các thông tin cần thiết để gửi sang VNPAY
                 SortedList<string, string> vnp_Params = new SortedList<string, string>();
@@ -237,7 +239,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 vnp_Params.Add("vnp_TmnCode", vnp_TmnCode);
                 vnp_Params.Add("vnp_Locale", "vn");
                 vnp_Params.Add("vnp_CurrCode", "VND");
-                vnp_Params.Add("vnp_TxnRef", hopDong.MaHopDong.ToString());
+                vnp_Params.Add("vnp_TxnRef", vnpTxnRef);
                 vnp_Params.Add("vnp_OrderInfo", "Thanh toan phong thue"); // Thông tin đơn hàng của bạn
                 vnp_Params.Add("vnp_Amount", (hopDong.ThanhTien * 100).ToString()); // Số tiền cần thanh toán (phải nhân 100 vì VNPAY yêu cầu là số nguyên)
                 vnp_Params.Add("vnp_ReturnUrl", returnUrl);
