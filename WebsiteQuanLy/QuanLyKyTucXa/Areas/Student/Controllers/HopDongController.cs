@@ -229,7 +229,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 string vnp_TmnCode = "QV4AJ3NO";
                 string vnp_HashSecret = "3CP0V5HCDJ6VFE1YPVYL85YUHK1SGLLP";
-                string ngayThanhToan = DateTime.Now.ToString("yyyyMMdd");
+                string ngayThanhToan = DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 string vnpTxnRef = $"{ngayThanhToan}_{hopDong.MaHopDong}";
 
                 // Tạo các thông tin cần thiết để gửi sang VNPAY
@@ -275,7 +275,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
             // Xử lý kết quả thanh toán tại đây
             if (vnp_ResponseCode == "00")
             {
-                HopDong hopDong = await _db.HopDong.FindAsync(int.Parse(vnp_TxnRef));
+                string maHopDongString = vnp_TxnRef.Split('_').Last();
+                HopDong hopDong = await _db.HopDong.FindAsync(int.Parse(maHopDongString));
                 if (hopDong == null)
                 {
                     TempData["ToastMessage"] = "error|Hợp đồng không tồn tại.";
