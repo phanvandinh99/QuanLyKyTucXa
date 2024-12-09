@@ -100,11 +100,11 @@
                                     <div class="datatable-dropdown">
                                         <label>
                                             <select class="datatable-selector">
-                                                <option value="5" selected>5</option>
-                                                <option value="10">10</option>
+                                                <option value="10" selected>10</option>
                                                 <option value="15">15</option>
                                                 <option value="20">20</option>
                                                 <option value="25">25</option>
+                                                <option value="30">30</option>
                                             </select> Dòng trên/Trang
                                         </label>
                                     </div>
@@ -119,33 +119,28 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    @*<th data-sortable="true" style="width: 3%;">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input checkbox-primary" type="checkbox">
-                                                            </div>
-                                                        </th>*@
-                                                    <th data-sortable="true" style="width: 5%;">
-                                                        <span class="datatable-sorter sort" data-sort="ho">
+                                                    <th data-sortable="true" style="width: 10%;">
+                                                        <span class="datatable-sorter sort" data-sort="MaPhong">
                                                             <span class="f-light f-w-600">Mã Phòng</span>
                                                         </span>
                                                     </th>
-                                                    <th data-sortable="true" style="width: 10%;">
-                                                        <span class="datatable-sorter sort" data-sort="ten">
+                                                    <th data-sortable="true" style="width: 25%;">
+                                                        <span class="datatable-sorter sort" data-sort="TenTang">
                                                             <span class="f-light f-w-600">Phòng</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 10%;">
-                                                        <span class="datatable-sorter sort" data-sort="ten">
+                                                        <span class="datatable-sorter sort" data-sort="ConTrong">
                                                             <span class="f-light f-w-600">Đã Ở/Còn Trống</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 13%;">
-                                                        <span class="datatable-sorter sort" data-sort="ngaySinh">
+                                                        <span class="datatable-sorter sort" data-sort="ChuSoDau">
                                                             <span class="f-light f-w-600">Chỉ Số Củ</span>
                                                         </span>
                                                     </th>
                                                     <th data-sortable="true" style="width: 10%;">
-                                                        <span class="datatable-sorter sort" data-sort="gioiTinh">
+                                                        <span class="datatable-sorter sort" data-sort="ChuSoCuoi">
                                                             <span class="f-light f-w-600">Chỉ Số Mới</span>
                                                         </span>
                                                     </th>
@@ -157,21 +152,21 @@
                                                     foreach (var item in Model)
                                                     {
                                                         <tr data-index="@item.Phong.MaPhong">
-                                                            <td class="ten">
+                                                            <td class="MaPhong">
                                                                 <p class="f-light">@item.Phong.MaPhong</p>
                                                             </td>
-                                                            <td class="ten">
+                                                            <td class="TenTang">
                                                                 <p class="f-light">@item.Phong.TenPhong, @item.Phong.Tang.TenTang</p>
                                                             </td>
-                                                            <td class="ten">
+                                                            <td class="ConTrong">
                                                                 <p class="f-light">@item.Phong.DaO/@item.Phong.ConTrong</p>
                                                             </td>
-                                                            <td class="ten">
+                                                            <td class="ChuSoDau">
                                                                 <input class="form-control" type="number"
                                                                        value="@(item.HoaDon?.ChuSoCuoi ?? 0)"
                                                                        name="hoaDonModels[@index].ChuSoDau" readonly />
                                                             </td>
-                                                            <td class="ten">
+                                                            <td class="ChuSoCuoi">
                                                                 <input class="form-control" type="number" placeholder="Số mới"
                                                                        name="hoaDonModels[@index].ChuSoCuoi"
                                                                        min="@(item.HoaDon?.ChuSoCuoi ?? 0)" required />
@@ -181,7 +176,7 @@
                                                                 <input type="hidden" name="hoaDonModels[@index].MaPhong" value="@item.Phong.MaPhong" />
                                                             </td>
                                                         </tr>
-                                                        index++; // Tăng chỉ số tuần tự
+                                                        index++;
                                                     }
                                                 }
                                                 else
@@ -216,8 +211,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['ho', 'ten', 'ngaySinh', 'gioiTinh', 'email', 'sdt', 'diemUuTien', 'thaoTac'],
-            page: 5, // Số dòng hiển thị trên trang
+            valueNames: ['MaPhong', 'TenTang', 'ConTrong', 'ChuSoDau', 'ChuSoCuoi', 'sdt', 'diemUuTien', 'thaoTac'],
+            page: 10,
             pagination: true
         };
 

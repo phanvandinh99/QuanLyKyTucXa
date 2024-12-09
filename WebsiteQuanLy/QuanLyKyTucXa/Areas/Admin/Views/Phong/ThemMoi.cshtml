@@ -65,7 +65,7 @@
                                     <select id="MaTang" name="MaTang" class="form-select" required>
                                         @foreach (var item in listTang)
                                         {
-                                            <option value="@item.MaTang">@item.TenTang</option>
+                                            <option value="@item.MaTang">@item.TenTang, @item.Khu.TenKhu, @item.Khu.LoaiKhu.TenLoaiKhu</option>
                                         }
                                     </select>
                                 </div>
