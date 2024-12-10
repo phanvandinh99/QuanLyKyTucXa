@@ -9,6 +9,14 @@ namespace QuanLyKyTucXa
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Route Đăng Nhập
+            routes.MapRoute(
+                name: "DangNhap",
+                url: "DangNhap/{controller}/{action}/{id}",
+                defaults: new { controller = "DangNhap", action = "DangNhap", id = UrlParameter.Optional },
+                namespaces: new string[] { "QuanLyKyTucXa.Areas.DangNhap.Controllers" }
+            ).DataTokens.Add("area", "DangNhap");
+
             // Route cho sinh viên
             routes.MapRoute(
                 name: "Student",

@@ -61,6 +61,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
                                             ["Ten"] = HttpUtility.UrlEncode( nhanVien.Ten, Encoding.UTF8),
                                             ["MaQuyen"] = nhanVien.MaQuyen.ToString(),
                                             ["AnhChanDung"] = nhanVien.AnhChanDung.ToString(),
+                                            ["ExpiresAt"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss")
                                 },
                                 Expires = DateTime.Now.AddDays(1)
                             };
@@ -79,6 +80,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
                                             ["Ten"] = HttpUtility.UrlEncode( nhanVien.Ten, Encoding.UTF8),
                                             ["MaQuyen"] = nhanVien.MaQuyen.ToString(),
                                             ["AnhChanDung"] = nhanVien.AnhChanDung.ToString(),
+                                            ["ExpiresAt"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss")
                                 },
                                 Expires = DateTime.Now.AddDays(1)
                             };
@@ -98,14 +100,15 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
             }
         }
 
-
         public ActionResult DangXuatAdmin()
         {
             // Xóa cookie đăng nhập
             var cookie = Request.Cookies["NhanVienAdmin"];
             if (cookie != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Expires = DateTime.Now.AddDays(-2);
+                cookie.HttpOnly = true;
+                cookie.Secure = Request.IsSecureConnection;
                 Response.Cookies.Add(cookie);
             }
             return Redirect("/DangNhap/DangNhap/Login");
@@ -117,7 +120,9 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
             var cookie = Request.Cookies["NhanVienBQL"];
             if (cookie != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Expires = DateTime.Now.AddDays(-2);
+                cookie.HttpOnly = true;
+                cookie.Secure = Request.IsSecureConnection;
                 Response.Cookies.Add(cookie);
             }
             return Redirect("/DangNhap/DangNhap/Login");
