@@ -29,7 +29,7 @@ create table SinhVien
 )
 go
 INSERT SinhVien (MaSinhVien, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, DanToc, DiemUuTien, TrangThai, DaXoa) 
-VALUES (N'111', N'Abc123', N'AnhTestSinhVien.jpg', N'Sinh Viên', N'Test', 0, CAST(N'1999-11-12 00:00:00.000' AS DateTime), N'Test@gmail.com', N'0971010281', N'Kinh', 0, 1, 0)
+VALUES (N'B1906388', N'Abc123', N'AnhTestSinhVien.jpg', N'Nhâm Hữu', N'Nghĩa', 0, CAST(N'1999-11-12 00:00:00.000' AS DateTime), N'huunghia1908@gmail.com', N'0971010281', N'Kinh', 0, 1, 0)
 go
 create  table DienChinhSach
 (
