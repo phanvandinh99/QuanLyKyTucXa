@@ -128,13 +128,18 @@
                                         <thead>
                                             <tr>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="MaKhu">
-                                                        <span class="f-light f-w-600">Mã Loại Hóa Đơn</span>
+                                                    <span class="datatable-sorter sort" data-sort="MaLoaiHoaDon">
+                                                        <span class="f-light f-w-600">Mã Loại HĐ</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 30%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="TenLoaiHoaDon">
                                                         <span class="f-light f-w-600">Tên Loại Hóa Đơn</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 10%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                        <span class="f-light f-w-600">Tháng</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 9%;">
@@ -152,9 +157,17 @@
                                                     <tr data-index="@item.MaLoaiHoaDon">
                                                         <td class="MaLoaiHoaDon"><p class="f-light">@item.MaLoaiHoaDon</p></td>
                                                         <td class="TenLoaiHoaDon"><p class="f-light">@item.TenLoaiHoaDon</p></td>
+
+                                                        <td class="TenLoaiHoaDon">
+                                                            <input type="month" value="@DateTime.Now.ToString("yyyy-MM")" />
+                                                        </td>
+                                                        
                                                         <td class="thaoTac">
                                                             <div class="product-action">
-                                                                <a href="/QLKTX/HoaDon/HoaDonKhu?iMaLoaiHoaDon=@item.MaLoaiHoaDon"><i class="fa fa-plus"></i> Thêm Mới</a>
+                                                                <a href="/QLKTX/HoaDon/XemHoaDon?iMaLoaiHoaDon=@item.MaLoaiHoaDon"><i class="fa fa-info-circle"></i></a>
+                                                                <a href="/QLKTX/HoaDon/HoaDonKhu?iMaLoaiHoaDon=@item.MaLoaiHoaDon">
+                                                                    <i class="fa fa-plus"></i> Thêm Mới
+                                                                </a>
                                                             </div>
                                                         </td>
                                                     </tr>

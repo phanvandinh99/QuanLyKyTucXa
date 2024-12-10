@@ -181,7 +181,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 TongSoChu = viewModel.ChuSoCuoi - viewModel.ChuSoDau,
                 TongTien = (viewModel.ChuSoCuoi - viewModel.ChuSoDau) * donGia.DonGia1,
                 Thang = DateTime.Now,
-                HanCuoiThanhToan = DateTime.Now.AddDays(15),
+                HanCuoiThanhToan = DateTime.Now.AddDays(5),
                 MaPhong = viewModel.MaPhong,
                 MaDonGia = donGia.MaDonGia,
                 TaiKhoanNV = taiKhoanNV,

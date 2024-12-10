@@ -284,6 +284,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 }
 
                 hopDong.TrangThai = Constant.DaDuyet;
+                hopDong.NgayDuyet = DateTime.Now;
                 hopDong.ThanhToan = Constant.DaThanhToan;
 
                 await _db.SaveChangesAsync();

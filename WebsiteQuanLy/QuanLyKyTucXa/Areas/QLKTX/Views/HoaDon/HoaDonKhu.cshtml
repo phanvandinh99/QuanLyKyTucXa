@@ -124,7 +124,7 @@
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 30%;">
-                                                    <span class="datatable-sorter sort" data-sort="LoaiKhu">
+                                                    <span class="datatable-sorter sort" data-sort="TenLoaiKhu">
                                                         <span class="f-light f-w-600">Loại Khu</span>
                                                     </span>
                                                 </th>
@@ -141,9 +141,9 @@
                                                 foreach (var item in Model)
                                                 {
                                                     <tr data-index="@item.MaKhu">
-                                                        <td class="MaLoaiHoaDon"><p class="f-light">@item.MaKhu</p></td>
-                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.TenKhu</p></td>
-                                                        <td class="TenLoaiHoaDon"><p class="f-light">@item.LoaiKhu.TenLoaiKhu</p></td>
+                                                        <td class="MaKhu"><p class="f-light">@item.MaKhu</p></td>
+                                                        <td class="TenKhu"><p class="f-light">@item.TenKhu</p></td>
+                                                        <td class="TenLoaiKhu"><p class="f-light">@item.LoaiKhu.TenLoaiKhu</p></td>
                                                         <td class="thaoTac">
                                                             <div class="product-action">
                                                                 <a href="/QLKTX/HoaDon/XemHoaDon?iMaLoaiHoaDon=@ViewBag.MaLoaiHoaDon"><i class="fa fa-info-circle"></i></a>
@@ -180,7 +180,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['MaLoaiHoaDon', 'TenLoaiHoaDon'],
+            valueNames: ['MaKhu', 'TenKhu', 'TenLoaiKhu'],
             page: 10,
             pagination: true
         };

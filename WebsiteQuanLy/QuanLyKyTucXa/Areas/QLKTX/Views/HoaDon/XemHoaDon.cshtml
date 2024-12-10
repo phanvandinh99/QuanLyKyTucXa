@@ -40,57 +40,6 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="list-product-header">
-                            <!-- #region Lọc -->
-                            <div class="collapse" id="collapseProduct">
-                                <div class="card card-body list-product-body">
-                                    <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 g-3">
-                                        <div class="col">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected="">Điều Kiện Lọc 1</option>
-                                                <option value="1">Điều kiện 1</option>
-                                                <option value="2">Điều kiện 2</option>
-                                                <option value="3">Điều kiện 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected="">Điều Kiện Lọc 2</option>
-                                                <option value="1">Điều kiện 1</option>
-                                                <option value="2">Điều kiện 2</option>
-                                                <option value="3">Điều kiện 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected="">Điều Kiện Lọc 3</option>
-                                                <option value="1">Điều kiện 1</option>
-                                                <option value="2">Điều kiện 2</option>
-                                                <option value="3">Điều kiện 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected="">Điều Kiện Lọc 4</option>
-                                                <option value="1">Điều kiện 1</option>
-                                                <option value="2">Điều kiện 2</option>
-                                                <option value="3">Điều kiện 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected="">Điều Kiện Lọc 5</option>
-                                                <option value="1">Điều kiện 1</option>
-                                                <option value="2">Điều kiện 2</option>
-                                                <option value="3">Điều kiện 3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- #endregion Lọc -->
-                        </div>
-
                         <div class="list-product" id="LoaiHoaDon-list">
                             <div class="datatable-wrapper">
                                 <div class="datatable-top">
@@ -114,37 +63,37 @@
                                         <thead>
                                             <tr>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="MaKhu">
+                                                    <span class="datatable-sorter sort" data-sort="MaHoaDon">
                                                         <span class="f-light f-w-600">Mã HD</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="ChuSoDau">
                                                         <span class="f-light f-w-600">Chữ Số Đầu</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="ChuSoCuoi">
                                                         <span class="f-light f-w-600">Chữ Số Cuối</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="TongSoChu">
                                                         <span class="f-light f-w-600">Tổng Số Chử</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="TongTien">
                                                         <span class="f-light f-w-600">Thành Tiền</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="Thang">
                                                         <span class="f-light f-w-600">Tháng</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
+                                                    <span class="datatable-sorter sort" data-sort="HanCuoiThanhToan">
                                                         <span class="f-light f-w-600">Hạn Thanh Toán</span>
                                                     </span>
                                                 </th>
@@ -166,14 +115,14 @@
                                                 foreach (var item in Model)
                                                 {
                                                     <tr data-index="@item.MaHoaDon">
-                                                        <td class="ChuSoDau"><p class="f-light">@item.MaHoaDon</p></td>
+                                                        <td class="MaHoaDon"><p class="f-light">@item.MaHoaDon</p></td>
                                                         <td class="ChuSoDau"><p class="f-light">@item.ChuSoDau</p></td>
                                                         <td class="ChuSoCuoi"><p class="f-light">@item.ChuSoCuoi</p></td>
                                                         <td class="TongSoChu"><p class="f-light">@item.TongSoChu</p></td>
                                                         <td class="TongTien"><p class="f-light">@item.TongTien.ToString("#,##0") vnđ</p></td>
-                                                        <td class="Thang"><p class="f-light">@item.Thang</p></td>
+                                                        <td class="Thang"><p class="f-light">@item.Thang.ToString("MM/yyyy")</p></td>
                                                         <td class="HanCuoiThanhToan"><p class="f-light">@item.HanCuoiThanhToan</p></td>
-                                                        <td class="ChuSoDau">
+                                                        <td class="TenKhu">
                                                             <p class="f-light">
                                                                 @item.MaPhong, @item.Phong.TenPhong, @item.Phong.Tang.TenTang, @item.Phong.Tang.Khu.TenKhu
                                                             </p>
@@ -215,7 +164,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['MaLoaiHoaDon', 'TenLoaiHoaDon'],
+            valueNames: ['MaHoaDon', 'ChuSoDau', 'ChuSoCuoi', 'TongSoChu', 'TongTien', 'Thang', 'HanCuoiThanhToan', 'TenKhu'],
             page: 10,
             pagination: true
         };
