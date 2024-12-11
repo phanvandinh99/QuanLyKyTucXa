@@ -90,10 +90,40 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         #endregion
 
         #region Thêm hóa đơn theo loại
-        public async Task<ActionResult> ThemHoaDon(int iMaKhu, int iMaLoaiHoaDon)
+        [HttpPost]
+        public async Task<ActionResult> ThemHoaDon(int iMaKhu, int iMaLoaiHoaDon, DateTime dThangThanhToan)
         {
             try
             {
+                // Kiểm tra tháng này đã có hóa đơn chưa
+                HoaDon hoaDon = await _db.HoaDon.FirstOrDefaultAsync(n => n.Thang.Month == dThangThanhToan.Month &&
+                                                                     n.Thang.Year == dThangThanhToan.Year);
+                if (hoaDon != null)
+                {
+                    TempData["ToastMessage"] = "error|Hóa đơn tháng " + hoaDon.Thang.Month + "/" + hoaDon.Thang.Year + " đã tồn tại";
+                    return RedirectToAction("HoaDonKhu", "HoaDon", new { iMaLoaiHoaDon = iMaLoaiHoaDon });
+                }
+
+                // Kiểm tra khu này có số hóa đơn lần cuối là tháng mấy
+                var lastHoaDon = await _db.HoaDon
+                    .Where(n => n.Phong.Tang.Khu.MaKhu == iMaKhu)
+                    .OrderByDescending(n => n.Thang) // Sắp xếp theo tháng giảm dần
+                    .FirstOrDefaultAsync();
+
+                if (lastHoaDon != null)
+                {
+                    int lastMonth = lastHoaDon.Thang.Month;
+                    int lastYear = lastHoaDon.Thang.Year;
+
+                    // So sánh năm và tháng của hóa đơn cuối cùng với tháng mới
+                    if (lastYear > dThangThanhToan.Year || (lastYear == dThangThanhToan.Year && lastMonth > dThangThanhToan.Month))
+                    {
+                        TempData["ToastMessage"] = "error|Không thể thêm hóa đơn trước tháng " + lastMonth + "/" + lastYear;
+                        return RedirectToAction("HoaDonKhu", "HoaDon", new { iMaLoaiHoaDon = iMaLoaiHoaDon });
+                    }
+                }
+
+
                 // kiểm tra đã thêm Đơn giá cho loại hóa đơn đó hay chưa?
                 DonGia donGia = await _db.DonGia.FirstOrDefaultAsync(n => n.MaLoaiHoaDon == iMaLoaiHoaDon);
                 if (donGia == null)
@@ -101,8 +131,6 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                     TempData["ToastMessage"] = "error|Bạn cần thêm đơn giá.";
                     return RedirectToAction("ThemMoi", "DonGia");
                 }
-
-                DateTime currentDate = DateTime.Now;
 
                 var listPhong = await (from p in _db.Phong
                                        join g in _db.Giuong on p.MaPhong equals g.MaPhong
@@ -112,8 +140,8 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                                        where p.Tang.MaKhu == iMaKhu &&
                                              p.DaO != 0 &&
                                              h.NgayDuyet != null &&
-                                             t.NgayBatDau <= currentDate &&
-                                             t.NgayKetThuc >= currentDate
+                                             t.NgayBatDau <= dThangThanhToan &&
+                                             t.NgayKetThuc >= dThangThanhToan
                                        select new
                                        {
                                            Phong = p,
@@ -128,10 +156,11 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                     HoaDon = item.HoaDonGroup
                                 .Where(hd => hd.DonGia.MaLoaiHoaDon == iMaLoaiHoaDon) // Áp dụng điều kiện
                                 .OrderByDescending(hd => hd.MaHoaDon)
-                                .FirstOrDefault() // Lấy hóa đơn có `MaHoaDon` lớn nhất hoặc null
+                                .FirstOrDefault()
                 }).ToList();
 
                 ViewBag.MaLoaiHoaDon = iMaLoaiHoaDon;
+                ViewBag.ThangThanhToan = dThangThanhToan.ToString("yyyy-MM-dd");
 
                 return View(result);
             }
@@ -147,7 +176,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
 
         // Tạo hóa đơn
         [HttpPost]
-        public async Task<ActionResult> TaoHoaDon(List<HoaDon> hoaDonModels, int? iMaLoaiHoaDon)
+        public async Task<ActionResult> TaoHoaDon(List<HoaDon> hoaDonModels, int? iMaLoaiHoaDon, DateTime dThangThanhToan)
         {
             if (hoaDonModels == null || hoaDonModels.Count == 0)
             {
@@ -180,10 +209,11 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 ChuSoCuoi = viewModel.ChuSoCuoi,
                 TongSoChu = viewModel.ChuSoCuoi - viewModel.ChuSoDau,
                 TongTien = (viewModel.ChuSoCuoi - viewModel.ChuSoDau) * donGia.DonGia1,
-                Thang = DateTime.Now,
-                HanCuoiThanhToan = DateTime.Now.AddDays(5),
+                Thang = dThangThanhToan,
+                HanCuoiThanhToan = dThangThanhToan.AddDays(5),
                 MaPhong = viewModel.MaPhong,
                 MaDonGia = donGia.MaDonGia,
+                TrangThai = false,
                 TaiKhoanNV = taiKhoanNV,
             }).ToList();
 
@@ -194,13 +224,68 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 await _db.SaveChangesAsync();
 
                 TempData["ToastMessage"] = "success|Thêm hóa đơn thành công!";
+
+                // Lấy tất cả hợp đồng tương ứng với các phòng có trong danh sách hóa đơn
+                var maPhongList = hoaDons.Select(hd => hd.MaPhong).Distinct().ToList();  // Lấy danh sách mã phòng duy nhất từ hoaDons
+                var hopDongs = await _db.HopDong
+                                        .Where(hd => maPhongList.Contains(hd.Giuong.Phong.MaPhong))  // Truy vấn hợp đồng theo mã phòng
+                                        .ToListAsync();
+
+                // Lặp qua từng hợp đồng để gửi email
+                foreach (var hopDong in hopDongs)
+                {
+                    // Lấy email sinh viên từ hợp đồng
+                    var email = hopDong.SinhVien?.Email;
+
+                    // Nếu email không có giá trị, bỏ qua hợp đồng này
+                    if (string.IsNullOrEmpty(email)) continue;
+
+                    // Tìm hóa đơn của sinh viên này trong danh sách hóa đơn đã thêm
+                    var hoaDon = hoaDons.FirstOrDefault(hd => hd.MaPhong == hopDong.Giuong.Phong.MaPhong);
+
+                    if (hoaDon != null)
+                    {
+                        // Soạn nội dung email
+                        string emailContent = $@"
+                                                <p><strong>Chào bạn,</strong></p>
+                                                <p>Hóa đơn điện nước của bạn đã được tạo. Dưới đây là thông tin chi tiết:</p>
+                                                <p><strong>Chữ số đầu:</strong> {hoaDon.ChuSoDau}</p>
+                                                <p><strong>Chữ số cuối:</strong> {hoaDon.ChuSoCuoi}</p>
+                                                <p><strong>Đơn giá:</strong> {hoaDon.TongTien / (hoaDon.ChuSoCuoi - hoaDon.ChuSoDau)} VND</p>
+                                                <p><strong>Thành tiền:</strong> {hoaDon.TongTien} VND</p>
+                                                <p><strong>Hạn thanh toán:</strong> {hoaDon.HanCuoiThanhToan.ToString("dd/MM/yyyy")}</p>
+                                                <p>Vui lòng thanh toán trước hạn thanh toán để tránh bị phạt trễ hạn.</p>
+                                                <p>Chúc bạn một ngày tốt lành!</p>
+                                                <p>Trân trọng,</p>
+                                                <p>Quản lý ký túc xá</p>
+                                            ";
+
+                        // Gửi email
+                        bool emailSent = await Common.SendMail.SendEmailAsync(
+                            "Hóa đơn điện nước",  // Tiêu đề email
+                            emailContent,          // Nội dung email
+                            email                  // Địa chỉ email người nhận
+                        );
+
+                        if (!emailSent)
+                        {
+                            TempData["ToastMessage"] = "error|Lỗi khi gửi mail.";
+                            return RedirectToAction("Index", "HoaDon");
+                        }
+                    }
+                }
+
+                TempData["ToastMessage"] = "success|Gửi mail thông báo thành công!";
+                TempData["ToastMessage"] = "success|Thêm hóa đơn điện nước thành công!";
             }
             catch (Exception ex)
             {
-                // Ghi log hoặc xử lý lỗi
+                // Xử lý lỗi nếu có
                 TempData["ToastMessage"] = $"error|Lỗi khi thêm hóa đơn: {ex.Message}";
-                return RedirectToAction("ThemMoi", "HoaDon");
+                return RedirectToAction("Index", "HoaDon");
             }
+
+
 
             return RedirectToAction("Index", "HoaDon");
         }
@@ -210,8 +295,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         {
             try
             {
-                List<HoaDon> hoaDon = await _db.HoaDon.Where(n => n.DonGia.MaLoaiHoaDon == iMaLoaiHoaDon &&
-                                                             n.Thang.Month == DateTime.Now.Month)
+                List<HoaDon> hoaDon = await _db.HoaDon.Where(n => n.DonGia.MaLoaiHoaDon == iMaLoaiHoaDon)
                                                       .ToListAsync();
 
                 return View(hoaDon);
@@ -227,6 +311,29 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         }
         #endregion
 
+        #region Xem hóa đơn sau khi thêm
+        public async Task<ActionResult> ThanhToan(int iMaHoaDon, int iMaLoaiHoaDon)
+        {
+            try
+            {
+                HoaDon hoaDon = await _db.HoaDon.FindAsync(iMaHoaDon);
+
+                hoaDon.TrangThai = true;
+                await _db.SaveChangesAsync();
+
+                TempData["ToastMessage"] = "success|Thanh toán hóa đơn điện nước thành công.";
+                return RedirectToAction("XemHoaDon", "HoaDon", new { iMaLoaiHoaDon = iMaLoaiHoaDon });
+            }
+            catch (Exception ex)
+            {
+                // logerror
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xem hóa đơn thất bại.";
+                return RedirectToAction("Index", "HoaDon");
+            }
+        }
+        #endregion
 
         [HttpPost]
         public async Task<ActionResult> CapNhat(DonGia donGiaModel)

@@ -115,6 +115,10 @@
                                 @using (Html.BeginForm("TaoHoaDon", "HoaDon", FormMethod.Post))
                                 {
                                     <input type="hidden" name="iMaLoaiHoaDon" value="@ViewBag.MaLoaiHoaDon" />
+                                    <input type="date" name="dThangThanhToan" value="@ViewBag.ThangThanhToan" readonly />
+
+
+
                                     <div class="datatable-container">
                                         <table class="table datatable-table" id="project-status">
                                             <thead>

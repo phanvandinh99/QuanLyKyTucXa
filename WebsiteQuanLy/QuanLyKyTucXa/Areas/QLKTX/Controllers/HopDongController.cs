@@ -137,7 +137,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 // Gửi thông báo duyệt phòng thành công qua email
                 bool emailSent = await Common.SendMail.SendEmailAsync(
                                    Constant.TitleDatPhong,
-                                   "<p>Hợp đồng của bạn đã được duyệt. Truy cập <a href=\"https://QLKyTucXa.somee.vn\">https://QLKyTucXa.somee.vn</a> để sử dụng</p>" +
+                                   "<p>Hợp đồng của bạn đã được duyệt. Truy cập <a href=\"https://qlkytucxa.somee.com/\">https://qlkytucxa.somee.com/</a> để sử dụng</p>" +
                                    $"<p><strong>Mã hợp đồng:</strong> {hopDong.MaHopDong}</p>" +
                                    $"<p><strong>Tên hợp đồng:</strong> {hopDong.TenHopDong}</p>" +
                                    $"<p><strong>Ngày ở:</strong> {hopDong.ThoiHanDangKy.NgayBatDau}</p>" +

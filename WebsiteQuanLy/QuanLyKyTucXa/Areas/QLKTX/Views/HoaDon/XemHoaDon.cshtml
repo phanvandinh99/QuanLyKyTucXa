@@ -122,16 +122,24 @@
                                                         <td class="TongTien"><p class="f-light">@item.TongTien.ToString("#,##0") vnđ</p></td>
                                                         <td class="Thang"><p class="f-light">@item.Thang.ToString("MM/yyyy")</p></td>
                                                         <td class="HanCuoiThanhToan"><p class="f-light">@item.HanCuoiThanhToan</p></td>
+
                                                         <td class="TenKhu">
                                                             <p class="f-light">
                                                                 @item.MaPhong, @item.Phong.TenPhong, @item.Phong.Tang.TenTang, @item.Phong.Tang.Khu.TenKhu
                                                             </p>
                                                         </td>
-                                                        <td class="thaoTac">
-                                                            <div class="product-action">
-                                                                <a href="/QLKTX/HoaDon/HoaDonKhu?iMaLoaiHoaDon="><i class="fa fa-plus"></i>Xác nhận</a>
-                                                            </div>
-                                                        </td>
+
+                                                        @if (item.TrangThai == false)
+                                                        {
+                                                            <td class="thaoTac">
+                                                                <div class="product-action">
+                                                                    <a href="/QLKTX/HoaDon/ThanhToan?iMaHoaDon=@item.MaHoaDon&iMaLoaiHoaDon=@item.DonGia.MaLoaiHoaDon">
+                                                                        <i class="fa fa-plus">
+                                                                        </i>Xác nhận Thanh Toán
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        }
                                                     </tr>
                                                 }
                                             }

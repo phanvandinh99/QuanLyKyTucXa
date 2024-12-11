@@ -18,6 +18,8 @@ namespace QuanLyKyTucXa.Models
 
         public double TongTien { get; set; }
 
+        public bool TrangThai { get; set; }
+
         public DateTime Thang { get; set; }
 
         public DateTime HanCuoiThanhToan { get; set; }

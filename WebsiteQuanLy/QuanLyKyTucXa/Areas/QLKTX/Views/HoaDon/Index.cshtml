@@ -137,11 +137,6 @@
                                                         <span class="f-light f-w-600">Tên Loại Hóa Đơn</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 10%;">
-                                                    <span class="datatable-sorter sort" data-sort="TenKhu">
-                                                        <span class="f-light f-w-600">Tháng</span>
-                                                    </span>
-                                                </th>
                                                 <th data-sortable="true" style="width: 9%;">
                                                     <span class="datatable-sorter sort" data-sort="thaoTac">
                                                         <span class="f-light f-w-600">Thao Tác</span>
@@ -157,11 +152,6 @@
                                                     <tr data-index="@item.MaLoaiHoaDon">
                                                         <td class="MaLoaiHoaDon"><p class="f-light">@item.MaLoaiHoaDon</p></td>
                                                         <td class="TenLoaiHoaDon"><p class="f-light">@item.TenLoaiHoaDon</p></td>
-
-                                                        <td class="TenLoaiHoaDon">
-                                                            <input type="month" value="@DateTime.Now.ToString("yyyy-MM")" />
-                                                        </td>
-                                                        
                                                         <td class="thaoTac">
                                                             <div class="product-action">
                                                                 <a href="/QLKTX/HoaDon/XemHoaDon?iMaLoaiHoaDon=@item.MaLoaiHoaDon"><i class="fa fa-info-circle"></i></a>

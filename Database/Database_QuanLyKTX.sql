@@ -352,6 +352,7 @@ create table HoaDon
 	TongTien float not null,
 	Thang datetime not null,
 	HanCuoiThanhToan datetime not null,
+	TrangThai bit not null,
 
 	MaPhong int,
 	MaDonGia int,

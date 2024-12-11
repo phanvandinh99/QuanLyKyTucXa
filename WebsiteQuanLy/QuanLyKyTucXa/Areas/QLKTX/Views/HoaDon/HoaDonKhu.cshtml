@@ -118,14 +118,19 @@
                                                         <span class="f-light f-w-600">Mã Khu</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 30%;">
+                                                <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="TenKhu">
                                                         <span class="f-light f-w-600">Tên Khu</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 30%;">
+                                                <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="TenLoaiKhu">
                                                         <span class="f-light f-w-600">Loại Khu</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 10%;">
+                                                    <span class="datatable-sorter sort" data-sort="TenLoaiKhu">
+                                                        <span class="f-light f-w-600">Tháng</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 9%;">
@@ -144,12 +149,27 @@
                                                         <td class="MaKhu"><p class="f-light">@item.MaKhu</p></td>
                                                         <td class="TenKhu"><p class="f-light">@item.TenKhu</p></td>
                                                         <td class="TenLoaiKhu"><p class="f-light">@item.LoaiKhu.TenLoaiKhu</p></td>
-                                                        <td class="thaoTac">
-                                                            <div class="product-action">
-                                                                <a href="/QLKTX/HoaDon/XemHoaDon?iMaLoaiHoaDon=@ViewBag.MaLoaiHoaDon"><i class="fa fa-info-circle"></i></a>
-                                                                <a href="/QLKTX/HoaDon/ThemHoaDon?iMaKhu=@item.MaKhu&iMaLoaiHoaDon=@ViewBag.MaLoaiHoaDon"><i class="fa fa-plug"></i>Thêm Mới</a>
-                                                            </div>
-                                                        </td>
+                                                        @using (Html.BeginForm("ThemHoaDon", "HoaDon", FormMethod.Post))
+                                                        {
+
+                                                            <input type="hidden" name="iMaKhu" value="@item.MaKhu" />
+                                                            <input type="hidden" name="iMaLoaiHoaDon" value="@ViewBag.MaLoaiHoaDon" />
+
+                                                            <td class="TenLoaiHoaDon">
+                                                                <input type="date" name="dThangThanhToan" value="@DateTime.Now.ToString("yyyy-MM-dd")" required/>
+                                                            </td>
+                                                            <td class="thaoTac">
+                                                                <div class="product-action">
+                                                                    <a href="/QLKTX/HoaDon/XemHoaDon?iMaLoaiHoaDon=@ViewBag.MaLoaiHoaDon">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        <i class="fa fa-plug"></i>
+                                                                        Thêm Mới
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        }
                                                     </tr>
                                                 }
                                             }
