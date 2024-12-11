@@ -228,7 +228,10 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 // Lấy tất cả hợp đồng tương ứng với các phòng có trong danh sách hóa đơn
                 var maPhongList = hoaDons.Select(hd => hd.MaPhong).Distinct().ToList();  // Lấy danh sách mã phòng duy nhất từ hoaDons
                 var hopDongs = await _db.HopDong
-                                        .Where(hd => maPhongList.Contains(hd.Giuong.Phong.MaPhong))  // Truy vấn hợp đồng theo mã phòng
+                                        .Where(hd => maPhongList.Contains(hd.Giuong.Phong.MaPhong) &&
+                                               hd.ThoiHanDangKy.NgayBatDau <= dThangThanhToan &&
+                                               hd.ThoiHanDangKy.NgayKetThuc >= dThangThanhToan
+                                        )
                                         .ToListAsync();
 
                 // Lặp qua từng hợp đồng để gửi email
