@@ -14,7 +14,7 @@ namespace QuanLyKyTucXa.Models
             HopDong = new HashSet<HopDong>();
             SinhVienChinhSach = new HashSet<SinhVienChinhSach>();
             ThongBao = new HashSet<ThongBao>();
-            ViPham = new HashSet<ViPham>();
+            BaoCao = new HashSet<BaoCao>();
         }
 
         [Key]
@@ -69,6 +69,6 @@ namespace QuanLyKyTucXa.Models
         public virtual ICollection<ThongBao> ThongBao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ViPham> ViPham { get; set; }
+        public virtual ICollection<BaoCao> BaoCao { get; set; }
     }
 }

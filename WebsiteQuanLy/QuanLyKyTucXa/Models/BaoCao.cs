@@ -4,11 +4,11 @@ namespace QuanLyKyTucXa.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("ViPham")]
-    public partial class ViPham
+    [Table("BaoCao")]
+    public partial class BaoCao
     {
         [Key]
-        public int MaViPham { get; set; }
+        public int MaBaoCao { get; set; }
 
         [Required]
         public string NoiDung { get; set; }
@@ -17,7 +17,7 @@ namespace QuanLyKyTucXa.Models
 
         public DateTime? NgayXem { get; set; }
 
-        public int? MaLoaiViPham { get; set; }
+        public int? MaLoaiBaoCao { get; set; }
 
         [StringLength(10)]
         public string MaSinhVien { get; set; }
@@ -25,7 +25,7 @@ namespace QuanLyKyTucXa.Models
         [StringLength(10)]
         public string TaiKhoanNV { get; set; }
 
-        public virtual LoaiViPham LoaiViPham { get; set; }
+        public virtual LoaiBaoCao LoaiBaoCao { get; set; }
 
         public virtual NhanVien NhanVien { get; set; }
 

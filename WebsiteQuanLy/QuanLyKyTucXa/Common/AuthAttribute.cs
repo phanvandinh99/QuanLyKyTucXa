@@ -22,14 +22,15 @@ namespace QuanLyKyTucXa.Common
             var isQLKTXArea = requestUrl.StartsWith("/QLKTX", StringComparison.OrdinalIgnoreCase);
             var isStudentArea = requestUrl.StartsWith("/Student", StringComparison.OrdinalIgnoreCase);
 
-            // Kiểm tra quyền truy cập cho Student
+            // Kiểm tra quyền truy cập cho Student (không xử lý ở đây)
             if (isStudentArea)
             {
                 return;
             }
 
             // Kiểm tra quyền truy cập cho Admin
-            else if (isAdminArea)
+            // Kiểm tra quyền truy cập cho Admin
+            if (isAdminArea)
             {
                 var adminCookie = filterContext.HttpContext.Request.Cookies["NhanVienAdmin"];
                 if (adminCookie == null || string.IsNullOrEmpty(adminCookie["TaiKhoanNV"]))
@@ -44,18 +45,11 @@ namespace QuanLyKyTucXa.Common
                     DateTime expiresAt;
                     if (DateTime.TryParse(expiresAtString, out expiresAt))
                     {
-                        // Kiểm tra xem token đã hết hạn chưa
                         if (expiresAt < DateTime.Now)
                         {
-                            // Nếu token hết hạn, đăng xuất và yêu cầu đăng nhập lại
                             RedirectToLogin(filterContext);
                             return;
                         }
-                    }
-                    else
-                    {
-                        // Log nếu không thể parse `ExpiresAt`
-                        System.Diagnostics.Debug.WriteLine($"[Auth] ExpiresAt không hợp lệ: {expiresAtString}");
                     }
                 }
             }
@@ -70,27 +64,18 @@ namespace QuanLyKyTucXa.Common
                 }
                 else
                 {
-                    // Kiểm tra thời gian hết hạn của token
                     var expiresAtString = bqlCookie["ExpiresAt"];
                     DateTime expiresAt;
                     if (DateTime.TryParse(expiresAtString, out expiresAt))
                     {
-                        // Kiểm tra xem token đã hết hạn chưa
                         if (expiresAt < DateTime.Now)
                         {
-                            // Nếu token hết hạn, đăng xuất và yêu cầu đăng nhập lại
                             RedirectToLogin(filterContext);
                             return;
                         }
                     }
-                    else
-                    {
-                        // Log nếu không thể parse `ExpiresAt`
-                        System.Diagnostics.Debug.WriteLine($"[Auth] ExpiresAt không hợp lệ: {expiresAtString}");
-                    }
                 }
             }
-            // Trường hợp không xác định Area
             else
             {
                 RedirectToLogin(filterContext);
@@ -102,23 +87,22 @@ namespace QuanLyKyTucXa.Common
 
         private void RedirectToLogin(ActionExecutingContext filterContext)
         {
-            // Log thông báo khi thực hiện đăng xuất
             System.Diagnostics.Debug.WriteLine("[Auth] Chuyển hướng về trang đăng nhập");
 
-            // Xóa cookie nếu đã hết hạn hoặc không hợp lệ
-            var adminCookie = filterContext.HttpContext.Request.Cookies["NhanVienAdmin"];
-            if (adminCookie != null)
-            {
-                adminCookie.Expires = DateTime.Now.AddDays(-1); // Đặt ngày hết hạn vào quá khứ để xóa cookie
-                filterContext.HttpContext.Response.Cookies.Add(adminCookie);
-            }
+            //// Chỉ xóa cookie của quyền hiện tại nếu hết hạn hoặc không hợp lệ
+            //var adminCookie = filterContext.HttpContext.Request.Cookies["NhanVienAdmin"];
+            //if (adminCookie != null)
+            //{
+            //    adminCookie.Expires = DateTime.Now.AddDays(-1);
+            //    filterContext.HttpContext.Response.Cookies.Add(adminCookie);
+            //}
 
-            var bqlCookie = filterContext.HttpContext.Request.Cookies["NhanVienBQL"];
-            if (bqlCookie != null)
-            {
-                bqlCookie.Expires = DateTime.Now.AddDays(-1); // Đặt ngày hết hạn vào quá khứ để xóa cookie
-                filterContext.HttpContext.Response.Cookies.Add(bqlCookie);
-            }
+            //var bqlCookie = filterContext.HttpContext.Request.Cookies["NhanVienBQL"];
+            //if (bqlCookie != null)
+            //{
+            //    bqlCookie.Expires = DateTime.Now.AddDays(-1);
+            //    filterContext.HttpContext.Response.Cookies.Add(bqlCookie);
+            //}
 
             // Lưu URL hiện tại để chuyển hướng sau khi đăng nhập thành công
             var returnUrl = filterContext.HttpContext.Request.Url.AbsoluteUri;
@@ -127,5 +111,6 @@ namespace QuanLyKyTucXa.Common
             // Chuyển hướng về trang đăng nhập
             filterContext.Result = new RedirectResult("/DangNhap/DangNhap/Login");
         }
+
     }
 }

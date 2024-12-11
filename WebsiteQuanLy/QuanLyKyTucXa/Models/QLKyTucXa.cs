@@ -21,7 +21,7 @@ namespace QuanLyKyTucXa.Models
         public virtual DbSet<LoaiKhu> LoaiKhu { get; set; }
         public virtual DbSet<LoaiPhong> LoaiPhong { get; set; }
         public virtual DbSet<LoaiThongBao> LoaiThongBao { get; set; }
-        public virtual DbSet<LoaiViPham> LoaiViPham { get; set; }
+        public virtual DbSet<LoaiBaoCao> LoaiBaoCao { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
         public virtual DbSet<Phong> Phong { get; set; }
         public virtual DbSet<Quyen> Quyen { get; set; }
@@ -31,7 +31,7 @@ namespace QuanLyKyTucXa.Models
         public virtual DbSet<ThoiHanDangKy> ThoiHanDangKy { get; set; }
         public virtual DbSet<ThongBao> ThongBao { get; set; }
         public virtual DbSet<TrangThai> TrangThai { get; set; }
-        public virtual DbSet<ViPham> ViPham { get; set; }
+        public virtual DbSet<BaoCao> BaoCao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -94,11 +94,11 @@ namespace QuanLyKyTucXa.Models
                 .Property(e => e.TaiKhoanNV)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViPham>()
+            modelBuilder.Entity<BaoCao>()
                 .Property(e => e.MaSinhVien)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViPham>()
+            modelBuilder.Entity<BaoCao>()
                 .Property(e => e.TaiKhoanNV)
                 .IsUnicode(false);
         }

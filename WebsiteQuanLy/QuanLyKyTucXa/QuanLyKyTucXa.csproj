@@ -1079,7 +1079,7 @@
     <Compile Include="Models\LoaiKhu.cs" />
     <Compile Include="Models\LoaiPhong.cs" />
     <Compile Include="Models\LoaiThongBao.cs" />
-    <Compile Include="Models\LoaiViPham.cs" />
+    <Compile Include="Models\LoaiBaoCao.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\Phong.cs" />
     <Compile Include="Models\QLKyTucXa.cs" />
@@ -1091,7 +1091,7 @@
     <Compile Include="Models\ThongBao.cs" />
     <Compile Include="Models\TrangThai.cs" />
     <Compile Include="Models\ViewModel\PhongHoaDonViewModel.cs" />
-    <Compile Include="Models\ViPham.cs" />
+    <Compile Include="Models\BaoCao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

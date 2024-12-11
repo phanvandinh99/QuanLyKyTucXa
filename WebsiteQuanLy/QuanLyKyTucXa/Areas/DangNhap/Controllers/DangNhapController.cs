@@ -106,7 +106,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
             var cookie = Request.Cookies["NhanVienAdmin"];
             if (cookie != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-2);
+                cookie.Expires = DateTime.Now.AddDays(-1);
                 cookie.HttpOnly = true;
                 cookie.Secure = Request.IsSecureConnection;
                 Response.Cookies.Add(cookie);
@@ -120,7 +120,7 @@ namespace QuanLyKyTucXa.Areas.DangNhap.Controllers
             var cookie = Request.Cookies["NhanVienBQL"];
             if (cookie != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-2);
+                cookie.Expires = DateTime.Now.AddDays(-1);
                 cookie.HttpOnly = true;
                 cookie.Secure = Request.IsSecureConnection;
                 Response.Cookies.Add(cookie);

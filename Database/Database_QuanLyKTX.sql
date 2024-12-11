@@ -363,28 +363,30 @@ create table HoaDon
 	Constraint fk_HoaDon_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
-create table LoaiViPham
+create table LoaiBaoCao
 (
-	MaLoaiViPham int identity(1,1) primary key,
-	TenLoaiViPham nvarchar(150) not null,
+	MaLoaiBaoCao int identity(1,1) primary key,
+	TenLoaiBaoCao nvarchar(150) not null,
 )
 go
-insert into LoaiViPham (TenLoaiViPham) values (N'Vi Phạm Nội Quy');
-insert into LoaiViPham (TenLoaiViPham) values (N'Quá hạn Thanh Toán');
-insert into LoaiViPham (TenLoaiViPham) values (N'Hư Hỏng Vật Chất');
+insert into LoaiBaoCao (TenLoaiBaoCao) values (N'Vi Phạm Nội Quy');
+insert into LoaiBaoCao (TenLoaiBaoCao) values (N'Quá hạn Thanh Toán Tiền Phòng');
+insert into LoaiBaoCao (TenLoaiBaoCao) values (N'Quá hạn Thanh Toán Điện/Nước...');
+insert into LoaiBaoCao (TenLoaiBaoCao) values (N'Hư Hỏng Vật Chất');
+insert into LoaiBaoCao (TenLoaiBaoCao) values (N'Khác');
 go
-create table ViPham
+create table BaoCao
 (
-	MaViPham int identity(1,1) primary key,
+	MaBaoCao int identity(1,1) primary key,
 	NoiDung nvarchar(max) not null,
 	NgayGui datetime not null,
 	NgayXem datetime null,
 
-	MaLoaiViPham int,
+	MaLoaiBaoCao int,
 	MaSinhVien varchar(10),
 	TaiKhoanNV varchar(10),
 
-	Constraint fk_ViPham_LoaiViPham Foreign Key (MaLoaiViPham) references LoaiViPham(MaLoaiViPham),
+	Constraint fk_ViPham_LoaiBaoCao Foreign Key (MaLoaiBaoCao) references LoaiBaoCao(MaLoaiBaoCao),
 	Constraint fk_ViPham_SinhVien Foreign Key (MaSinhVien) references SinhVien(MaSinhVien),
 	Constraint fk_ViPham_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
