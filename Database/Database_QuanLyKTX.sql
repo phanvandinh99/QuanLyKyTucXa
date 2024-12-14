@@ -401,6 +401,7 @@ insert into LoaiThongBao (TenLoaiThongBao) values (N'Duyệt Phòng');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Điện');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Đóng Tiền Nước');
 insert into LoaiThongBao (TenLoaiThongBao) values (N'Hoàn Tất Thanh Toán');
+insert into LoaiThongBao (TenLoaiThongBao) values (N'Khác');
 go
 create table ThongBao
 (
