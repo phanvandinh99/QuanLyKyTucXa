@@ -39,8 +39,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
             ViewBag.listTang = await _db.Tang.ToListAsync();
             ViewBag.listLoaiPhong = await _db.LoaiPhong.ToListAsync();
             ViewBag.listThoiHanDangKy = await _db.ThoiHanDangKy.Where(n => n.NgayMo <= DateTime.Now &&
-                                                                n.NgayDong >= DateTime.Now)
-                                                         .ToListAsync();
+                                                                      n.NgayDong >= DateTime.Now)
+                                                               .ToListAsync();
 
             List<HopDong> listHopDong = await _db.HopDong.Where(n => n.MaSinhVien == maSinhVien).ToListAsync();
 

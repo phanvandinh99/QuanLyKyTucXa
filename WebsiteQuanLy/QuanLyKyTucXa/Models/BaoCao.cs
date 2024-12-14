@@ -17,6 +17,8 @@ namespace QuanLyKyTucXa.Models
 
         public DateTime? NgayXem { get; set; }
 
+        public Boolean TrangThai { get; set; }
+
         public int? MaLoaiBaoCao { get; set; }
 
         [StringLength(10)]

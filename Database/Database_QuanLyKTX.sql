@@ -381,6 +381,7 @@ create table BaoCao
 	NoiDung nvarchar(max) not null,
 	NgayGui datetime not null,
 	NgayXem datetime null,
+	TrangThai bit not null,
 
 	MaLoaiBaoCao int,
 	MaSinhVien varchar(10),
@@ -409,6 +410,7 @@ create table ThongBao
 	NoiDung nvarchar(max) not null,
 	NgayGui datetime not null,
 	NgayXem datetime null,
+	TrangThai bit not null,
 
 	MaLoaiThongBao int,
 	MaSinhVien varchar(10),

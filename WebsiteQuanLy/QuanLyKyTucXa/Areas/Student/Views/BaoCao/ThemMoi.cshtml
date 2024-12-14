@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Thêm Mới Báo Cáo";
+    Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<div>
+    <!-- Inner Banner Start -->
+    <div class="at-haslayout at-innerbannerholder">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-12">
+                    <div class="at-innerbannercontent">
+                        <div class="at-title"><h2>thêm Báo Cáo</h2></div>
+                        <ol class="at-breadcrumb">
+                            <li><a href="~/Student/Home/Index">Trang Chủ</a></li>
+                            <li>Thêm Báo Cáo Đến Ban Quản Lý</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inner Banner End -->
+    <!-- Main Start -->
+    <main id="at-main" class="at-main at-haslayout">
+        <!-- Contact Form Start -->
+        <section class="at-haslayout at-main-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
+                        <div class="at-sectionhead">
+                            <div class="at-sectiontitle">
+                                <h2>THÔNG TIN YÊU CẦU BÁO CÁO</h2>
+                                <span>Hỗ Trợ Sinh Viên 24/7</span>
+                            </div>
+                            <div class="at-description">
+                                <p>
+                                    Nhập đầy đủ thông tin yêu cầu muốn gửi đến ban quản lý ký túc xá
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-12 col-xl-10 push-xl-1">
+                        @using (Html.BeginForm("ThemMoi", "BaoCao", FormMethod.Post, new { @class = "at-formtheme at-formcontactus" }))
+                        {
+                            <fieldset>
+                                <div class="form-group form-group-half">
+                                    <label>Loại Báo Cáo</label>
+                                    <select name="iMaLoaiBaoCao">
+                                        <option value="4">Hư Hỏng Vật Chất</option>
+                                        <option value="5">Yêu Cầu Khác</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="sNoiDung" placeholder="Nội Dung Yêu Cầu" required=""></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="at-btn">Gửi Yêu Cầu</button>
+                                </div>
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Form End -->
+    </main>
+    <!-- Main End -->
+</div>

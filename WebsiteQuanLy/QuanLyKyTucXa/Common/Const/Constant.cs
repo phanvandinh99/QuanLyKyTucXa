@@ -55,5 +55,8 @@
         public const int DuyetPhong = 1; // Loại thông báo: Duyệt phòng thành công
         public const string TitleDatPhong = "Thông Báo Xác Nhận Ở Phòng Ký Túc Xá";
 
+        // Tài khoản Nhân Viên
+        public const string sAdmin = "Admin";
+        public const string sBanQuanLy = "BanQuanLy";
     }
 }
