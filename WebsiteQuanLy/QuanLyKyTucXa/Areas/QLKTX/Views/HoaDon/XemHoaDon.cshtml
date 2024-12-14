@@ -40,6 +40,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
+                    
+
                         <div class="list-product" id="LoaiHoaDon-list">
                             <div class="datatable-wrapper">
                                 <div class="datatable-top">
@@ -56,6 +58,23 @@
                                     </div>
                                     <div class="datatable-search">
                                         <input class="datatable-input search" placeholder="Tìm kiếm..." type="search" />
+                                    </div>
+
+                                    <div class="list-product-header">
+                                            @using (Html.BeginForm("XuatHoaDon", "HoaDon", FormMethod.Post, new { @class = "row g-3 align-items-center" }))
+                                            {
+                                                <input type="hidden" name="iMaLoaiHoaDon" value="@ViewBag.MaLoaiHoaDon" />
+                                                <!-- Tháng/Năm -->
+                                                <div class="col-auto">
+                                                    <input type="month" id="thangNam" name="ThangNam" class="form-control" required />
+                                                </div>
+                                                <!-- Nút Xuất Hóa Đơn -->
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="fa fa-plus"></i> Xuất hóa đơn
+                                                    </button>
+                                                </div>
+                                            }
                                     </div>
                                 </div>
                                 <div class="datatable-container">

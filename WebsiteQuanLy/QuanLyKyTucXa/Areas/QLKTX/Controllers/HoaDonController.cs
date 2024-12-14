@@ -1,10 +1,12 @@
-﻿using QuanLyKyTucXa.Common.Const;
+﻿using OfficeOpenXml;
+using QuanLyKyTucXa.Common.Const;
 using QuanLyKyTucXa.Models;
 using QuanLyKyTucXa.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -301,6 +303,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 List<HoaDon> hoaDon = await _db.HoaDon.Where(n => n.DonGia.MaLoaiHoaDon == iMaLoaiHoaDon)
                                                       .ToListAsync();
 
+                ViewBag.MaLoaiHoaDon = iMaLoaiHoaDon;
                 return View(hoaDon);
             }
             catch (Exception ex)
@@ -367,33 +370,105 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
         }
         #endregion
 
-        //#region xóa đơn giá
-        //public async Task<ActionResult> Xoa(int iMaDonGia)
-        //{
-        //    try
-        //    {
-        //        DonGia DonGia = await _db.DonGia.FindAsync(iMaDonGia);
-        //        if (DonGia == null)
-        //        {
-        //            TempData["ToastMessage"] = "error|Không tồn tại đơn giá.";
-        //            return RedirectToAction("Index", "DonGia");
-        //        }
+        #region Xuất hóa đơn ra Excel
+        public async Task<ActionResult> XuatHoaDon(int iMaLoaiHoaDon, DateTime ThangNam)
+        {
+            try
+            {
+                // Lấy ngày đầu tiên và cuối cùng của tháng/năm được chọn
+                DateTime startDate = new DateTime(ThangNam.Year, ThangNam.Month, 1);
+                DateTime endDate = startDate.AddMonths(1).AddDays(-1);
 
-        //        _db.DonGia.Remove(DonGia);
-        //        await _db.SaveChangesAsync();
-        //        TempData["ToastMessage"] = "success|Xóa đơn giá thành công.";
+                // Lọc danh sách hóa đơn thuộc khoảng thời gian
+                var listHoaDon = await _db.HoaDon
+                    .Where(h => h.Thang >= startDate && h.Thang <= endDate)
+                    .ToListAsync();
 
-        //        return RedirectToAction("Index", "DonGia");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // logerror
-        //        Console.WriteLine(ex.ToString());
+                if (listHoaDon == null || !listHoaDon.Any())
+                {
+                    TempData["ToastMessage"] = "error|Không có hóa đơn trong khoảng thời gian đã chọn.";
+                    return RedirectToAction("XemHoaDon", "HoaDon", new { iMaLoaiHoaDon });
+                }
 
-        //        TempData["ToastMessage"] = "error|Lỗi khóa ngoại.";
-        //        return RedirectToAction("Index", "DonGia");
-        //    }
-        //}
-        //#endregion
+                // Đặt LicenseContext trước khi sử dụng EPPlus
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                // Tạo file Excel
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Hóa Đơn Tháng " + ThangNam.ToString("MM/yyyy"));
+
+                    // Tiêu đề
+                    string title = iMaLoaiHoaDon == 1
+                        ? "HÓA ĐƠN ĐIỆN THÁNG " + ThangNam.ToString("MM/yyyy")
+                        : "HÓA ĐƠN NƯỚC THÁNG " + ThangNam.ToString("MM/yyyy");
+
+                    worksheet.Cells["A1:F1"].Merge = true; // Gộp ô từ A1 đến F1
+                    worksheet.Cells["A1"].Value = title;
+                    worksheet.Cells["A1"].Style.Font.Size = 18;
+                    worksheet.Cells["A1"].Style.Font.Bold = true;
+                    worksheet.Cells["A1"].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
+                    worksheet.Cells["A1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                    // Header
+                    worksheet.Cells["A3"].Value = "STT";
+                    worksheet.Cells["B3"].Value = "Chữ Số Cũ";
+                    worksheet.Cells["C3"].Value = "Chữ Số Mới";
+                    worksheet.Cells["D3"].Value = "Tổng Số Chữ";
+                    worksheet.Cells["E3"].Value = "Tổng Tiền";
+                    worksheet.Cells["F3"].Value = "Phòng";
+
+                    worksheet.Cells["A3:F3"].Style.Font.Bold = true;
+                    worksheet.Cells["A3:F3"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    worksheet.Cells["A3:F3"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    worksheet.Cells["A3:F3"].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+
+                    // Nội dung
+                    int row = 4; // Bắt đầu từ dòng 4
+                    int stt = 1;
+                    double totalAmount = 0;
+
+                    foreach (var hoaDon in listHoaDon)
+                    {
+                        worksheet.Cells[row, 1].Value = stt++;
+                        worksheet.Cells[row, 2].Value = hoaDon.ChuSoDau;
+                        worksheet.Cells[row, 3].Value = hoaDon.ChuSoCuoi;
+                        worksheet.Cells[row, 4].Value = hoaDon.TongSoChu;
+                        worksheet.Cells[row, 5].Value = hoaDon.TongTien.ToString("#,##0") + " vnđ";
+                        worksheet.Cells[row, 6].Value = hoaDon.Phong.TenPhong + ", " +
+                                                        hoaDon.Phong.Tang.TenTang + ", " +
+                                                        hoaDon.Phong.Tang.Khu.TenKhu + ", " +
+                                                        hoaDon.Phong.Tang.Khu.LoaiKhu.TenLoaiKhu;
+
+                        totalAmount += hoaDon.TongTien;
+                        row++;
+                    }
+
+                    // Thêm tổng cộng
+                    worksheet.Cells[row, 4].Value = "Tổng cộng:";
+                    worksheet.Cells[row, 4].Style.Font.Bold = true;
+                    worksheet.Cells[row, 5].Value = totalAmount.ToString("#,##0") + " vnđ";
+                    worksheet.Cells[row, 5].Style.Font.Bold = true;
+
+                    // Định dạng bảng
+                    worksheet.Cells["A3:F" + row].AutoFitColumns();
+
+                    // Trả file về phía client
+                    var excelData = package.GetAsByteArray();
+                    string fileName = $"HoaDon_{ThangNam.ToString("MM_yyyy")}.xlsx";
+                    return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                Console.WriteLine(ex.ToString());
+
+                TempData["ToastMessage"] = "error|Xuất Excel thất bại.";
+                return RedirectToAction("XemHoaDon", "HoaDon", new { iMaLoaiHoaDon });
+            }
+        }
+        #endregion
+
     }
 }
