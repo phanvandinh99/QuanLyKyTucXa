@@ -1,0 +1,103 @@
+﻿@using QuanLyKyTucXa.Models
+
+@{
+    ViewBag.Title = "Thêm Thông Báo";
+    Layout = "~/Areas/QLKTX/Views/Shared/_LayoutBQL.cshtml";
+}
+
+@{
+    IEnumerable<Phong> listPhong = ViewBag.Phong as IEnumerable<Phong>;
+    IEnumerable<LoaiThongBao> listLoaiThongBao = ViewBag.LoaiThongBao as IEnumerable<LoaiThongBao>;
+}
+
+<div class="page-body">
+    <!-- #region Tiêu đề -->
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h4>
+                        Quản Lý Thông Báo
+                    </h4>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/QLKTX/Home/Index">
+                                <svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">Trang Chủ </li>
+                        <li class="breadcrumb-item active">Quản Lý Thông Báo</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Tiêu đề -->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Báo Cáo</h4>
+                        <p class="f-m-light mt-1">
+                            Là các thông báo từ Ban Quản Lý Ký Túc xá đến sinh viên ở phòng
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-wrapper border rounded-3">
+                            @using (Html.BeginForm("ThemMoi", "ThongBao", FormMethod.Post, new { @class = "row g-3" }))
+                            {
+                                <div class="col-md-12">
+                                    <label class="form-label" for="MaLoaiThongBao">Loại Thông Báo</label>
+
+                                    <select class="form-select" name="MaLoaiThongBao">
+                                        @if (listLoaiThongBao != null && listLoaiThongBao.Any())
+                                        {
+                                            foreach (var item in listLoaiThongBao)
+                                            {
+                                                <option value="@item.MaLoaiThongBao">@item.TenLoaiThongBao</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label" for="MaPhong">Gửi Đến Phòng</label>
+                                    <select class="form-select" name="MaPhong">
+                                        @if (listPhong != null && listPhong.Any())
+                                        {
+                                            <option value="0">Tất Cả Phòng</option>
+
+                                            foreach (var item in listPhong)
+                                            {
+                                                <option value="@item.MaPhong">
+                                                    @item.TenPhong, (Đã ở: @item.DaO sinh viên), @item.Tang.TenTang, @item.Tang.Khu.TenKhu, @item.Tang.Khu.LoaiKhu.TenLoaiKhu
+                                                </option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="NoiDung">Nội Dung</label>
+                                    <textarea class="form-control" name="NoiDung" id="NoiDung" rows="4" placeholder="Nhập nội dung" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Chấp Nhận </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+
+

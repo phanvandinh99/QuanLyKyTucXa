@@ -1043,6 +1043,7 @@
     <Compile Include="Areas\Admin\Controllers\TangController.cs" />
     <Compile Include="Areas\DangNhap\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\DangNhap\DangNhapAreaRegistration.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\DonGiaController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HoaDonController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\HomeController.cs" />
@@ -1050,6 +1051,7 @@
     <Compile Include="Areas\QLKTX\Controllers\LoaiHoaDonController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\PhongController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\ThoiHanDangKyController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\ThongBaoController.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\Student\Controllers\HoaDonController.cs" />
@@ -1183,6 +1185,13 @@
     <Content Include="Areas\Student\Views\BaoCao\ThemMoi.cshtml" />
     <Content Include="Areas\Student\Views\BaoCao\CapNhat.cshtml" />
     <Content Include="Areas\Student\Views\ThongBao\XemChiTiet.cshtml" />
+    <Content Include="Areas\QLKTX\Views\BaoCao\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\BaoCao\CapNhat.cshtml" />
+    <Content Include="Areas\QLKTX\Views\Phong\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\Phong\XemChiTiet.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThongBao\Index.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThongBao\ThemMoi.cshtml" />
+    <Content Include="Areas\QLKTX\Views\ThongBao\XemChiTiet.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1196,7 +1205,6 @@
     <Folder Include="Areas\DangNhap\Data\" />
     <Folder Include="Areas\DangNhap\Views\Shared\" />
     <Folder Include="Areas\QLKTX\Data\" />
-    <Folder Include="Areas\QLKTX\Views\Phong\" />
     <Folder Include="Areas\Student\Views\HoaDon\" />
     <Folder Include="Areas\Student\Views\TaiKhoan\" />
     <Folder Include="Assets\Student\images\AnhSinhVien\" />
