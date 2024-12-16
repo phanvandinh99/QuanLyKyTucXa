@@ -421,3 +421,25 @@ create table ThongBao
 	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
+create table TinTuc
+(
+	MaTinTuc int identity(1,1) primary key,
+	TenTinTuc nvarchar(100) not null,
+	NoiDung nvarchar(max) not null,
+	HinhAnh nvarchar(100) not null,
+	NgayThem datetime not null,
+	TaiKhoanNV varchar(10),
+	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+)
+go
+create table BieuMau
+(
+	MaTinTuc int identity(1,1) primary key,
+	TenTinTuc nvarchar(100) not null,
+	NoiDung nvarchar(max) not null,
+	HinhAnh nvarchar(100) not null,
+	NgayThem datetime not null,
+	TaiKhoanNV varchar(10),
+	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+)
+go

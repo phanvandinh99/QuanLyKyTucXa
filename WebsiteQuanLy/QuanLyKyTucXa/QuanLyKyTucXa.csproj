@@ -1081,6 +1081,7 @@
     <Compile Include="Areas\QLKTX\Controllers\PhongController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\ThoiHanDangKyController.cs" />
     <Compile Include="Areas\QLKTX\Controllers\ThongBaoController.cs" />
+    <Compile Include="Areas\QLKTX\Controllers\TinTucController.cs" />
     <Compile Include="Areas\QLKTX\QLKTXAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\Student\Controllers\HoaDonController.cs" />
@@ -1234,6 +1235,7 @@
     <Folder Include="Areas\DangNhap\Data\" />
     <Folder Include="Areas\DangNhap\Views\Shared\" />
     <Folder Include="Areas\QLKTX\Data\" />
+    <Folder Include="Areas\QLKTX\Views\TinTuc\" />
     <Folder Include="Areas\Student\Views\HoaDon\" />
     <Folder Include="Areas\Student\Views\TaiKhoan\" />
     <Folder Include="Assets\Student\images\AnhSinhVien\" />
