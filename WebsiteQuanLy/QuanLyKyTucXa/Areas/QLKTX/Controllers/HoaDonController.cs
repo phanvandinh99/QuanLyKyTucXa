@@ -186,6 +186,22 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 return RedirectToAction("ThemMoi", "HoaDon");
             }
 
+            string stenHoaDon;
+
+            if (iMaLoaiHoaDon == 1)
+            {
+                stenHoaDon = "HÓA ĐƠN ĐIỆN";
+            }
+            else if (iMaLoaiHoaDon == 2)
+            {
+                stenHoaDon = "HÓA ĐƠN NƯỚC";
+            }
+            else
+            {
+                stenHoaDon = "HÓA ĐƠN";
+            }
+
+
             // Kiểm tra đã thêm Đơn giá cho loại hóa đơn đó hay chưa
             var donGia = await _db.DonGia.FirstOrDefaultAsync(n => n.MaLoaiHoaDon == iMaLoaiHoaDon);
             if (donGia == null)
@@ -280,10 +296,11 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                                                     <div class='content'>
                                                         <p>Ban quản lý ký túc xá gửi thông báo đến sinh viên đóng tiền điện nước tháng:</p>
                                                         <p><span class='section-title'>Họ và tên:</span> {sinhVien.Ho} {sinhVien.Ten}</p>
-                                                        <p><span class='section-title'>Phòng:</span> {hoaDon.Phong}</p>
+                                                        <p><span class='section-title'>Phòng:</span> {hoaDon.Phong.MaPhong}</p>
                                                         <p><span class='section-title'>Chữ số đầu kỳ:</span> {hoaDon.ChuSoDau}</p>
                                                         <p><span class='section-title'>Chữ số cuối kỳ:</span> {hoaDon.ChuSoCuoi}</p>
-                                                        <p><span class='section-title'>Tổng tiền thanh toán:</span> {hoaDon.TongTien} VND</p>
+                                                        <p><span class='section-title'>Chữ số cuối kỳ:</span> {hoaDon.DonGia.DonGia1.ToString("#,##0")} vnđ</p>
+                                                        <p><span class='section-title'>Tổng tiền thanh toán:</span> {hoaDon.TongTien.ToString("#,##0")} vnđ</p>
                                                     </div>
                                                 </body>
                                                 </html>
@@ -292,7 +309,7 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
 
                         // Gửi email
                         bool emailSent = await Common.SendMail.SendEmailAsync(
-                            "Hóa đơn điện nước",  // Tiêu đề email
+                            stenHoaDon,  // Tiêu đề email
                             emailContent,         // Nội dung email
                             sinhVien.Email        // Địa chỉ email người nhận
                         );

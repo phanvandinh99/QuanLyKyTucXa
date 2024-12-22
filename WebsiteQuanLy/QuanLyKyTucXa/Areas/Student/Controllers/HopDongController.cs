@@ -112,6 +112,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 // Lấy thông tin sinh viên từ cookie
                 string maSinhVien = cookie.Values["MaSinhVien"];
 
+                SinhVien sinhVien = await _db.SinhVien.FindAsync(maSinhVien);
+
                 // Kiểm tra xem sinh viên đã có hợp đồng nào chưa?
                 HopDong hopDong = await _db.HopDong.FirstOrDefaultAsync(n => n.MaThoiHanDangKy == iMaThoiHanDangKy &&
                                                                         n.MaSinhVien == maSinhVien);
@@ -156,7 +158,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 #endregion
 
                 // Kiểm tra thời gian đăng ký ngắn ngày hay dài ngày (<= 15 ngày là ngắn ngày)
-                if (hopDong.SinhVien.LoaiDangKy == Constant.TheoNgay)
+                if (sinhVien.LoaiDangKy == Constant.TheoNgay)
                 {
                     // Nếu sinh viên đăng ký ngắn ngày mà số ngày thuê > 15, không được đăng ký dài ngày
                     if (Constant.DaiNgay <= soNgayThue)
