@@ -240,10 +240,10 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                 foreach (var hopDong in hopDongs)
                 {
                     // Lấy email sinh viên từ hợp đồng
-                    var email = hopDong.SinhVien?.Email;
+                    var sinhVien = hopDong.SinhVien;
 
                     // Nếu email không có giá trị, bỏ qua hợp đồng này
-                    if (string.IsNullOrEmpty(email)) continue;
+                    if (string.IsNullOrEmpty(sinhVien.Email)) continue;
 
                     // Tìm hóa đơn của sinh viên này trong danh sách hóa đơn đã thêm
                     var hoaDon = hoaDons.FirstOrDefault(hd => hd.MaPhong == hopDong.Giuong.Phong.MaPhong);
@@ -252,24 +252,49 @@ namespace QuanLyKyTucXa.Areas.QLKTX.Controllers
                     {
                         // Soạn nội dung email
                         string emailContent = $@"
-                                                <p><strong>Chào bạn,</strong></p>
-                                                <p>Hóa đơn điện nước của bạn đã được tạo. Dưới đây là thông tin chi tiết:</p>
-                                                <p><strong>Chữ số đầu:</strong> {hoaDon.ChuSoDau}</p>
-                                                <p><strong>Chữ số cuối:</strong> {hoaDon.ChuSoCuoi}</p>
-                                                <p><strong>Đơn giá:</strong> {hoaDon.TongTien / (hoaDon.ChuSoCuoi - hoaDon.ChuSoDau)} VND</p>
-                                                <p><strong>Thành tiền:</strong> {hoaDon.TongTien} VND</p>
-                                                <p><strong>Hạn thanh toán:</strong> {hoaDon.HanCuoiThanhToan.ToString("dd/MM/yyyy")}</p>
-                                                <p>Vui lòng thanh toán trước hạn thanh toán để tránh bị phạt trễ hạn.</p>
-                                                <p>Chúc bạn một ngày tốt lành!</p>
-                                                <p>Trân trọng,</p>
-                                                <p>Quản lý ký túc xá</p>
+                                                <html>
+                                                <head>
+                                                    <style>
+                                                        body {{
+                                                            font-family: Arial, sans-serif;
+                                                            line-height: 1.6;
+                                                        }}
+                                                        .header {{
+                                                            text-align: center;
+                                                            font-weight: bold;
+                                                        }}
+                                                        .section-title {{
+                                                            font-weight: bold;
+                                                            display: inline-block;
+                                                            width: 150px;
+                                                        }}
+                                                        .content {{
+                                                            margin: 20px 0;
+                                                        }}
+                                                    </style>
+                                                </head>
+                                                <body>
+                                                    <div class='header'>
+                                                        <p>BAN QUẢN LÝ KTX</p>
+                                                    </div>
+                                                    <div class='content'>
+                                                        <p>Ban quản lý ký túc xá gửi thông báo đến sinh viên đóng tiền điện nước tháng:</p>
+                                                        <p><span class='section-title'>Họ và tên:</span> {sinhVien.Ho} {sinhVien.Ten}</p>
+                                                        <p><span class='section-title'>Phòng:</span> {hoaDon.Phong}</p>
+                                                        <p><span class='section-title'>Chữ số đầu kỳ:</span> {hoaDon.ChuSoDau}</p>
+                                                        <p><span class='section-title'>Chữ số cuối kỳ:</span> {hoaDon.ChuSoCuoi}</p>
+                                                        <p><span class='section-title'>Tổng tiền thanh toán:</span> {hoaDon.TongTien} VND</p>
+                                                    </div>
+                                                </body>
+                                                </html>
                                             ";
+
 
                         // Gửi email
                         bool emailSent = await Common.SendMail.SendEmailAsync(
                             "Hóa đơn điện nước",  // Tiêu đề email
-                            emailContent,          // Nội dung email
-                            email                  // Địa chỉ email người nhận
+                            emailContent,         // Nội dung email
+                            sinhVien.Email        // Địa chỉ email người nhận
                         );
 
                         if (!emailSent)
