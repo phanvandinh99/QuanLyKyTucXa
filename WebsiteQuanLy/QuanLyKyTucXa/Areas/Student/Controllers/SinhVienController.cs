@@ -86,7 +86,8 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                     SDT = sinhVienModel.SDT,
                     DanToc = sinhVienModel.DanToc,
                     DiemUuTien = 0,
-                    TrangThai = Constant.CanXacThucTaiKhoan
+                    TrangThai = Constant.CanXacThucTaiKhoan,
+                    LoaiDangKy = Constant.CanXacThucTaiKhoan
                 };
 
                 _db.SinhVien.Add(sinhVien);

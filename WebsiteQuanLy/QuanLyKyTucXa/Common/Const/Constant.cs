@@ -58,5 +58,13 @@
         // Tài khoản Nhân Viên
         public const string sAdmin = "Admin";
         public const string sBanQuanLy = "BanQuanLy";
+
+        // Thời gian đăng ký
+        public const int NganNgay = 15;
+        public const int DaiNgay = 16;
+
+        // Thời gian đăng ký
+        public const bool TheoNgay = false;
+        public const bool TheoThang = true;
     }
 }

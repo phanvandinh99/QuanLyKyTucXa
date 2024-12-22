@@ -83,7 +83,7 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
 
         #region Thêm mới hợp đồng
         [HttpPost]
-        public async Task<ActionResult>  DangKy(int iGiuongChon, int iMaThoiHanDangKy)
+        public async Task<ActionResult> DangKy(int iGiuongChon, int iMaThoiHanDangKy)
         {
             // Lấy thông tin phòng từ giường
             Giuong giuong = await _db.Giuong.FindAsync(iGiuongChon);
@@ -155,6 +155,16 @@ namespace QuanLyKyTucXa.Areas.Student.Controllers
                 int soNgayThue = khoangThoiGian.Days + 1;
                 #endregion
 
+                // Kiểm tra thời gian đăng ký ngắn ngày hay dài ngày (<= 15 ngày là ngắn ngày)
+                if (hopDong.SinhVien.LoaiDangKy == Constant.TheoNgay)
+                {
+                    // Nếu sinh viên đăng ký ngắn ngày mà số ngày thuê > 15, không được đăng ký dài ngày
+                    if (Constant.DaiNgay <= soNgayThue)
+                    {
+                        TempData["ToastMessage"] = "error|Bạn chỉ được đăng ký ngắn ngày.";
+                        return RedirectToAction("ChiTietPhong", "Phong", new { iMaPhong = giuong.Phong.MaPhong });
+                    }
+                }
 
                 // Khởi tạo hợp đồng sinh viên
                 HopDong hoopDongThue = new HopDong

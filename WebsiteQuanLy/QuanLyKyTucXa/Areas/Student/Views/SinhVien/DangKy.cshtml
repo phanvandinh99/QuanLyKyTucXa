@@ -1,4 +1,5 @@
 ﻿@using QuanLyKyTucXa.Models
+@using QuanLyKyTucXa.Common.Const
 @model IEnumerable<DienChinhSach>
 
 @{
@@ -129,7 +130,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label for="AnhChanDung" class="form-label">Ảnh Chân Dung</label>
+                                            <label for="AnhChanDung" class="form-label">Ảnh Căn Cước</label>
                                             <input type="file" class="form-control form-control-lg" id="AnhChanDung" name="AnhChanDung" accept="image/*" required>
                                         </div>
 
@@ -217,10 +218,17 @@
                                                     <option value="Rơ Măm">Rơ Măm</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="DiemUuTien" class="form-label">Điểm Ưu Tiên</label>
-                                                <input type="tel" class="form-control form-control-lg" id="DiemUuTien" name="DiemUuTien" placeholder="Tính theo điện chính sách" readonly>
+
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="LoaiDangKy" class="form-label">Loại Đăng Ký</label>
+                                                    <select id="LoaiDangKy" name="LoaiDangKy" class="form-select" required>
+                                                        <option value="@Constant.TheoThang" selected>Theo Tháng</option>
+                                                        <option value="@Constant.TheoNgay">Theo Ngày (max: 15 ngày)</option>
+                                                    </select>
+                                                </div>
                                             </div>
+
                                         </div>
 
                                         <!-- Dịch vụ đi kèm -->

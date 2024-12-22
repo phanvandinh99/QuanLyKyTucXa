@@ -57,6 +57,8 @@ namespace QuanLyKyTucXa.Models
 
         public bool TrangThai { get; set; }
 
+        public bool LoaiDangKy { get; set; }
+
         public bool DaXoa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

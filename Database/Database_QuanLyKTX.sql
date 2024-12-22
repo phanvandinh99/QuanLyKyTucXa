@@ -25,11 +25,12 @@ create table SinhVien
 	DanToc varchar(100) not null,
 	DiemUuTien float default(0),
 	TrangThai bit not null,
+	LoaiDangKy bit not null,
 	DaXoa bit not null,
 )
 go
-INSERT SinhVien (MaSinhVien, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, DanToc, DiemUuTien, TrangThai, DaXoa) 
-VALUES (N'B1906388', N'Abc123', N'AnhTestSinhVien.jpg', N'Nhâm Hữu', N'Nghĩa', 0, CAST(N'1999-11-12 00:00:00.000' AS DateTime), N'huunghia1908@gmail.com', N'0971010281', N'Kinh', 0, 1, 0)
+INSERT SinhVien (MaSinhVien, MatKhau, AnhChanDung, Ho, Ten, GioiTinh, NgaySinh, Email, SDT, DanToc, DiemUuTien, TrangThai, LoaiDangKy, DaXoa) 
+VALUES (N'B1906388', N'Abc123', N'AnhTestSinhVien.jpg', N'Nhâm Hữu', N'Nghĩa', 0, CAST(N'1999-11-12 00:00:00.000' AS DateTime), N'huunghia1908@gmail.com', N'0971010281', N'Kinh', 0, 1, 1, 0)
 go
 create  table DienChinhSach
 (
@@ -429,7 +430,7 @@ create table TinTuc
 	HinhAnh nvarchar(100) not null,
 	NgayThem datetime not null,
 	TaiKhoanNV varchar(10),
-	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+	Constraint fk_TinTuc_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
 create table BieuMau
@@ -440,6 +441,6 @@ create table BieuMau
 	HinhAnh nvarchar(100) not null,
 	NgayThem datetime not null,
 	TaiKhoanNV varchar(10),
-	Constraint fk_ThongBao_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
+	Constraint fk_BieuMau_NhanVien Foreign Key (TaiKhoanNV) references NhanVien(TaiKhoanNV),
 )
 go
