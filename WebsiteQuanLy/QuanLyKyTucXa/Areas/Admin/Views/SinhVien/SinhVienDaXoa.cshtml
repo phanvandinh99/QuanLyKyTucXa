@@ -132,7 +132,7 @@
                                                         <input class="form-check-input checkbox-primary" type="checkbox">
                                                     </div>
                                                 </th>
-                                                <th data-sortable="true" style="width: 26%;">
+                                                <th data-sortable="true" style="width: 20%;">
                                                     <span class="datatable-sorter sort" data-sort="ho">
                                                         <span class="f-light f-w-600">Họ</span>
                                                     </span>
@@ -162,9 +162,14 @@
                                                         <span class="f-light f-w-600">SDT</span>
                                                     </span>
                                                 </th>
-                                                <th data-sortable="true" style="width: 12%;">
+                                                <th data-sortable="true" style="width: 10%;">
                                                     <span class="datatable-sorter sort" data-sort="diemUuTien">
                                                         <span class="f-light f-w-600">Điểm Ưu Tiên</span>
+                                                    </span>
+                                                </th>
+                                                <th data-sortable="true" style="width: 10%;">
+                                                    <span class="datatable-sorter sort" data-sort="loaiDangKy">
+                                                        <span class="f-light f-w-600">Loại Đăng Ký</span>
                                                     </span>
                                                 </th>
                                                 <th data-sortable="true" style="width: 9%;">
@@ -199,6 +204,7 @@
                                                         <td class="email"><p class="f-light">@item.Email</p></td>
                                                         <td class="sdt"><span class="badge badge-light-secondary">@item.SDT</span></td>
                                                         <td class="diemUuTien"><p class="f-light">@item.DiemUuTien</p></td>
+                                                        <td class="loaiDangKy"><p class="f-light"> @(item.LoaiDangKy ? "Dài ngày" : "Ngắn ngày")</p></td>
                                                         <td class="thaoTac">
                                                             <div class="product-action">
                                                                 <a href="/Admin/SinhVien/CapNhatXoaSinhVien?sMaSinhVien=@item.MaSinhVien" class="text-danger">
@@ -230,7 +236,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var options = {
-            valueNames: ['ho', 'ten', 'ngaySinh', 'gioiTinh', 'email', 'sdt', 'diemUuTien', 'thaoTac'],
+            valueNames: ['ho', 'ten', 'ngaySinh', 'gioiTinh', 'email', 'sdt', 'diemUuTien', 'loaiDangKy', 'thaoTac'],
             page: 10,
             pagination: true
         };
